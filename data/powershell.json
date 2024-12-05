@@ -12,6 +12,21 @@
                 "parameter": "-Id",
                 "description": "Especifica el ID del proceso a obtener.",
                 "example": "Get-Process -Id 1234"
+            },
+            {
+                "parameter": "-IncludeUserName",
+                "description": "Muestra el nombre de usuario que inició el proceso.",
+                "example": "Get-Process -IncludeUserName"
+            },
+            {
+                "parameter": "-Module",
+                "description": "Muestra los módulos cargados por el proceso.",
+                "example": "Get-Process -Module"
+            },
+            {
+                "parameter": "-FileVersionInfo",
+                "description": "Muestra la información de versión del archivo ejecutable.",
+                "example": "Get-Process -FileVersionInfo"
             }
         ]
     },

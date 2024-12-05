@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('powershellButton').addEventListener('click', () => changePlatform('powershell'));
     document.getElementById('cmdButton').addEventListener('click', () => changePlatform('cmd'));
     document.getElementById('bashButton').addEventListener('click', () => changePlatform('bash'));
+    document.getElementById('cmdletsButton').addEventListener('click', () => changePlatform('cmdletsInfo'));
 
     // Evento para buscar
     document.getElementById('search').addEventListener('input', () => {
