@@ -1,3 +1,4 @@
+// command.js - Código de los comandos
 export async function loadCommands(file) {
     try {
         const response = await fetch(file);

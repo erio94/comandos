@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="module" src="js/app.js"></script>
     <link rel="stylesheet" href="css/style.css">
-    <title>Comandos PowerShell y CMD</title>
+    <title>Comandos</title>
 </head>
 
 <body>
@@ -16,8 +16,9 @@
         <nav>
             <button id="powershellButton">PowerShell</button>
             <button id="cmdButton">CMD</button>
-            <button id="bashButton">Bash</button>
+            <button id="compareButton">50 CMD / 50 Cmdlets</button>
             <button id="cmdletsButton">Total Cmdlets</button>
+            <button id="bashButton">Bash</button>
         </nav>
         <div>
             <input type="text" id="search" placeholder="Buscar comando...">
@@ -40,10 +41,32 @@
         </table>
     </div>
 
+    
     <div id="details" style="display: none;">
         <button id="backButton">← Volver</button>
         <div id="detailsContent"></div>
     </div>
+
+    
+    <div id="comparisonTable" style="display: none;">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>PowerShell</th>
+                    <th>Descripción PS</th>
+                    <th>Ejemplo PS</th>
+                    <th>CMD</th>
+                    <th>Descripción CMD</th>
+                    <th>Ejemplo CMD</th>
+                </tr>
+            </thead>
+            <tbody id="comparisonTableBody">
+                <!-- Contenido generado dinámicamente -->
+            </tbody>
+        </table>
+    </div>
+    
 
     <footer>
         <p>Desarrollado por <a href="https://github.com/erio94" target="_blank">Edu T. del Río.</a></p>

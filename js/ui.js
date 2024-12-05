@@ -1,10 +1,14 @@
 
 // ui.js
 import { loadCommands } from './commands.js';
-
 // Renderiza la tabla principal
 export function renderTable(commands) {
     const tableBody = document.getElementById('commandsTable');
+
+    if (!tableBody) {
+        console.error('Error: El elemento commandsTable no está disponible en el DOM.');
+        return;
+    }
 
     if (commands.length === 0) {
         tableBody.innerHTML = `
@@ -13,25 +17,64 @@ export function renderTable(commands) {
             </tr>
         `;
     } else {
-        tableBody.innerHTML = commands.map((command, i) => `
+        tableBody.innerHTML = commands
+            .map(
+                (command, i) => `
             <tr>
                 <td>${i + 1}</td>
-                <td>${command.name}</td>
-                <td>${command.description}</td>
+                <td>${command.name || 'Sin nombre'}</td>
+                <td>${command.description || 'Sin descripción'}</td>
                 <td>
-                    <button class="details-button" data-command="${command.name}">Detalles</button>
+                    <button class="details-button" data-command="${command.name || ''}">Detalles</button>
                 </td>
             </tr>
-        `).join('');
+        `
+            )
+            .join('');
 
         // Asocia eventos a los botones después de renderizar la tabla
-        document.querySelectorAll('.details-button').forEach(button => {
+        document.querySelectorAll('.details-button').forEach((button) => {
             button.addEventListener('click', (event) => {
                 const commandName = event.target.dataset.command;
                 showDetails(commandName, commands);
                 document.getElementById('search').style.display = 'none';
             });
         });
+    }
+}
+
+
+
+export function renderComparisonTable(data) {
+    const tableBody = document.getElementById('comparisonTableBody');
+
+    if (!tableBody) {
+        console.error('Error: El elemento comparisonTableBody no está disponible en el DOM.');
+        return;
+    }
+
+    if (!data || data.length === 0) {
+        tableBody.innerHTML = `
+            <tr>
+                <td colspan="7">No hay datos disponibles para la tabla comparativa.</td>
+            </tr>
+        `;
+    } else {
+        tableBody.innerHTML = data
+            .map(
+                (row, i) => `
+            <tr>
+                <td>${i + 1}</td>
+                <td>${row.powershell || 'N/A'}</td>
+                <td>${row.p_description || 'N/A'}</td>
+                <td>${row.p_example || 'N/A'}</td>
+                <td>${row.cmd || 'N/A'}</td>
+                <td>${row.c_description || 'N/A'}</td>
+                <td>${row.c_example || 'N/A'}</td>
+            </tr>
+        `
+            )
+            .join('');
     }
 }
 
@@ -77,15 +120,34 @@ export function showDetails(commandName, commands) {
 }
 
 // Filtra y renderiza la tabla según el término de búsqueda
-export function searchCommand(query, commands) {
+export function searchCommand(query, commands, isComparison = false) {
     const filteredCommands = query
-        ? commands.filter(command =>
-            command.name.toLowerCase().includes(query.toLowerCase()) ||
-            command.description.toLowerCase().includes(query.toLowerCase())
-        )
+        ? commands.filter((command) => {
+            if (isComparison) {
+                return (
+                    (command.powershell && command.powershell.toLowerCase().includes(query.toLowerCase())) ||
+                    (command.p_description &&
+                        command.p_description.toLowerCase().includes(query.toLowerCase())) ||
+                    (command.p_example && command.p_example.toLowerCase().includes(query.toLowerCase())) ||
+                    (command.cmd && command.cmd.toLowerCase().includes(query.toLowerCase())) ||
+                    (command.c_description &&
+                        command.c_description.toLowerCase().includes(query.toLowerCase())) ||
+                    (command.c_example && command.c_example.toLowerCase().includes(query.toLowerCase()))
+                );
+            } else {
+                return (
+                    (command.name && command.name.toLowerCase().includes(query.toLowerCase())) ||
+                    (command.description && command.description.toLowerCase().includes(query.toLowerCase()))
+                );
+            }
+        })
         : commands;
 
-    renderTable(filteredCommands);
+    if (isComparison) {
+        renderComparisonTable(filteredCommands);
+    } else {
+        renderTable(filteredCommands);
+    }
 }
 
 // Carga los comandos según la plataforma seleccionada
@@ -101,4 +163,3 @@ export async function loadCommandsForPlatform(platform) {
         return [];
     }
 }
-

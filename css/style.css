@@ -132,13 +132,6 @@ table tbody tr:hover {
     transition: background-color 0.3s;
 }
 
-table tbody td:first-child,
-table tbody td:nth-child(5) {
-    border-left: 1px solid #009879;
-    border-right: 1px solid #009879;
-    text-align: center;
-}
-
 /* Botones Copiar */
 table tbody .copy-button {
     background-color: #444;
@@ -230,6 +223,17 @@ footer p {
 
 #detailsContent p {
     text-align: center;
+}
+
+th,
+td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.hidden {
+    display: none;
 }
 
 
