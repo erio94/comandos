@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Comandos PowerShell y CMD</title>
+</head>
+
+<body>
+    <!-- Encabezado de la página -->
+    <header class="header">
+        <h1>Comandos PowerShell y CMD</h1>
+        <div>
+            <input type="text" id="search" placeholder="Buscar comando...">
+            <button onclick="searchCommand()">Buscar</button>
+            <button onclick="resetSearch()">Limpiar</button>
+        </div>
+    </header>
+    
+
+    <!-- Contenedor de la tabla de comandos -->
+    <div class="container">
+        <!-- Tabla de comandos -->
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>PowerShell</th>
+                    <th>Descripción</th>
+                    <th>Ejemplo</th>
+                    <th>#</th>
+                    <th>CMD</th>
+                    <th>Descripción</th>
+                    <th>Ejemplo</th>
+                </tr>
+            </thead>
+            <tbody id="commandsTable">
+                <!-- Contenido generado dinámicamente -->
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        <p>Desarrollado por <a href="https://github.com/erio94" target="_blank">Edu T. del Río.</a></p>
+    </footer>
+</body>
+</html>
