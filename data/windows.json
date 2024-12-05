@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Get-ChildItem",
+        "description": "Lista archivos y carpetas.",
+        "parameters": [
+            {
+                "parameter": "-Path",
+                "description": "Ruta específica.",
+                "example": "Get-ChildItem -Path C:\\Users"
+            },
+            {
+                "parameter": "-Recurse",
+                "description": "Incluye subdirectorios.",
+                "example": "Get-ChildItem -Path C:\\Users -Recurse"
+            }
+        ]
+    },
+    {
+        "name": "ls",
+        "description": "Lista contenido de un directorio.",
+        "parameters": [
+            {
+                "parameter": "-l",
+                "description": "Lista en formato largo.",
+                "example": "ls -l"
+            },
+            {
+                "parameter": "-a",
+                "description": "Muestra archivos ocultos.",
+                "example": "ls -a"
+            }
+        ]
+    }
+]
