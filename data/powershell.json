@@ -1,0 +1,589 @@
+[
+    {
+        "name": "Get-Process",
+        "description": "Obtiene los procesos que se están ejecutando en el equipo local o en un equipo remoto.",
+        "parameters": [
+            {
+                "parameter": "-Name",
+                "description": "Especifica el nombre del proceso a obtener.",
+                "example": "Get-Process -Name notepad"
+            },
+            {
+                "parameter": "-Id",
+                "description": "Especifica el ID del proceso a obtener.",
+                "example": "Get-Process -Id 1234"
+            }
+        ]
+    },
+    {
+        "name": "Start-Process",
+        "description": "Inicia uno o más procesos en el equipo local.",
+        "parameters": [
+            {
+                "parameter": "-FilePath",
+                "description": "Especifica la ruta y el nombre del archivo ejecutable o documento que se va a iniciar.",
+                "example": "Start-Process -FilePath 'C:\\Program Files\\Internet Explorer\\iexplore.exe'"
+            },
+            {
+                "parameter": "-ArgumentList",
+                "description": "Especifica los argumentos que se pasarán al programa o script que se va a iniciar.",
+                "example": "Start-Process -FilePath 'notepad.exe' -ArgumentList 'C:\\temp\\file.txt'"
+            }
+        ]
+    },
+    {
+        "name": "Stop-Process",
+        "description": "Detiene uno o más procesos que se están ejecutando en el equipo local.",
+        "parameters": [
+            {
+                "parameter": "-Name",
+                "description": "Especifica el nombre del proceso a detener.",
+                "example": "Stop-Process -Name notepad"
+            },
+            {
+                "parameter": "-Id",
+                "description": "Especifica el ID del proceso a detener.",
+                "example": "Stop-Process -Id 1234"
+            }
+        ]
+    },
+    {
+        "name": "Get-Service",
+        "description": "Obtiene el estado de los servicios en el equipo local o en un equipo remoto.",
+        "parameters": [
+            {
+                "parameter": "-Name",
+                "description": "Especifica el nombre del servicio a obtener.",
+                "example": "Get-Service -Name wuauserv"
+            },
+            {
+                "parameter": "-DisplayName",
+                "description": "Especifica el nombre para mostrar del servicio a obtener.",
+                "example": "Get-Service -DisplayName 'Windows Update'"
+            }
+        ]
+    },
+    {
+        "name": "Start-Service",
+        "description": "Inicia uno o más servicios detenidos.",
+        "parameters": [
+            {
+                "parameter": "-Name",
+                "description": "Especifica el nombre del servicio a iniciar.",
+                "example": "Start-Service -Name wuauserv"
+            }
+        ]
+    },
+    {
+        "name": "Stop-Service",
+        "description": "Detiene uno o más servicios en ejecución.",
+        "parameters": [
+            {
+                "parameter": "-Name",
+                "description": "Especifica el nombre del servicio a detener.",
+                "example": "Stop-Service -Name wuauserv"
+            },
+            {
+                "parameter": "-Force",
+                "description": "Fuerza la detención del servicio.",
+                "example": "Stop-Service -Name wuauserv -Force"
+            }
+        ]
+    },
+    {
+        "name": "Restart-Service",
+        "description": "Detiene y luego inicia uno o más servicios.",
+        "parameters": [
+            {
+                "parameter": "-Name",
+                "description": "Especifica el nombre del servicio a reiniciar.",
+                "example": "Restart-Service -Name wuauserv"
+            },
+            {
+                "parameter": "-Force",
+                "description": "Fuerza el reinicio del servicio.",
+                "example": "Restart-Service -Name wuauserv -Force"
+            }
+        ]
+    },
+    {
+        "name": "Get-EventLog",
+        "description": "Obtiene los registros de eventos desde el Visor de eventos en el equipo local o en un equipo remoto.",
+        "parameters": [
+            {
+                "parameter": "-LogName",
+                "description": "Especifica el nombre del registro de eventos a obtener.",
+                "example": "Get-EventLog -LogName Application"
+            },
+            {
+                "parameter": "-Newest",
+                "description": "Obtiene los eventos más recientes.",
+                "example": "Get-EventLog -LogName System -Newest 50"
+            }
+        ]
+    },
+    {
+        "name": "Clear-EventLog",
+        "description": "Borra todos los eventos de uno o más registros de eventos en el equipo local o en un equipo remoto.",
+        "parameters": [
+            {
+                "parameter": "-LogName",
+                "description": "Especifica el nombre del registro de eventos a borrar.",
+                "example": "Clear-EventLog -LogName Application"
+            }
+        ]
+    },
+    {
+        "name": "Get-Content",
+        "description": "Obtiene el contenido de un archivo.",
+        "parameters": [
+            {
+                "parameter": "-Path",
+                "description": "Especifica la ruta del archivo.",
+                "example": "Get-Content -Path C:\\temp\\file.txt"
+            },
+            {
+                "parameter": "-Encoding",
+                "description": "Especifica la codificación del archivo.",
+                "example": "Get-Content -Path C:\\temp\\file.txt -Encoding UTF8"
+            }
+        ]
+    },
+    {
+        "name": "Set-Content",
+        "description": "Escribe o reemplaza el contenido en un archivo.",
+        "parameters": [
+            {
+                "parameter": "-Path",
+                "description": "Especifica la ruta del archivo.",
+                "example": "Set-Content -Path C:\\temp\\file.txt -Value 'Nuevo contenido'"
+            },
+            {
+                "parameter": "-Encoding",
+                "description": "Especifica la codificación del archivo.",
+                "example": "Set-Content -Path C:\\temp\\file.txt -Value 'Nuevo contenido' -Encoding UTF8"
+            }
+        ]
+    },
+    {
+        "name": "Add-Content",
+        "description": "Agrega contenido a un archivo existente.",
+        "parameters": [
+            {
+                "parameter": "-Path",
+                "description": "Especifica la ruta del archivo.",
+                "example": "Add-Content -Path C:\\temp\\file.txt -Value 'Contenido adicional'"
+            },
+            {
+                "parameter": "-Encoding",
+                "description": "Especifica la codificación del archivo.",
+                "example": "Add-Content -Path C:\\temp\\file.txt -Value 'Contenido adicional' -Encoding UTF8"
+            }
+        ]
+    },
+    {
+        "name": "Get-Alias",
+        "description": "Obtiene los alias de los cmdlets de PowerShell.",
+        "parameters": [
+            {
+                "parameter": "-Name",
+                "description": "Especifica el nombre del alias a obtener.",
+                "example": "Get-Alias -Name ls"
+            }
+        ]
+    },
+    {
+        "name": "Copy-Item",
+        "description": "Copia un archivo o directorio a una nueva ubicación.",
+        "parameters": [
+            {
+                "parameter": "-Path",
+                "description": "Ruta del archivo o directorio a copiar.",
+                "example": "Copy-Item -Path C:\\archivo.txt -Destination D:\\Backup\\"
+            },
+            {
+                "parameter": "-Destination",
+                "description": "Especifica la ruta de destino.",
+                "example": "Copy-Item -Path C:\\archivo.txt -Destination D:\\Backup\\"
+            },
+            {
+                "parameter": "-Recurse",
+                "description": "Copia todos los subdirectorios y archivos contenidos.",
+                "example": "Copy-Item -Path C:\\Carpeta -Destination D:\\Backup\\ -Recurse"
+            }
+        ]
+    },
+    {
+        "name": "Move-Item",
+        "description": "Mueve un archivo o directorio a una nueva ubicación.",
+        "parameters": [
+            {
+                "parameter": "-Path",
+                "description": "Ruta del archivo o directorio a mover.",
+                "example": "Move-Item -Path C:\\archivo.txt -Destination D:\\Archivos\\"
+            },
+            {
+                "parameter": "-Destination",
+                "description": "Especifica la ruta de destino.",
+                "example": "Move-Item -Path C:\\archivo.txt -Destination D:\\Archivos\\"
+            }
+        ]
+    },
+    {
+        "name": "Remove-Item",
+        "description": "Elimina archivos o directorios.",
+        "parameters": [
+            {
+                "parameter": "-Path",
+                "description": "Ruta del archivo o directorio a eliminar.",
+                "example": "Remove-Item -Path C:\\archivo.txt"
+            },
+            {
+                "parameter": "-Recurse",
+                "description": "Elimina todos los subdirectorios y archivos contenidos.",
+                "example": "Remove-Item -Path C:\\Carpeta -Recurse"
+            },
+            {
+                "parameter": "-Force",
+                "description": "Forza la eliminación de elementos que están en uso o protegidos.",
+                "example": "Remove-Item -Path C:\\archivo.txt -Force"
+            }
+        ]
+    },
+    {
+        "name": "New-Item",
+        "description": "Crea un nuevo archivo o directorio.",
+        "parameters": [
+            {
+                "parameter": "-Path",
+                "description": "Ruta donde se creará el nuevo elemento.",
+                "example": "New-Item -Path C:\\NuevoArchivo.txt -ItemType File"
+            },
+            {
+                "parameter": "-ItemType",
+                "description": "Especifica el tipo de elemento a crear (File o Directory).",
+                "example": "New-Item -Path C:\\NuevaCarpeta -ItemType Directory"
+            }
+        ]
+    },
+    {
+        "name": "Get-Content",
+        "description": "Obtiene el contenido de un archivo.",
+        "parameters": [
+            {
+                "parameter": "-Path",
+                "description": "Ruta del archivo.",
+                "example": "Get-Content -Path C:\\archivo.txt"
+            },
+            {
+                "parameter": "-Encoding",
+                "description": "Especifica la codificación del archivo.",
+                "example": "Get-Content -Path C:\\archivo.txt -Encoding UTF8"
+            }
+        ]
+    },
+    {
+        "name": "Set-Content",
+        "description": "Escribe o reemplaza el contenido en un archivo.",
+        "parameters": [
+            {
+                "parameter": "-Path",
+                "description": "Ruta del archivo.",
+                "example": "Set-Content -Path C:\\archivo.txt -Value 'Nuevo contenido'"
+            },
+            {
+                "parameter": "-Encoding",
+                "description": "Especifica la codificación del archivo.",
+                "example": "Set-Content -Path C:\\archivo.txt -Value 'Nuevo contenido' -Encoding UTF8"
+            }
+        ]
+    },
+    {
+        "name": "Add-Content",
+        "description": "Agrega contenido a un archivo existente.",
+        "parameters": [
+            {
+                "parameter": "-Path",
+                "description": "Ruta del archivo.",
+                "example": "Add-Content -Path C:\\archivo.txt -Value 'Contenido adicional'"
+            },
+            {
+                "parameter": "-Encoding",
+                "description": "Especifica la codificación del archivo.",
+                "example": "Add-Content -Path C:\\archivo.txt -Value 'Contenido adicional' -Encoding UTF8"
+            }
+        ]
+    },
+    {
+        "name": "Get-Process",
+        "description": "Obtiene los procesos que se están ejecutando en el equipo local o en un equipo remoto.",
+        "parameters": [
+            {
+                "parameter": "-Name",
+                "description": "Especifica el nombre del proceso a obtener.",
+                "example": "Get-Process -Name notepad"
+            },
+            {
+                "parameter": "-Id",
+                "description": "Especifica el ID del proceso a obtener.",
+                "example": "Get-Process -Id 1234"
+            }
+        ]
+    },
+    {
+        "name": "Start-Process",
+        "description": "Inicia uno o más procesos en el equipo local.",
+        "parameters": [
+            {
+                "parameter": "-FilePath",
+                "description": "Especifica la ruta y el nombre del archivo ejecutable o documento que se va a iniciar.",
+                "example": "Start-Process -FilePath 'C:\\Program Files\\Internet Explorer\\iexplore.exe'"
+            },
+            {
+                "parameter": "-ArgumentList",
+                "description": "Especifica los argumentos que se pasarán al programa o script que se va a iniciar.",
+                "example": "Start-Process -FilePath 'notepad.exe' -ArgumentList 'C:\\temp\\file.txt'"
+            }
+        ]
+    },
+    {
+        "name": "Stop-Process",
+        "description": "Detiene uno o más procesos que se están ejecutando en el equipo local.",
+        "parameters": [
+            {
+                "parameter": "-Name",
+                "description": "Especifica el nombre del proceso a detener.",
+                "example": "Stop-Process -Name notepad"
+            },
+            {
+                "parameter": "-Id",
+                "description": "Especifica el ID del proceso a detener.",
+                "example": "Stop-Process -Id 1234"
+            },
+            {
+                "parameter": "-Force",
+                "description": "Forza la detención del proceso.",
+                "example": "Stop-Process -Name notepad -Force"
+            }
+        ]
+    },
+    {
+        "name": "Get-Service",
+        "description": "Obtiene el estado de los servicios en el equipo local o en un equipo remoto.",
+        "parameters": [
+            {
+                "parameter": "-Name",
+                "description": "Especifica el nombre del servicio a obtener.",
+                "example": "Get-Service -Name wuauserv"
+            },
+            {
+                "parameter": "-DisplayName",
+                "description": "Especifica el nombre para mostrar del servicio a obtener.",
+                "example": "Get-Service -DisplayName 'Windows Update'"
+            }
+        ]
+    },
+    {
+        "name": "Get-Command",
+        "description": "Muestra todos los cmdlets, funciones y alias disponibles en PowerShell.",
+        "parameters": [
+            {
+                "parameter": "-Verb",
+                "description": "Muestra todos los cmdlets con el verbo especificado.",
+                "example": "Get-Command -Verb Get"
+            },
+            {
+                "parameter": "-Noun",
+                "description": "Muestra todos los cmdlets con el sustantivo especificado.",
+                "example": "Get-Command -Noun Service"
+            },
+            {
+                "parameter": "-Syntax",
+                "description": "Muestra la sintaxis de los cmdlets disponibles.",
+                "example": "Get-Command -Syntax"
+            }
+        ]
+    },
+    {
+        "name": "Get-Help",
+        "description": "Muestra ayuda sobre cmdlets, funciones y scripts de PowerShell.",
+        "parameters": [
+            {
+                "parameter": "<cmdlet>",
+                "description": "Muestra la ayuda básica de un cmdlet.",
+                "example": "Get-Help Get-Process"
+            },
+            {
+                "parameter": "-Detailed",
+                "description": "Muestra la ayuda detallada de un cmdlet.",
+                "example": "Get-Help Get-Process -Detailed"
+            },
+            {
+                "parameter": "-Examples",
+                "description": "Muestra ejemplos de uso de un cmdlet.",
+                "example": "Get-Help Get-Process -Examples"
+            },
+            {
+                "parameter": "-Online",
+                "description": "Abre la documentación del cmdlet en línea.",
+                "example": "Get-Help Get-Process -Online"
+            }
+        ]
+    },
+    {
+        "name": "Get-Location",
+        "description": "Muestra la ubicación actual en el sistema de archivos.",
+        "parameters": []
+    },
+    {
+        "name": "Set-Location",
+        "description": "Cambia a una ubicación especificada.",
+        "parameters": [
+            {
+                "parameter": "-Path",
+                "description": "Especifica la ruta a la que cambiar.",
+                "example": "Set-Location C:\\Users"
+            }
+        ]
+    },
+    {
+        "name": "Get-Service",
+        "description": "Obtiene el estado de los servicios en el equipo local o en un equipo remoto.",
+        "parameters": [
+            {
+                "parameter": "-Name",
+                "description": "Especifica el nombre del servicio a obtener.",
+                "example": "Get-Service -Name wuauserv"
+            },
+            {
+                "parameter": "-DisplayName",
+                "description": "Especifica el nombre para mostrar del servicio a obtener.",
+                "example": "Get-Service -DisplayName 'Windows Update'"
+            }
+        ]
+    },
+    {
+        "name": "Start-Service",
+        "description": "Inicia uno o más servicios en el equipo local o remoto.",
+        "parameters": [
+            {
+                "parameter": "-Name",
+                "description": "Especifica el nombre del servicio a iniciar.",
+                "example": "Start-Service -Name wuauserv"
+            }
+        ]
+    },
+    {
+        "name": "Stop-Service",
+        "description": "Detiene uno o más servicios en el equipo local o remoto.",
+        "parameters": [
+            {
+                "parameter": "-Name",
+                "description": "Especifica el nombre del servicio a detener.",
+                "example": "Stop-Service -Name wuauserv"
+            },
+            {
+                "parameter": "-Force",
+                "description": "Fuerza la detención del servicio.",
+                "example": "Stop-Service -Name wuauserv -Force"
+            }
+        ]
+    },
+    {
+        "name": "Get-Process",
+        "description": "Muestra información sobre los procesos que se están ejecutando en el equipo.",
+        "parameters": [
+            {
+                "parameter": "-Name",
+                "description": "Filtra los procesos por nombre.",
+                "example": "Get-Process -Name chrome"
+            }
+        ]
+    },
+    {
+        "name": "Stop-Process",
+        "description": "Finaliza uno o más procesos en ejecución.",
+        "parameters": [
+            {
+                "parameter": "-Name",
+                "description": "Especifica el nombre del proceso a detener.",
+                "example": "Stop-Process -Name notepad"
+            },
+            {
+                "parameter": "-Id",
+                "description": "Especifica el ID del proceso a detener.",
+                "example": "Stop-Process -Id 1234"
+            }
+        ]
+    },
+    {
+        "name": "New-LocalUser",
+        "description": "Crea un nuevo usuario local en el sistema.",
+        "parameters": [
+            {
+                "parameter": "-Name",
+                "description": "Especifica el nombre del usuario.",
+                "example": "New-LocalUser -Name 'Antonio'"
+            },
+            {
+                "parameter": "-FullName",
+                "description": "Especifica el nombre completo del usuario.",
+                "example": "New-LocalUser -Name 'Antonio' -FullName 'Antonio Recio'"
+            },
+            {
+                "parameter": "-Password",
+                "description": "Especifica la contraseña del usuario.",
+                "example": "New-LocalUser -Name 'Antonio' -Password (ConvertTo-SecureString '1234' -AsPlainText -Force)"
+            }
+        ]
+    },
+    {
+        "name": "Add-LocalGroupMember",
+        "description": "Agrega un usuario a un grupo local.",
+        "parameters": [
+            {
+                "parameter": "-Group",
+                "description": "Especifica el grupo al que se agregará el usuario.",
+                "example": "Add-LocalGroupMember -Group 'Administradores' -Member 'Antonio'"
+            }
+        ]
+    },
+    {
+        "name": "Get-LocalUser",
+        "description": "Obtiene información sobre un usuario local.",
+        "parameters": [
+            {
+                "parameter": "-Name",
+                "description": "Especifica el nombre del usuario a obtener.",
+                "example": "Get-LocalUser -Name 'Antonio'"
+            }
+        ]
+    },
+    {
+        "name": "Set-ExecutionPolicy",
+        "description": "Cambia la política de ejecución de scripts en PowerShell.",
+        "parameters": [
+            {
+                "parameter": "-ExecutionPolicy",
+                "description": "Especifica la política de ejecución.",
+                "example": "Set-ExecutionPolicy RemoteSigned"
+            }
+        ]
+    },
+    {
+        "name": "Remove-Item",
+        "description": "Elimina archivos o carpetas.",
+        "parameters": [
+            {
+                "parameter": "-Path",
+                "description": "Especifica la ruta de los elementos a eliminar.",
+                "example": "Remove-Item -Path C:\\Temp\\*"
+            },
+            {
+                "parameter": "-Recurse",
+                "description": "Elimina de forma recursiva.",
+                "example": "Remove-Item -Path C:\\Temp\\* -Recurse"
+            }
+        ]
+    }
+]

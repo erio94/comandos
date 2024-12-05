@@ -1,3 +1,8 @@
+
+// ui.js
+import { loadCommands } from './commands.js';
+
+// Renderiza la tabla principal
 export function renderTable(commands) {
     const tableBody = document.getElementById('commandsTable');
 
@@ -24,10 +29,13 @@ export function renderTable(commands) {
             button.addEventListener('click', (event) => {
                 const commandName = event.target.dataset.command;
                 showDetails(commandName, commands);
+                document.getElementById('search').style.display = 'none';
             });
         });
     }
 }
+
+// Muestra los detalles de un comando
 export function showDetails(commandName, commands) {
     const detailsSection = document.getElementById('details');
     const mainTable = document.getElementById('mainTable');
@@ -37,10 +45,7 @@ export function showDetails(commandName, commands) {
     const command = commands.find(cmd => cmd.name === commandName);
 
     if (command) {
-        // Guarda el comando actual en un atributo de la sección de detalles
-        detailsSection.dataset.currentCommand = commandName;
-
-        // Genera el contenido de los detalles
+        detailsSection.dataset.currentCommand = commandName; // Guarda el comando actual
         detailsContent.innerHTML = `
             <h2>${command.name}</h2>
             <p>${command.description}</p>
@@ -52,8 +57,8 @@ export function showDetails(commandName, commands) {
                         <th>Ejemplo</th>
                     </tr>
                 </thead>
-                <tbody id="detailsTableBody">
-                    ${command.parameters && command.parameters.length > 0
+                <tbody>
+                    ${command.parameters?.length
                 ? command.parameters.map(param => `
                             <tr>
                                 <td>${param.parameter}</td>
@@ -66,87 +71,34 @@ export function showDetails(commandName, commands) {
             </table>
         `;
 
-        // Muestra la sección de detalles y oculta la tabla principal
-        mainTable.style.display = 'none';
-        detailsSection.style.display = 'block';
+        mainTable.style.display = 'none'; // Oculta la tabla principal
+        detailsSection.style.display = 'block'; // Muestra los detalles
     }
 }
 
-export function searchDetails(query, parameters) {
-    const detailsTableBody = document.getElementById('detailsTableBody');
-
-    if (!query) {
-        // Mostrar todos los parámetros si no hay búsqueda
-        detailsTableBody.innerHTML = parameters.map(param => `
-            <tr>
-                <td>${param.parameter}</td>
-                <td>${param.description}</td>
-                <td>${param.example}</td>
-            </tr>
-        `).join('');
-        return;
-    }
-
-    // Filtrar parámetros que coincidan con la búsqueda
-    const filteredParameters = parameters.filter(param =>
-        param.parameter.toLowerCase().includes(query.toLowerCase()) ||
-        param.description.toLowerCase().includes(query.toLowerCase()) ||
-        param.example.toLowerCase().includes(query.toLowerCase())
-    );
-
-    if (filteredParameters.length === 0) {
-        detailsTableBody.innerHTML = `
-            <tr>
-                <td colspan="3">No se encontraron resultados para la búsqueda.</td>
-            </tr>
-        `;
-    } else {
-        detailsTableBody.innerHTML = filteredParameters.map(param => `
-            <tr>
-                <td>${param.parameter}</td>
-                <td>${param.description}</td>
-                <td>${param.example}</td>
-            </tr>
-        `).join('');
-    }
-}
-
-
-
-// Función de búsqueda
+// Filtra y renderiza la tabla según el término de búsqueda
 export function searchCommand(query, commands) {
-
-    if (!query) {
-        renderTable(commands); // Si no hay búsqueda, mostrar todos los comandos
-        return;
-    }
-    // Filtrar los comandos que coincidan con la búsqueda
-    const filteredCommands = commands.filter(command =>
-        command.name.toLowerCase().includes(query.toLowerCase()) ||
-        command.description.toLowerCase().includes(query.toLowerCase())
-    );
+    const filteredCommands = query
+        ? commands.filter(command =>
+            command.name.toLowerCase().includes(query.toLowerCase()) ||
+            command.description.toLowerCase().includes(query.toLowerCase())
+        )
+        : commands;
 
     renderTable(filteredCommands);
 }
 
+// Carga los comandos según la plataforma seleccionada
+export async function loadCommandsForPlatform(platform) {
+    const dataFile = `./data/${platform}.json`;
 
-export function resetSearch() {
-    document.getElementById('search').value = ''; // Vaciar el campo de búsqueda
-
-    const mainTable = document.getElementById('mainTable');
-    const detailsSection = document.getElementById('details');
-
-    if (mainTable.style.display !== 'none') {
-        // Si la tabla principal está visible, renderizar todos los comandos
-        renderTable(commands);
-    } else if (detailsSection.style.display !== 'none') {
-        // Si los detalles están visibles, mostrar todos los parámetros
-        const commandName = detailsSection.dataset.currentCommand;
-        const command = commands.find(cmd => cmd.name === commandName);
-
-        if (command) {
-            searchDetails('', command.parameters || []); // Limpiar búsqueda en parámetros
-        }
+    try {
+        const loadedCommands = await loadCommands(dataFile);
+        renderTable(loadedCommands);
+        return loadedCommands; // Retorna los comandos cargados
+    } catch (error) {
+        console.error(`Error al cargar los comandos para ${platform}:`, error);
+        return [];
     }
 }
 

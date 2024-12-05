@@ -59,6 +59,34 @@ header button:hover {
     color: #ffffff;
 }
 
+header nav {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+header nav button {
+    background-color: #009879;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+header nav button:hover {
+    background-color: #007b5e;
+}
+
+header nav button.active {
+    background-color: #00563f;
+    pointer-events: none;
+}
+
+
 /* Tabla */
 table {
     width: 95%;
@@ -175,7 +203,7 @@ footer p {
     font-size: 1em;
     border-radius: 5px;
     cursor: pointer;
-    margin: 30px auto;
+    margin: 30px 50px;
     display: flex;
     transition: background-color 0.3s;
 }

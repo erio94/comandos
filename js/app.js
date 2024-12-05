@@ -1,54 +1,40 @@
-import { loadCommands } from './commands.js';
-import { renderTable, showDetails, resetSearch, searchCommand, searchDetails } from './ui.js';
+import { loadCommandsForPlatform, renderTable, searchCommand } from './ui.js';
 
-let commands = [];
+let commands = []; // Variable global para los comandos
+let currentPlatform = 'powershell'; // Por defecto PowerShell
 
 document.addEventListener('DOMContentLoaded', () => {
-    const isLinux = window.location.pathname.includes('linux.html');
-    const dataFile = isLinux ? './data/linux.json' : './data/windows.json';
-
-    // Cargar los comandos
-    loadCommands(dataFile).then(loadedCommands => {
-        commands = loadedCommands; // Guarda los comandos
-        renderTable(commands); // Renderiza la tabla
+    // Carga inicial de PowerShell
+    loadCommandsForPlatform(currentPlatform).then(loadedCommands => {
+        commands = loadedCommands; // Guarda los comandos cargados
     });
 
-    // Evento para mostrar los detalles de un comando
-    document.getElementById('commandsTable').addEventListener('click', event => {
-        if (event.target.dataset.command) {
-            showDetails(event.target.dataset.command, commands); // Pasa los comandos a showDetails
-        }
-    });
+    // Cambiar entre plataformas
+    document.getElementById('powershellButton').addEventListener('click', () => changePlatform('powershell'));
+    document.getElementById('cmdButton').addEventListener('click', () => changePlatform('cmd'));
+    document.getElementById('bashButton').addEventListener('click', () => changePlatform('bash'));
 
-    // Botón para volver a la tabla principal
-    document.getElementById('backButton').addEventListener('click', () => {
-        const detailsSection = document.getElementById('details');
-        const mainTable = document.getElementById('mainTable');
-
-        // Oculta la sección de detalles y muestra la tabla principal
-        detailsSection.style.display = 'none';
-        mainTable.style.display = 'block';
-    });
-
+    // Evento para buscar
     document.getElementById('search').addEventListener('input', () => {
         const query = document.getElementById('search').value.trim();
+        searchCommand(query, commands);
+    });
 
-        const mainTable = document.getElementById('mainTable');
-        const detailsSection = document.getElementById('details');
-
-        if (mainTable.style.display !== 'none') {
-            // Si la tabla principal está visible, busca en los comandos principales
-            searchCommand(query, commands);
-        } else if (detailsSection.style.display !== 'none') {
-            // Si los detalles están visibles, busca en los parámetros del comando actual
-            const commandName = detailsSection.dataset.currentCommand; // Asigna el nombre del comando actualmente mostrado
-            const command = commands.find(cmd => cmd.name === commandName);
-
-            if (command) {
-                searchDetails(query, command.parameters || []);
-            }
-        }
+    // Botón para volver
+    document.getElementById('backButton').addEventListener('click', () => {
+        document.getElementById('details').style.display = 'none';
+        document.getElementById('mainTable').style.display = 'block';
+        // Mostrar el buscador principal
+        document.getElementById('search').style.display = 'inline-block';
+        renderTable(commands); // Mostrar todos los comandos
     });
 });
 
-
+function changePlatform(platform) {
+    if (currentPlatform !== platform) {
+        currentPlatform = platform;
+        loadCommandsForPlatform(platform).then(loadedCommands => {
+            commands = loadedCommands; // Actualiza la lista de comandos
+        });
+    }
+}
