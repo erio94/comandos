@@ -2,13 +2,16 @@
 
 ## Descripción
 
-¡Bienvenido! Esta es una **web interactiva** que compara comandos de **PowerShell** y **CMD** en diferentes áreas como:
+¡Bienvenido! Esta es una **web interactiva** que compara comandos de **PowerShell**, **CMD** y **Bash** en diferentes áreas como:
 - Gestión de usuarios
 - Configuración de red
 - Gestión de software
 - Gestión de grupos
 
-El objetivo es facilitar el aprendizaje y consulta de comandos útiles para la administración de sistemas en Windows.
+
+El objetivo es facilitar el aprendizaje y consulta de comandos útiles para la administración de sistemas en diferentes plataformas.
+
+🌍 **Visualiza la web aquí**: [Tabla de Comandos](https://erio94.github.io/tabla_comandos_windows/)
 
 La página utiliza un diseño moderno (tema oscuro), es responsiva y permite buscar y copiar comandos fácilmente.
 
@@ -18,7 +21,6 @@ La página utiliza un diseño moderno (tema oscuro), es responsiva y permite bus
 - Comparación detallada de comandos entre **PowerShell** y **CMD**.
 - Función de búsqueda.
 - Diseño con tema oscuro para una experiencia visual cómoda.
-- Botones para copiar ejemplos de comandos al portapapeles.
 - Responsivo.
 
 ---
