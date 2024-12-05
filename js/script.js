@@ -3,7 +3,7 @@ window.onload = function () {
     const tableBody = document.getElementById('commandsTable');
 
     // Consulta fetch para cargar comandos desde el JSON
-    fetch('../comandos/allcommands.json')
+    fetch('./comandos/allcommands.json')
         .then(response => response.json())
         .then(data => {
             // Recorrer y agregar filas a la tabla
