@@ -1,0 +1,792 @@
+[
+    {
+        "name": "ls",
+        "description": "Lista información de archivos y directorios.",
+        "parameters": [
+            {
+                "parameter": "-a, --all",
+                "description": "No ignorar archivos que comiencen con .",
+                "example": "ls -a"
+            },
+            {
+                "parameter": "-A, --almost-all",
+                "description": "No mostrar . y ..",
+                "example": "ls -A"
+            },
+            {
+                "parameter": "--author",
+                "description": "Con -l, mostrar el autor del archivo.",
+                "example": "ls --author"
+            },
+            {
+                "parameter": "-b, --escape",
+                "description": "Mostrar caracteres especiales con secuencias de escape.",
+                "example": "ls -b"
+            },
+            {
+                "parameter": "--block-size=SIZE",
+                "description": "Escalar tamaños usando SIZE.",
+                "example": "ls --block-size=1K"
+            }
+        ]
+    },
+    {
+        "name": "cd",
+        "description": "Cambia el directorio actual.",
+        "parameters": [
+            {
+                "parameter": "ruta",
+                "description": "Directorio al que se desea ir.",
+                "example": "cd /home/usuario"
+            }
+        ]
+    },
+    {
+        "name": "mv",
+        "description": "Mueve o renombra archivos.",
+        "parameters": [
+            {
+                "parameter": "-i",
+                "description": "Preguntar antes de sobrescribir.",
+                "example": "mv -i archivo1 archivo2"
+            },
+            {
+                "parameter": "-n",
+                "description": "No sobrescribir archivos existentes.",
+                "example": "mv -n viejo nuevo"
+            },
+            {
+                "parameter": "-v",
+                "description": "Mostrar acciones realizadas.",
+                "example": "mv -v archivo1 archivo2"
+            }
+        ]
+    },
+    {
+        "name": "cp",
+        "description": "Copia archivos y directorios.",
+        "parameters": [
+            {
+                "parameter": "-r, -R",
+                "description": "Copiar directorios recursivamente.",
+                "example": "cp -r dir1 dir2"
+            },
+            {
+                "parameter": "-i",
+                "description": "Preguntar antes de sobrescribir.",
+                "example": "cp -i archivo1 archivo2"
+            },
+            {
+                "parameter": "-v",
+                "description": "Mostrar acciones realizadas.",
+                "example": "cp -v origen destino"
+            }
+        ]
+    },
+    {
+        "name": "rm",
+        "description": "Elimina archivos o directorios.",
+        "parameters": [
+            {
+                "parameter": "-r, -R",
+                "description": "Eliminar directorios recursivamente.",
+                "example": "rm -r carpeta"
+            },
+            {
+                "parameter": "-f",
+                "description": "No preguntar, ignorar errores.",
+                "example": "rm -f archivo"
+            },
+            {
+                "parameter": "-i",
+                "description": "Preguntar antes de cada eliminación.",
+                "example": "rm -i archivo"
+            }
+        ]
+    },
+    {
+        "name": "mkdir",
+        "description": "Crea directorios.",
+        "parameters": [
+            {
+                "parameter": "-p",
+                "description": "Crear directorios padres si no existen.",
+                "example": "mkdir -p /ruta/a/dir"
+            },
+            {
+                "parameter": "-v",
+                "description": "Mostrar directorios creados.",
+                "example": "mkdir -v nuevodir"
+            }
+        ]
+    },
+    {
+        "name": "rmdir",
+        "description": "Elimina directorios vacíos.",
+        "parameters": [
+            {
+                "parameter": "--ignore-fail-on-non-empty",
+                "description": "Ignorar error si el directorio no está vacío.",
+                "example": "rmdir --ignore-fail-on-non-empty dir"
+            },
+            {
+                "parameter": "-p",
+                "description": "Eliminar directorio y sus ancestros.",
+                "example": "rmdir -p dir/subdir"
+            }
+        ]
+    },
+    {
+        "name": "pwd",
+        "description": "Muestra el directorio de trabajo actual.",
+        "parameters": [
+            {
+                "parameter": "-L",
+                "description": "Mostrar la ruta con enlaces simbólicos.",
+                "example": "pwd -L"
+            },
+            {
+                "parameter": "-P",
+                "description": "Mostrar la ruta física sin enlaces simbólicos.",
+                "example": "pwd -P"
+            }
+        ]
+    },
+    {
+        "name": "cat",
+        "description": "Concatena y muestra contenido de archivos.",
+        "parameters": [
+            {
+                "parameter": "-n",
+                "description": "Numerar las líneas de salida.",
+                "example": "cat -n archivo"
+            },
+            {
+                "parameter": "-E",
+                "description": "Mostrar '$' al final de cada línea.",
+                "example": "cat -E archivo"
+            }
+        ]
+    },
+    {
+        "name": "touch",
+        "description": "Cambia marcas de tiempo o crea archivos vacíos.",
+        "parameters": [
+            {
+                "parameter": "-a",
+                "description": "Cambiar solo la hora de acceso.",
+                "example": "touch -a archivo"
+            },
+            {
+                "parameter": "-m",
+                "description": "Cambiar solo la hora de modificación.",
+                "example": "touch -m archivo"
+            },
+            {
+                "parameter": "-t STAMP",
+                "description": "Usar una hora específica.",
+                "example": "touch -t 202401011200 archivo"
+            }
+        ]
+    },
+    {
+        "name": "less",
+        "description": "Muestra el contenido de un archivo página a página.",
+        "parameters": [
+            {
+                "parameter": "-N",
+                "description": "Mostrar números de línea.",
+                "example": "less -N archivo"
+            },
+            {
+                "parameter": "-S",
+                "description": "No ajustar líneas largas.",
+                "example": "less -S archivo"
+            }
+        ]
+    },
+    {
+        "name": "grep",
+        "description": "Busca líneas que coinciden con un patrón.",
+        "parameters": [
+            {
+                "parameter": "-i",
+                "description": "Ignorar mayúsculas/minúsculas.",
+                "example": "grep -i 'patrón' archivo"
+            },
+            {
+                "parameter": "-r",
+                "description": "Buscar recursivamente en directorios.",
+                "example": "grep -r 'patrón' dir"
+            },
+            {
+                "parameter": "-n",
+                "description": "Mostrar número de línea.",
+                "example": "grep -n 'patrón' archivo"
+            }
+        ]
+    },
+    {
+        "name": "find",
+        "description": "Busca archivos en una jerarquía de directorios.",
+        "parameters": [
+            {
+                "parameter": "-name",
+                "description": "Coincidencia por nombre.",
+                "example": "find /ruta -name '*.txt'"
+            },
+            {
+                "parameter": "-type",
+                "description": "Filtrar por tipo (f=archivo, d=directorio).",
+                "example": "find . -type f"
+            },
+            {
+                "parameter": "-exec",
+                "description": "Ejecutar un comando sobre el resultado.",
+                "example": "find . -name '*.sh' -exec chmod +x {} \\;"
+            }
+        ]
+    },
+    {
+        "name": "locate",
+        "description": "Encuentra archivos por nombre usando una base de datos.",
+        "parameters": [
+            {
+                "parameter": "-i",
+                "description": "Ignorar mayúsculas/minúsculas.",
+                "example": "locate -i nombre"
+            },
+            {
+                "parameter": "-r",
+                "description": "Usar expresión regular.",
+                "example": "locate -r 'patrón'"
+            }
+        ]
+    },
+    {
+        "name": "chmod",
+        "description": "Cambia permisos de archivos.",
+        "parameters": [
+            {
+                "parameter": "modo",
+                "description": "Establecer modo (ej. 755).",
+                "example": "chmod 755 archivo"
+            },
+            {
+                "parameter": "-R",
+                "description": "Aplicar recursivamente.",
+                "example": "chmod -R 644 dir"
+            }
+        ]
+    },
+    {
+        "name": "chown",
+        "description": "Cambia propietario y grupo de un archivo.",
+        "parameters": [
+            {
+                "parameter": "OWNER:GROUP",
+                "description": "Establecer propietario y grupo.",
+                "example": "chown usuario:grupo archivo"
+            },
+            {
+                "parameter": "-R",
+                "description": "Aplicar recursivamente.",
+                "example": "chown -R usuario:grupo dir"
+            }
+        ]
+    },
+    {
+        "name": "chgrp",
+        "description": "Cambia el grupo de un archivo.",
+        "parameters": [
+            {
+                "parameter": "GRUPO",
+                "description": "Nuevo grupo.",
+                "example": "chgrp grupo archivo"
+            },
+            {
+                "parameter": "-R",
+                "description": "Aplicar recursivamente.",
+                "example": "chgrp -R grupo dir"
+            }
+        ]
+    },
+    {
+        "name": "df",
+        "description": "Reporta uso de espacio en el sistema de archivos.",
+        "parameters": [
+            {
+                "parameter": "-h",
+                "description": "Formato legible por humanos.",
+                "example": "df -h"
+            },
+            {
+                "parameter": "-T",
+                "description": "Mostrar tipo de sistema de archivos.",
+                "example": "df -T"
+            }
+        ]
+    },
+    {
+        "name": "du",
+        "description": "Estima uso de espacio en archivos.",
+        "parameters": [
+            {
+                "parameter": "-h",
+                "description": "Formato legible por humanos.",
+                "example": "du -h"
+            },
+            {
+                "parameter": "-s",
+                "description": "Mostrar solo el total.",
+                "example": "du -sh dir"
+            }
+        ]
+    },
+    {
+        "name": "file",
+        "description": "Determina el tipo de archivo.",
+        "parameters": [
+            {
+                "parameter": "-i",
+                "description": "Mostrar tipo MIME.",
+                "example": "file -i archivo"
+            },
+            {
+                "parameter": "-b",
+                "description": "No mostrar el nombre del archivo en la salida.",
+                "example": "file -b archivo"
+            }
+        ]
+    },
+    {
+        "name": "head",
+        "description": "Muestra el inicio de un archivo.",
+        "parameters": [
+            {
+                "parameter": "-n",
+                "description": "Número de líneas a mostrar.",
+                "example": "head -n 10 archivo"
+            }
+        ]
+    },
+    {
+        "name": "tail",
+        "description": "Muestra el final de un archivo.",
+        "parameters": [
+            {
+                "parameter": "-n",
+                "description": "Número de líneas a mostrar.",
+                "example": "tail -n 10 archivo"
+            },
+            {
+                "parameter": "-f",
+                "description": "Seguir añadiendo datos a medida que crece el archivo.",
+                "example": "tail -f registro.log"
+            }
+        ]
+    },
+    {
+        "name": "diff",
+        "description": "Compara archivos línea por línea.",
+        "parameters": [
+            {
+                "parameter": "-u",
+                "description": "Formato unificado.",
+                "example": "diff -u archivo1 archivo2"
+            },
+            {
+                "parameter": "-r",
+                "description": "Comparar directorios recursivamente.",
+                "example": "diff -r dir1 dir2"
+            }
+        ]
+    },
+    {
+        "name": "tar",
+        "description": "Manipula archivos tar.",
+        "parameters": [
+            {
+                "parameter": "-c",
+                "description": "Crear un nuevo archivo.",
+                "example": "tar -cvf archivo.tar archivo"
+            },
+            {
+                "parameter": "-x",
+                "description": "Extraer archivos de un tar.",
+                "example": "tar -xvf archivo.tar"
+            },
+            {
+                "parameter": "-z",
+                "description": "Comprimir/descomprimir con gzip.",
+                "example": "tar -czvf archivo.tar.gz dir"
+            }
+        ]
+    },
+    {
+        "name": "gzip",
+        "description": "Comprime o descomprime archivos.",
+        "parameters": [
+            {
+                "parameter": "-d",
+                "description": "Descomprimir.",
+                "example": "gzip -d archivo.gz"
+            },
+            {
+                "parameter": "-k",
+                "description": "Conservar el archivo original.",
+                "example": "gzip -k archivo"
+            }
+        ]
+    },
+    {
+        "name": "gunzip",
+        "description": "Descomprime archivos .gz.",
+        "parameters": [
+            {
+                "parameter": "-k",
+                "description": "Conservar el archivo original.",
+                "example": "gunzip -k archivo.gz"
+            }
+        ]
+    },
+    {
+        "name": "ssh",
+        "description": "Cliente SSH para login remoto.",
+        "parameters": [
+            {
+                "parameter": "-i",
+                "description": "Especificar clave privada.",
+                "example": "ssh -i ~/.ssh/id_rsa usuario@host"
+            },
+            {
+                "parameter": "-p",
+                "description": "Puerto a conectar.",
+                "example": "ssh -p 2222 usuario@host"
+            }
+        ]
+    },
+    {
+        "name": "scp",
+        "description": "Copia segura de archivos entre hosts.",
+        "parameters": [
+            {
+                "parameter": "-r",
+                "description": "Copiar directorios recursivamente.",
+                "example": "scp -r dir usuario@host:/ruta/"
+            },
+            {
+                "parameter": "-P",
+                "description": "Puerto a utilizar.",
+                "example": "scp -P 2222 archivo usuario@host:/ruta/"
+            }
+        ]
+    },
+    {
+        "name": "curl",
+        "description": "Transferir datos con URL.",
+        "parameters": [
+            {
+                "parameter": "-O",
+                "description": "Guardar con el nombre remoto.",
+                "example": "curl -O http://ejemplo.com/archivo"
+            },
+            {
+                "parameter": "-L",
+                "description": "Seguir redirecciones.",
+                "example": "curl -L http://ejemplo.com"
+            }
+        ]
+    },
+    {
+        "name": "wget",
+        "description": "Descarga no interactiva de la web.",
+        "parameters": [
+            {
+                "parameter": "-r",
+                "description": "Descarga recursiva.",
+                "example": "wget -r http://ejemplo.com/"
+            },
+            {
+                "parameter": "-O",
+                "description": "Guardar el documento en un archivo específico.",
+                "example": "wget -O salida.html http://ejemplo.com"
+            }
+        ]
+    },
+    {
+        "name": "ps",
+        "description": "Muestra procesos en ejecución.",
+        "parameters": [
+            {
+                "parameter": "aux",
+                "description": "Mostrar todos los procesos de todos los usuarios.",
+                "example": "ps aux"
+            },
+            {
+                "parameter": "-f",
+                "description": "Listado detallado.",
+                "example": "ps -f"
+            }
+        ]
+    },
+    {
+        "name": "top",
+        "description": "Muestra procesos en tiempo real.",
+        "parameters": [
+            {
+                "parameter": "-u USUARIO",
+                "description": "Mostrar procesos de un usuario.",
+                "example": "top -u usuario"
+            }
+        ]
+    },
+    {
+        "name": "free",
+        "description": "Muestra memoria usada y libre.",
+        "parameters": [
+            {
+                "parameter": "-h",
+                "description": "Formato legible por humanos.",
+                "example": "free -h"
+            }
+        ]
+    },
+    {
+        "name": "uname",
+        "description": "Muestra información del sistema.",
+        "parameters": [
+            {
+                "parameter": "-a",
+                "description": "Mostrar toda la información.",
+                "example": "uname -a"
+            }
+        ]
+    },
+    {
+        "name": "lsb_release",
+        "description": "Muestra información de la distribución.",
+        "parameters": [
+            {
+                "parameter": "-a",
+                "description": "Mostrar toda la información disponible.",
+                "example": "lsb_release -a"
+            }
+        ]
+    },
+    {
+        "name": "ip",
+        "description": "Maneja direcciones, rutas y dispositivos de red.",
+        "parameters": [
+            {
+                "parameter": "addr",
+                "description": "Mostrar o configurar direcciones IP.",
+                "example": "ip addr show"
+            },
+            {
+                "parameter": "route",
+                "description": "Mostrar o configurar tabla de enrutamiento.",
+                "example": "ip route show"
+            }
+        ]
+    },
+    {
+        "name": "ping",
+        "description": "Envía solicitudes ICMP ECHO a un host.",
+        "parameters": [
+            {
+                "parameter": "-c COUNT",
+                "description": "Enviar COUNT paquetes y parar.",
+                "example": "ping -c 4 ejemplo.com"
+            }
+        ]
+    },
+    {
+        "name": "traceroute",
+        "description": "Muestra la ruta hacia un host.",
+        "parameters": [
+            {
+                "parameter": "-n",
+                "description": "No resolver nombres de host.",
+                "example": "traceroute -n ejemplo.com"
+            }
+        ]
+    },
+    {
+        "name": "netstat",
+        "description": "Muestra conexiones de red, tablas de enrutamiento, etc.",
+        "parameters": [
+            {
+                "parameter": "-tulpn",
+                "description": "Mostrar puertos TCP/UDP y PID/programa.",
+                "example": "netstat -tulpn"
+            }
+        ]
+    },
+    {
+        "name": "systemctl",
+        "description": "Controla el sistema y servicios (systemd).",
+        "parameters": [
+            {
+                "parameter": "start SERVICIO",
+                "description": "Iniciar un servicio.",
+                "example": "systemctl start nginx"
+            },
+            {
+                "parameter": "status SERVICIO",
+                "description": "Mostrar estado de un servicio.",
+                "example": "systemctl status nginx"
+            }
+        ]
+    },
+    {
+        "name": "journalctl",
+        "description": "Consulta el registro de systemd.",
+        "parameters": [
+            {
+                "parameter": "-f",
+                "description": "Seguir el registro en tiempo real.",
+                "example": "journalctl -f"
+            },
+            {
+                "parameter": "-u UNIDAD",
+                "description": "Mostrar registros de una unidad específica.",
+                "example": "journalctl -u nginx.service"
+            }
+        ]
+    },
+    {
+        "name": "apt-get",
+        "description": "Gestor de paquetes en Debian/Ubuntu.",
+        "parameters": [
+            {
+                "parameter": "update",
+                "description": "Actualizar índices de paquetes.",
+                "example": "apt-get update"
+            },
+            {
+                "parameter": "install PAQUETE",
+                "description": "Instalar un paquete.",
+                "example": "apt-get install vim"
+            },
+            {
+                "parameter": "remove PAQUETE",
+                "description": "Eliminar un paquete.",
+                "example": "apt-get remove vim"
+            }
+        ]
+    },
+    {
+        "name": "apt",
+        "description": "Herramienta de alto nivel para gestión de paquetes.",
+        "parameters": [
+            {
+                "parameter": "install PAQUETE",
+                "description": "Instalar un paquete.",
+                "example": "apt install htop"
+            },
+            {
+                "parameter": "search TERMINO",
+                "description": "Buscar un paquete.",
+                "example": "apt search nginx"
+            }
+        ]
+    },
+    {
+        "name": "yum",
+        "description": "Gestor de paquetes en sistemas RPM.",
+        "parameters": [
+            {
+                "parameter": "install PAQUETE",
+                "description": "Instalar un paquete.",
+                "example": "yum install nano"
+            },
+            {
+                "parameter": "update",
+                "description": "Actualizar paquetes.",
+                "example": "yum update"
+            }
+        ]
+    },
+    {
+        "name": "dnf",
+        "description": "Gestor de paquetes de nueva generación para RPM.",
+        "parameters": [
+            {
+                "parameter": "install PAQUETE",
+                "description": "Instalar un paquete.",
+                "example": "dnf install tree"
+            },
+            {
+                "parameter": "remove PAQUETE",
+                "description": "Eliminar un paquete.",
+                "example": "dnf remove tree"
+            }
+        ]
+    },
+    {
+        "name": "useradd",
+        "description": "Crea un nuevo usuario.",
+        "parameters": [
+            {
+                "parameter": "-m",
+                "description": "Crear el directorio home.",
+                "example": "useradd -m nuevoUsuario"
+            },
+            {
+                "parameter": "-G GRUPO",
+                "description": "Agregar al usuario a un grupo.",
+                "example": "useradd -G wheel nuevoUsuario"
+            }
+        ]
+    },
+    {
+        "name": "userdel",
+        "description": "Elimina una cuenta de usuario.",
+        "parameters": [
+            {
+                "parameter": "-r",
+                "description": "Eliminar también el home y el buzón.",
+                "example": "userdel -r usuarioAntiguo"
+            }
+        ]
+    },
+    {
+        "name": "usermod",
+        "description": "Modifica una cuenta de usuario.",
+        "parameters": [
+            {
+                "parameter": "-aG GRUPO",
+                "description": "Agregar usuario a un grupo secundario.",
+                "example": "usermod -aG sudo usuario"
+            },
+            {
+                "parameter": "-d DIR",
+                "description": "Cambiar el directorio home.",
+                "example": "usermod -d /nuevo/home usuario"
+            }
+        ]
+    },
+    {
+        "name": "groupadd",
+        "description": "Crea un nuevo grupo.",
+        "parameters": [
+            {
+                "parameter": "GRUPO",
+                "description": "Nombre del nuevo grupo.",
+                "example": "groupadd developers"
+            }
+        ]
+    },
+    {
+        "name": "groupdel",
+        "description": "Elimina un grupo.",
+        "parameters": [
+            {
+                "parameter": "GRUPO",
+                "description": "Nombre del grupo a eliminar.",
+                "example": "groupdel developers"
+            }
+        ]
+    }
+]

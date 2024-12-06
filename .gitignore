@@ -4,6 +4,6 @@ data/*.json
 
 !data/cmdlets_comparison.json
 !data/cmdletsinfo.json
-!data/linux.json
 !data/powershell.json
-!data/cmd2.json
+!data/bash.json
+!data/cmd.json
