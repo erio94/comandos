@@ -215,6 +215,22 @@ footer p {
     margin: 0;
 }
 
+
+#mainTable,
+#comparisonTable {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+/* Opcional: Forzar un ancho mínimo a la tabla para ver el scroll horizontal */
+table {
+    min-width: 800px;
+    /* Ajusta el valor según necesites */
+}
+
+
 /* Responsividad */
 @media (max-width: 768px) {
     header input[type="text"] {
@@ -232,7 +248,7 @@ footer p {
         font-size: 0.85em;
     }
 
-    #mainTable, 
+    #mainTable,
     #comparisonTable {
         overflow-x: auto;
     }
