@@ -31,6 +31,7 @@ header {
 
 header nav {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
