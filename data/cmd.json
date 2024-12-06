@@ -6,762 +6,288 @@
             {
                 "parameter": "/S",
                 "description": "Procesa archivos que coinciden en la carpeta actual y todas las subcarpetas.",
-                "example": "ATTRIB /S"
+                "example": "ATTRIB +r -h C:\\Documentos\\archivo.txt /S"
             },
             {
                 "parameter": "/D",
                 "description": "También procesa carpetas.",
-                "example": "ATTRIB /D"
+                "example": "ATTRIB +a C:\\Carpeta /D"
             },
             {
                 "parameter": "/L",
-                "description": "Se trabaja en los atributos del vínculo simbólico frente al destino del vínculo simbólico.",
-                "example": "ATTRIB /L"
+                "description": "Trabaja sobre el enlace simbólico en lugar del destino.",
+                "example": "ATTRIB -r C:\\EnlaceSimbolico /L"
             }
         ]
     },
     {
         "name": "BCDEDIT",
-        "description": "",
+        "description": "Muestra y edita la configuración del almacén de datos de arranque (BCD).",
         "parameters": [
             {
                 "parameter": "/store",
-                "description": "Se usa para especificar un almacen BCD distinto del predeterminado del sistema actual.",
-                "example": "BCDEDIT /store"
+                "description": "Especifica un almacén BCD distinto al predeterminado.",
+                "example": "BCDEDIT /store C:\\BCD\\bootstore"
             },
             {
                 "parameter": "/createstore",
-                "description": "Crea un nuevo almacen de datos de la configuraci¢n de arranque vac¡o.",
-                "example": "BCDEDIT /createstore"
-            },
-            {
-                "parameter": "/export",
-                "description": "Exporta el contenido del almacen del sistema a un archivo. Este archivo se puede usar más adelante para restaurar el estado del almacen del sistema.",
-                "example": "BCDEDIT /export"
-            },
-            {
-                "parameter": "/import",
-                "description": "Restaura el estado del almacen del sistema mediante un archivo de copia de seguridad creado con el comando /export.",
-                "example": "BCDEDIT /import"
-            },
-            {
-                "parameter": "/sysstore",
-                "description": "Configura el dispositivo de almacenamiento del sistema (solo afecta a los sistemas EFI, no se mantiene entre reinicios y solo se usa en aquellos casos en los que el dispositivo de almacenamiento del sistema es ambiguos). Comandos que operan en entradas de un almacen ",
-                "example": "BCDEDIT /sysstore"
-            },
-            {
-                "parameter": "/copy",
-                "description": "Hace copias de las entradas del almacen.",
-                "example": "BCDEDIT /copy"
-            },
-            {
-                "parameter": "/create",
-                "description": "Crea nuevas entradas en el almacen.",
-                "example": "BCDEDIT /create"
-            },
-            {
-                "parameter": "/delete",
-                "description": "Elimina entradas del almacen.",
-                "example": "BCDEDIT /delete"
-            },
-            {
-                "parameter": "/mirror",
-                "description": "Crea un reflejo de las entradas del almacen. Ejecuta bcdedit /? ID para obtener informaci¢n sobre los identificadores usados por estos comandos. Comandos que operan en opciones de entrada ",
-                "example": "BCDEDIT /mirror"
-            },
-            {
-                "parameter": "/deletevalue",
-                "description": "Elimina las opciones de entrada del almacen.",
-                "example": "BCDEDIT /deletevalue"
+                "description": "Crea un nuevo almacén BCD.",
+                "example": "BCDEDIT /createstore C:\\BCD\\nuevo.bcd"
             },
             {
                 "parameter": "/set",
-                "description": "Establece valores de opciones de entrada en el almacen. Ejecuta bcdedit /? TYPES para ver una lista de tipos de datos usados con estos comandos. Ejecuta bcdedit /? FORMATS para ver una lista de formatos de datos v lidos. Comandos que controlan la salida ",
-                "example": "BCDEDIT /set"
-            },
-            {
-                "parameter": "/enum",
-                "description": "Muestra la lista de entradas del almacen.",
-                "example": "BCDEDIT /enum"
-            },
-            {
-                "parameter": "/v",
-                "description": "Opci¢n de la l¡nea de comandos que muestra identificadores de entrada completos, en lugar de usar nombres para los identificadores conocidos. Use /v por s¡ solo como comando para mostrar los identificadores de entrada completos para el tipo ACTIVE. Ejecutar \"bcdedit\" por s¡ solo equivale a ejecutar \"bcdedit /enum ACTIVE\". Comandos que controlan el administrador de arranqu e",
-                "example": "BCDEDIT /v"
-            },
-            {
-                "parameter": "/bootsequence",
-                "description": "Establece la secuencia de arranque £nica para el administrador de arranque.",
-                "example": "BCDEDIT /bootsequence"
-            },
-            {
-                "parameter": "/default",
-                "description": "Establece la entrada predeterminada que usar  el administrador de arranque.",
-                "example": "BCDEDIT /default"
-            },
-            {
-                "parameter": "/displayorder",
-                "description": "Establece el orden en que el administrador de arranque muestra el men£ de arranque m£ltiple.",
-                "example": "BCDEDIT /displayorder"
-            },
-            {
-                "parameter": "/timeout",
-                "description": "Establece el valor de tiempo de espera del administrador de arranque.",
-                "example": "BCDEDIT /timeout"
-            },
-            {
-                "parameter": "/toolsdisplayorder",
-                "description": "Establece el orden en que el administrador de arranque muestra el men£ de herramientas. Comandos que controlan los Servicios de administraci¢n de emergencias para una aplicaci¢n de arranque ",
-                "example": "BCDEDIT /toolsdisplayorder"
-            },
-            {
-                "parameter": "/bootems",
-                "description": "Habilita o deshabilita los Servicios de administraci¢n de emergencia para una aplicaci¢n de arranque.",
-                "example": "BCDEDIT /bootems"
-            },
-            {
-                "parameter": "/ems",
-                "description": "Habilita o deshabilita los Servicios de administraci¢n de emergencia para una entrada del sistema operativo.",
-                "example": "BCDEDIT /ems"
-            },
-            {
-                "parameter": "/emssettings",
-                "description": "Establece los parámetros globales de los Servicios de administraci¢n de emergencia. Comandos que controlan la depuraci¢n ",
-                "example": "BCDEDIT /emssettings"
-            },
-            {
-                "parameter": "/bootdebug",
-                "description": "Habilita o deshabilita la depuraci¢n de arranque para una aplicaci¢n de arranque.",
-                "example": "BCDEDIT /bootdebug"
-            },
-            {
-                "parameter": "/dbgsettings",
-                "description": "Establece los parámetros globales del depurador.",
-                "example": "BCDEDIT /dbgsettings"
-            },
-            {
-                "parameter": "/debug",
-                "description": "Habilita o deshabilita la depuraci¢n de kernel para la entrada de un sistema operativo.",
-                "example": "BCDEDIT /debug"
-            },
-            {
-                "parameter": "/hypervisorsettings",
-                "description": "Establece los parámetros del hipervisor. Comandos que controlan el registro de eventos remotos ",
-                "example": "BCDEDIT /hypervisorsettings"
-            },
-            {
-                "parameter": "/eventsettings",
-                "description": "Establece los parámetros del registro de eventos remotos global.",
-                "example": "BCDEDIT /eventsettings"
-            },
-            {
-                "parameter": "/event",
-                "description": "Habilita o deshabilita el registro de eventos remotos para una entrada del sistema operativo.",
-                "example": "BCDEDIT /event"
-            }
-        ]
-    },
-    {
-        "name": "CACLS",
-        "description": "",
-        "parameters": [
-            {
-                "parameter": "/T",
-                "description": "Cambia las ACL de archivos especificados en el directorio actual y todos los subdirectorios.",
-                "example": "CACLS /T"
-            },
-            {
-                "parameter": "/L",
-                "description": "Trabaja en el propio v¡nculo simb¢lico en lugar del destino.",
-                "example": "CACLS /L"
-            },
-            {
-                "parameter": "/M",
-                "description": "Cambia las ACL de los vol£menes montados en un directorio.",
-                "example": "CACLS /M"
-            },
-            {
-                "parameter": "/S",
-                "description": "Muestra la cadena SDDL para la DACL. /S:SDDL       Reemplaza las ACL por las especificadas en la cadena SDDL (no v lido con /E, /G, /R, /P ni /D).",
-                "example": "CACLS /S"
-            },
-            {
-                "parameter": "/E",
-                "description": "Edita la ACL en vez de remplazarla.",
-                "example": "CACLS /E"
-            },
-            {
-                "parameter": "/C",
-                "description": "Contin£a, omitiendo los errores de acceso denegado.",
-                "example": "CACLS /C"
-            },
-            {
-                "parameter": "/G",
-                "description": "usuario:perm  Concede derechos de acceso del usuario. Perm puede ser: R  Leer W  Escribir C  Cambiar (escribir) F  Control total",
-                "example": "CACLS /G"
-            },
-            {
-                "parameter": "/R",
-                "description": "usuario    Revoca derechos del usuario (solo v lida con /E).",
-                "example": "CACLS /R"
-            },
-            {
-                "parameter": "/P",
-                "description": "usuario:perm  Reemplaza derechos de acceso del usuario. Perm puede ser: N  Ninguno R  Leer W  Escribir C  Cambiar (escribir) F  Control total",
-                "example": "CACLS /P"
-            },
-            {
-                "parameter": "/D",
-                "description": "usuario    Deniega acceso al usuario especificado. Se pueden usar comodines para especificar más de un archivo. Puede especificar más de un usuario. Abreviaturas: CI - Herencia de contenedor. ACE se heredar  por directorios. OI - Herencia de objeto. ACE se heredar  por archivos. IO - Solo heredar. ACE no se aplica al archivo o directorio actual. ID - Heredado. ACE se hered¢ de la ACL del directorio principal.",
-                "example": "CACLS /D"
+                "description": "Establece valores a entradas en el almacén BCD.",
+                "example": "BCDEDIT /set {current} description \"Mi Windows\""
             }
         ]
     },
     {
         "name": "CHKDSK",
-        "description": "Comprueba un disco y muestra un informe de estado.",
+        "description": "Verifica el sistema de archivos y la integridad del volumen.",
         "parameters": [
             {
-                "parameter": "/F",
-                "description": "Corrige los errores del disco.",
-                "example": "CHKDSK /F"
+                "parameter": "/f",
+                "description": "Corrige errores en el disco.",
+                "example": "CHKDSK C: /f"
             },
             {
-                "parameter": "/V",
-                "description": "Para FAT/FAT32: muestra la ruta de acceso completa y el nombre de cada archivo en el disco. Para NTFS: muestra mensajes de limpieza si los hay.",
-                "example": "CHKDSK /V"
-            },
-            {
-                "parameter": "/R",
-                "description": "Encuentra sectores defectuosos y recupera la información legible (implica el uso de /F si no se especifica /scan). /L:tamaño             Solo para NTFS: cambia el tamaño del archivo de registro al número especificado de kilobytes. Si no se especifica ningún tamaño, muestra el tamaño actual.",
-                "example": "CHKDSK /R"
-            },
-            {
-                "parameter": "/X",
-                "description": "Obliga al volumen a desmontarse previamente si es necesario. Ningún manipulador abierto al volumen será válido (implica el uso de /F).",
-                "example": "CHKDSK /X"
-            },
-            {
-                "parameter": "/I",
-                "description": "Solo para NTFS: realiza una comprobación menos exhaustiva de entradas de índice.",
-                "example": "CHKDSK /I"
-            },
-            {
-                "parameter": "/C",
-                "description": "Solo NTFS: omite la comprobación de ciclos dentro de la estructura de carpetas.",
-                "example": "CHKDSK /C"
-            },
-            {
-                "parameter": "/B",
-                "description": "Solo NTFS: vuelve a evaluar los clústeres defectuosos del volumen (implica el uso de /R).",
-                "example": "CHKDSK /B"
+                "parameter": "/r",
+                "description": "Localiza sectores defectuosos y recupera información legible.",
+                "example": "CHKDSK D: /r"
             },
             {
                 "parameter": "/scan",
-                "description": "Solo NTFS: ejecuta un examen en línea en el volumen.",
-                "example": "CHKDSK /scan"
-            },
-            {
-                "parameter": "/forceofflinefix",
-                "description": "Solo NTFS: (se debe usar con /scan) omite todas las reparaciones en línea; todos los defectos encontrados se ponen en cola para su reparación sin conexión (es decir, \"chkdsk /spotfix\").",
-                "example": "CHKDSK /forceofflinefix"
-            },
-            {
-                "parameter": "/perf",
-                "description": "Solo NTFS: (se debe usar con /scan) usa más recursos del sistema para completar un examen lo más rápido posible. Esto podría afectar negativamente al rendimiento de otras tareas que se ejecuten en el sistema.",
-                "example": "CHKDSK /perf"
-            },
-            {
-                "parameter": "/spotfix",
-                "description": "Solo NTFS: ejecuta una corrección puntual en el volumen.",
-                "example": "CHKDSK /spotfix"
-            },
-            {
-                "parameter": "/sdcleanup",
-                "description": "Solo NTFS: recolecta los elementos no usados en los datos no necesarios del descriptor de seguridad (implica el uso de /F).",
-                "example": "CHKDSK /sdcleanup"
-            },
-            {
-                "parameter": "/offlinescanandfix",
-                "description": "Ejecuta un examen y reparación sin conexión en el volumen.",
-                "example": "CHKDSK /offlinescanandfix"
-            },
-            {
-                "parameter": "/freeorphanedchains",
-                "description": "Solo FAT/FAT32/exFAT: libera las cadenas de clúster huérfanas que pueda haber en lugar de recuperar su contenido.",
-                "example": "CHKDSK /freeorphanedchains"
-            },
-            {
-                "parameter": "/markclean",
-                "description": "Solo FAT/FAT32/exFAT: marca el volumen como limpio si no se detectan daños, incluso aunque no se haya especificado /F. Los modificadores /I o /C reducen la cantidad de tiempo necesario para ejecutar Chkdsk omitiendo ciertas comprobaciones en el volumen.",
-                "example": "CHKDSK /markclean"
+                "description": "Realiza una comprobación en línea del volumen.",
+                "example": "CHKDSK E: /scan"
             }
         ]
     },
     {
-        "name": "CHKNTFS",
-        "description": "Muestra o modifica la comprobación del disco en el tiempo de arranque.",
+        "name": "DISKPART",
+        "description": "Gestiona particiones de discos duros.",
         "parameters": [
             {
-                "parameter": "/D",
-                "description": "Restaura el funcionamiento predeterminado del equipo; todas las unidades se comprueban al arrancar y chkdsk se ejecuta en aquéllas que están dañadas. /T: tiempo     Cambia el tiempo de la cuenta atrás en el inicio de AUTOCHK a la cantidad de tiempo dada en segundos. Si el tiempo no se específica, se mostrará la configuración actual.",
-                "example": "CHKNTFS /D"
+                "parameter": "list disk",
+                "description": "Muestra todos los discos disponibles.",
+                "example": "DISKPART > list disk"
             },
             {
-                "parameter": "/X",
-                "description": "Excluye una unidad de la comprobación predeterminada al arrancar. Las unidades excluidas no se acumulan entre invocaciones de comandos.",
-                "example": "CHKNTFS /X"
+                "parameter": "list volume",
+                "description": "Muestra todos los volúmenes.",
+                "example": "DISKPART > list volume"
             },
             {
-                "parameter": "/C",
-                "description": "Programa una unidad para ser comprobada al arrancar; chkdsk se ejecutará si la unidad está dañada. Si no se especifican modificadores, CHKNTFS mostrará si la unidad especificada está dañada o programada para ser revisada al reiniciar el equipo de nuevo.",
-                "example": "CHKNTFS /C"
+                "parameter": "select disk",
+                "description": "Selecciona un disco específico.",
+                "example": "DISKPART > select disk 0"
             }
         ]
     },
     {
-        "name": "COMP",
-        "description": "Compara el contenido de dos archivos o conjuntos de archivos.",
+        "name": "FORMAT",
+        "description": "Formatea un disco para su uso con Windows.",
         "parameters": [
             {
-                "parameter": "/D",
-                "description": "Muestra las diferencias en formato decimal.",
-                "example": "COMP /D"
-            },
-            {
-                "parameter": "/A",
-                "description": "Muestra las diferencias en caracteres ASCII.",
-                "example": "COMP /A"
-            },
-            {
-                "parameter": "/L",
-                "description": "Muestra los números de línea para las diferencias. /Nnumber  Compara solo el primer número de líneas especificado de cada archivo.",
-                "example": "COMP /L"
-            },
-            {
-                "parameter": "/C",
-                "description": "Omite las mayúsculas y minúsculas de las letras ASCII al comparar archivos. /OFF[LINE] No omite los archivos con el atributo de sin conexión establecido.",
-                "example": "COMP /C"
-            },
-            {
-                "parameter": "/M",
-                "description": "No solicita la comparación de más archivos. Para comparar conjuntos de archivos, use comodines en los parámetros data1 y data2.",
-                "example": "COMP /M"
-            }
-        ]
-    },
-    {
-        "name": "COMPACT",
-        "description": "Muestra o altera la compresi¢n de los archivos en particiones NTFS.",
-        "parameters": [
-            {
-                "parameter": "/C",
-                "description": "Comprime los archivos especificados. Los directorios se marcar n de modo que los archivos agregados posteriormente se comprimir n a menos que se especifique /EXE.",
-                "example": "COMPACT /C"
-            },
-            {
-                "parameter": "/U",
-                "description": "Descomprime los archivos especificados. Los directorios se marcar n de modo que los archivos agregados posteriormente no se comprimir n. Si se especifica /EXE, solo se descomprimir n los archivos comprimidos como ejecutables; si se omite, solo se descomprimir n los archivos comprimidos con NTFS.",
-                "example": "COMPACT /U"
-            },
-            {
-                "parameter": "/S",
-                "description": "Efect£a la operaci¢n especificada en los archivos del directorio dado y todos los subdirectorios. De forma predeterminada, \"dir\" es el directorio actual.",
-                "example": "COMPACT /S"
-            },
-            {
-                "parameter": "/A",
-                "description": "Muestra los archivos ocultos o los atributos del sistema. Estos archivos se omiten de manera predeterminada.",
-                "example": "COMPACT /A"
-            },
-            {
-                "parameter": "/I",
-                "description": "Sigue realizando la operaci¢n especificada, incluso despu‚s de que se produzcan errores. De manera predeterminada, COMPACT se detiene cuando se produce un error.",
-                "example": "COMPACT /I"
-            },
-            {
-                "parameter": "/F",
-                "description": "Exige la operaci¢n de compresi¢n en todos los archivos especificados, incluso en los que ya est n comprimidos. Los archivos ya comprimidos se omiten de manera predeterminada.",
-                "example": "COMPACT /F"
+                "parameter": "/FS:",
+                "description": "Especifica el sistema de archivos (ej. FAT, FAT32, exFAT, NTFS).",
+                "example": "FORMAT D: /FS:NTFS"
             },
             {
                 "parameter": "/Q",
-                "description": "Muestra solo la informaci¢n más esencial.",
-                "example": "COMPACT /Q"
+                "description": "Realiza un formateo rápido.",
+                "example": "FORMAT E: /Q /FS:FAT32"
             },
             {
-                "parameter": "/EXE",
-                "description": "Usar la compresi¢n optimizada para archivos ejecutables que se leen con frecuencia y no se modifican.  Los algoritmos admitidos son: XPRESS4K (el más r pido) (predeterminado) XPRESS8K XPRESS16K LZX       (el más compacto)",
-                "example": "COMPACT /EXE"
-            },
-            {
-                "parameter": "/CompactOs",
-                "description": "Establecer o consultar el estado de compresi¢n del sistema. Las opciones admitidas son: query: consultar el estado compacto del sistema. always: comprimir todos los archivos binarios del SO y establecer el estado del sistema en compacto, que persiste a menos que el administrador lo cambie. never: descomprimir todos los archivos binarios del SO y establecer el estado del sistema en no compacto, que persiste a menos que el administrador lo cambie.",
-                "example": "COMPACT /CompactOs"
-            },
-            {
-                "parameter": "/WinDir",
-                "description": "Usado con /CompactOs:query, al consultar el sistema operativo sin conexi¢n. Especifica el directorio en el que se instala Windows. filename: especifica un patr¢n, archivo o directorio. Si se usa sin parámetros, COMPACT muestra el estado de la compresi¢n del directorio actual y cualquier archivo que contenga. Se pueden usar m£ltiples nombres de archivo y comodines. Se deben poner espacios entre los parámetros.",
-                "example": "COMPACT /WinDir"
+                "parameter": "/V:",
+                "description": "Asigna una etiqueta de volumen.",
+                "example": "FORMAT F: /V:Backup"
             }
         ]
     },
     {
-        "name": "CONVERT",
-        "description": "Convierte un volumen FAT a NTFS.",
+        "name": "ROBOCOPY",
+        "description": "Copia de archivos y directorios con más opciones que COPY y XCOPY.",
         "parameters": [
             {
-                "parameter": "/V",
-                "description": "Especifica que Convert se ejecutará en modo detallado. /CvtArea:nombre_archivo Especifica un archivo contiguo en el directorio raíz, que será el marcador de posición para los archivos de sistema NTFS.",
-                "example": "CONVERT /V"
+                "parameter": "/E",
+                "description": "Copia subdirectorios, incluso vacíos.",
+                "example": "ROBOCOPY C:\\Origen C:\\Destino /E"
             },
             {
-                "parameter": "/NoSecurity",
-                "description": "Especifica que la configuración de seguridad en los archivos y directorios convertidos permitirá que todos los usuarios tengan acceso a ellos.",
-                "example": "CONVERT /NoSecurity"
-            },
-            {
-                "parameter": "/X",
-                "description": "Fuerza a que el volumen se desmonte primero si es necesario. Todos los identificadores abiertos al volumen no serán válidos.",
-                "example": "CONVERT /X"
-            }
-        ]
-    },
-    {
-        "name": "COPY",
-        "description": "Copia uno o más archivos en otra ubicaci¢n.",
-        "parameters": [
-            {
-                "parameter": "/A",
-                "description": "Indica un archivo de texto ASCII.",
-                "example": "COPY /A"
-            },
-            {
-                "parameter": "/B",
-                "description": "Indica un archivo binario.",
-                "example": "COPY /B"
-            },
-            {
-                "parameter": "/D",
-                "description": "Permite que el archivo de destino se cree sin cifrar. destino      Especifica el directorio y/o el nombre de archivo de los nuevos archivos.",
-                "example": "COPY /D"
-            },
-            {
-                "parameter": "/V",
-                "description": "Comprueba si los nuevos archivos est n escritos correctamente.",
-                "example": "COPY /V"
-            },
-            {
-                "parameter": "/N",
-                "description": "Si est  disponible, usa un nombre de archivo corto al copiar un archivo cuyo nombre no tiene el formato 8.3.",
-                "example": "COPY /N"
-            },
-            {
-                "parameter": "/Y",
-                "description": "Suprime la solicitud de confirmaci¢n antes de sobrescribir un archivo de destino existente. /-Y          Solicita confirmaci¢n antes de sobrescribir un archivo de destino existente.",
-                "example": "COPY /Y"
+                "parameter": "/MIR",
+                "description": "Refleja un árbol de directorios (elimina archivos extras en destino).",
+                "example": "ROBOCOPY C:\\Origen C:\\Destino /MIR"
             },
             {
                 "parameter": "/Z",
-                "description": "Copia archivos de red en modo reiniciable.",
-                "example": "COPY /Z"
+                "description": "Copia tolerante a interrupciones.",
+                "example": "ROBOCOPY C:\\Origen C:\\Destino /Z"
+            }
+        ]
+    },
+    {
+        "name": "XCOPY",
+        "description": "Copia archivos y directorios, incluyendo árboles completos.",
+        "parameters": [
+            {
+                "parameter": "/S",
+                "description": "Copia directorios y subdirectorios excepto vacíos.",
+                "example": "XCOPY C:\\Origen C:\\Destino /S"
             },
             {
-                "parameter": "/L",
-                "description": "Si el origen es un v¡nculo simb¢lico, copia el v¡nculo al destino en lugar del archivo real al que apunta el v¡nculo. El modificador /Y puede preestablecerse en la variable de entorno COPYCMD. Esto puede anularse con el modificador /-Y en la l¡nea de comando. La confirmaci¢n del usuario se solicita de forma predeterminada antes de sobrescribir algo, excepto si el comando COPY se ejecuta desde un script por lotes. Para anexar archivos, especifique un £nico archivo de destino pero varios archivos de origen (con caracteres comodines o el formato archivo1+archivo2+archivo3).",
-                "example": "COPY /L"
+                "parameter": "/E",
+                "description": "Copia directorios y subdirectorios, incluidos vacíos.",
+                "example": "XCOPY C:\\Origen C:\\Destino /E"
+            },
+            {
+                "parameter": "/Y",
+                "description": "Suprime la solicitud de confirmación al sobrescribir archivos.",
+                "example": "XCOPY C:\\Origen C:\\Destino /Y"
             }
         ]
     },
     {
         "name": "DIR",
-        "description": "Muestra la lista de subdirectorios y archivos de un directorio.",
+        "description": "Muestra una lista de archivos y subdirectorios en un directorio.",
         "parameters": [
             {
-                "parameter": "/A",
-                "description": "Muestra los archivos con los atributos especificados. Atributos    D  Directorios             R  Archivos de solo lectura H  Archivos ocultos        A  Archivos listos para el archivado S  Archivos de sistema     I  Archivos indizados que no son de contenido L  Puntos de rean lisis             O  Archivos sin conexi¢n -  Prefijo de exclusi¢n",
-                "example": "DIR /A"
-            },
-            {
-                "parameter": "/B",
-                "description": "Usa el formato simple (sin encabezados ni res£menes).",
-                "example": "DIR /B"
-            },
-            {
-                "parameter": "/C",
-                "description": "Muestra el separador de miles en los tama¤os de los archivos. Es la opci¢n predeterminada. Usa /-C para deshabilitar la aparici¢n del separador.",
-                "example": "DIR /C"
-            },
-            {
-                "parameter": "/D",
-                "description": "Similar al listado ancho, pero los archivos aparecen en una lista ordenada por columnas.",
-                "example": "DIR /D"
-            },
-            {
-                "parameter": "/L",
-                "description": "Usa letras min£sculas.",
-                "example": "DIR /L"
-            },
-            {
-                "parameter": "/N",
-                "description": "Nuevo formato de lista larga donde los nombre de archivo aparecen en el lado derecho.",
-                "example": "DIR /N"
-            },
-            {
-                "parameter": "/O",
-                "description": "Muestra los archivos seg£n el orden indicado. sortorder        N  Por nombre (orden alfab‚tico)       S  Por tama¤o (orden creciente) E  Por extensi¢n (orden alfab‚tico)  D  Por fecha y hora (el más antiguo primero) G  Agrupa primero los directorios -  Prefijo para invertir el orden",
-                "example": "DIR /O"
+                "parameter": "/S",
+                "description": "Muestra archivos en el directorio y sus subdirectorios.",
+                "example": "DIR /S"
             },
             {
                 "parameter": "/P",
-                "description": "Hace una pausa despu‚s de cada pantalla completa de informaci¢n.",
+                "description": "Pausa la salida después de cada pantalla.",
                 "example": "DIR /P"
             },
             {
                 "parameter": "/Q",
                 "description": "Muestra el propietario del archivo.",
                 "example": "DIR /Q"
-            },
-            {
-                "parameter": "/R",
-                "description": "Muestra las secuencias alternativas de datos del archivo.",
-                "example": "DIR /R"
-            },
-            {
-                "parameter": "/S",
-                "description": "Muestra los archivos del directorio especificado y todos sus subdirectorios.",
-                "example": "DIR /S"
-            },
-            {
-                "parameter": "/T",
-                "description": "Controla el campo de hora que se mostrar  o usar  para realizar la ordenaci¢n. timefield       C  Creaci¢n A  éltimo acceso W  éltima modificaci¢n",
-                "example": "DIR /T"
-            },
-            {
-                "parameter": "/W",
-                "description": "Usa el formato de listado ancho.",
-                "example": "DIR /W"
-            },
-            {
-                "parameter": "/X",
-                "description": "Muestra los nombres cortos generados para los nombres de archivo sin formato 8dot3. El formato es el mismo que para /N, con el nombre corto especificado antes del nombre largo. Si no existe ning£n nombre corto, se muestran espacios en blanco en su lugar.",
-                "example": "DIR /X"
-            },
-            {
-                "parameter": "/4",
-                "description": "Muestra los a¤os con 4 d¡gitos. Los modificadores se pueden preestablecer en la variable de entorno DIRCMD. Para invalidar los modificadores prestablecidos, se debe agregar un prefijo a cada modificador con - (gui¢n), por ejemplo: /-W.",
-                "example": "DIR /4"
             }
         ]
     },
     {
-        "name": "DOSKEY",
-        "description": "Edita líneas de comandos, recupera comandos de Windows 2000 y crea macros.",
+        "name": "TREE",
+        "description": "Muestra gráficamente la estructura de directorios de una ruta.",
         "parameters": [
             {
-                "parameter": "/REINSTALL",
-                "description": "Instala una nueva copia de Doskey. /LISTSIZEtamaño    Establece el tamaño del búfer de comandos.",
-                "example": "DOSKEY /REINSTALL"
+                "parameter": "/F",
+                "description": "Muestra los nombres de los archivos en cada carpeta.",
+                "example": "TREE C:\\ /F"
             },
             {
-                "parameter": "/MACROS",
-                "description": "Muestra todas las macros de Doskey. /MACROS:ALL Muestra todas las macros de DOSKEY de todos los ejecutables que tengan macros de Doskey. /MACROS:nombre Muestra todas las macros de DOSKEY del ejecutable.",
-                "example": "DOSKEY /MACROS"
-            },
-            {
-                "parameter": "/HISTORY",
-                "description": "Muestra todos los comandos guardados en la memoria.",
-                "example": "DOSKEY /HISTORY"
-            },
-            {
-                "parameter": "/INSERT",
-                "description": "El nuevo texto se introduce en el texto anterior.",
-                "example": "DOSKEY /INSERT"
-            },
-            {
-                "parameter": "/OVERSTRIKE",
-                "description": "El nuevo texto sobrescribe el texto anterior. /EXENAMEejecutable Especifica el ejecutable. /MACROFILEarchivo  Especifica un archivo de macros para instalar. nombre_macro Especifica el nombre de una macro creada. texto               Especifica comandos que se desean grabar. Flechas ARRIBA y ABAJO recuperan comandos; Esc limpia la línea de comandos; F7 muestra comandos usados; Alt+F7 elimina comandos usados; F8 busca comandos; F9 selecciona un comando por número; Alt+F10 elimina definiciones de macros. La siguiente codificación se usa para definir macros de DOSKEY: $T    Separador de comandos. Permite múltiples comandos en una macro. $1-$9 Parámetros por lotes. Equivalente a %1-%9 en los programas por lotes. $*    Reemplazado por lo que sigue al nombre de la macro en la línea de comandos.",
-                "example": "DOSKEY /OVERSTRIKE"
+                "parameter": "/A",
+                "description": "Usa caracteres ASCII en lugar de caracteres extendidos.",
+                "example": "TREE C:\\ /A"
             }
         ]
     },
     {
-        "name": "DRIVERQUERY",
-        "description": "",
+        "name": "COPY",
+        "description": "Copia uno o más archivos a otra ubicación.",
         "parameters": [
             {
-                "parameter": "/S",
-                "description": "sistema            Especifica el sistema remoto al que conectarse.",
-                "example": "DRIVERQUERY /S"
+                "parameter": "/Y",
+                "description": "Suprime la solicitud de confirmación para sobrescribir un archivo.",
+                "example": "COPY C:\\Origen\\archivo.txt C:\\Destino\\archivo.txt /Y"
             },
             {
-                "parameter": "/U",
-                "description": "[dominio\\]usuario  Especifica el contexto de usuario bajo el que se ejecuta el comando.",
-                "example": "DRIVERQUERY /U"
-            },
-            {
-                "parameter": "/P",
-                "description": "contrase¤a         Especifica la contrase¤a para el contexto de usuario dado.",
-                "example": "DRIVERQUERY /P"
-            },
-            {
-                "parameter": "/FO",
-                "description": "formato            Especifica el tipo de salida para mostrar. Los valores v lidos para pasar con el modificador son TABLE, LIST, CSV.",
-                "example": "DRIVERQUERY /FO"
-            },
-            {
-                "parameter": "/NH",
-                "description": "Especifica que el \"Encabezado de columna\" no debe mostrarse en la salida. Solo v lido para los formatos \"TABLE\" y \"CSV\".",
-                "example": "DRIVERQUERY /NH"
-            },
-            {
-                "parameter": "/SI",
-                "description": "Proporciona informaci¢n de controladores firmados.",
-                "example": "DRIVERQUERY /SI"
-            },
-            {
-                "parameter": "/V",
-                "description": "Muestra informaci¢n detallada. No v lido para controladores firmados. /?                      Muestra este mensaje de ayuda. Ejemplos: DRIVERQUERY DRIVERQUERY /FO CSV /SI DRIVERQUERY /NH DRIVERQUERY /S direcci¢nIP /U usuario /V DRIVERQUERY /S sistema /U dominio\\usuario /P contrase¤a /FO LIST",
-                "example": "DRIVERQUERY /V"
+                "parameter": "/-Y",
+                "description": "Le pide confirmación antes de sobrescribir.",
+                "example": "COPY C:\\Origen\\archivo.txt C:\\Destino\\archivo.txt /-Y"
             }
         ]
     },
     {
-        "name": "ERASE",
+        "name": "DEL",
         "description": "Elimina uno o más archivos.",
         "parameters": [
             {
-                "parameter": "/P",
-                "description": "Pide confirmaci¢n antes de eliminar cada archivo.",
-                "example": "ERASE /P"
-            },
-            {
                 "parameter": "/F",
-                "description": "Fuerza la eliminaci¢n de los archivos de solo lectura.",
-                "example": "ERASE /F"
-            },
-            {
-                "parameter": "/S",
-                "description": "Elimina los archivos especificados de todos los subdirectorios.",
-                "example": "ERASE /S"
+                "description": "Fuerza la eliminación de archivos de solo lectura.",
+                "example": "DEL /F C:\\Archivos\\protegido.txt"
             },
             {
                 "parameter": "/Q",
-                "description": "Modo silencioso. No pide confirmaci¢n sobre si es correcto eliminar el car cter comod¡n global",
-                "example": "ERASE /Q"
-            },
-            {
-                "parameter": "/A",
-                "description": "Selecciona los archivos que se van a eliminar bas ndose en los atributos. Atributos     R  Archivos de solo lectura            S  Archivos de sistema H  Archivos ocultos               A  Archivos preparados para el archivado I  Archivos indizados que no son de contenido  L  Puntos de rean lisis O  Archivos sin conexi¢n              -  Prefijo de exclusi¢n Si las extensiones de comando est n habilitadas, DEL y ERASE cambian de la siguiente manera: La sem ntica que se muestra para el modificador /S est  invertida de tal modo que le muestra solamente los archivos eliminados y no los que no se encontraron.",
-                "example": "ERASE /A"
-            }
-        ]
-    },
-    {
-        "name": "EXIT",
-        "description": "Abandona el programa CMD.EXE (int‚rprete de comandos) o el script",
-        "parameters": [
-            {
-                "parameter": "/B",
-                "description": "especifica que se debe abandonar el archivo por lotes actual y no CMD.EXE.  Si se ejecuta desde fuera de un archivo por lotes, abandonar  CMD.EXE c¢digo       especifica un n£mero.  Si se ha especificado /B, establece ERRORLEVEL con este n£mero.  Si abandona CMD.EXE, establece el c¢digo de salida del proceso con este n£mero. Si las extensiones de comando est n habilitadas, EXIT cambia de la siguiente manera: Al ejecutar EXIT /B despu‚s de una llamada con una etiqueta de destino, se devolver  el control a la instrucci¢n inmediatamente despu‚s de CALL.",
-                "example": "EXIT /B"
-            }
-        ]
-    },
-    {
-        "name": "CMD.EXE",
-        "description": "Inicia una nueva instancia del int‚rprete de comandos de Windows",
-        "parameters": [
-            {
-                "parameter": "/C",
-                "description": "Ejecuta el comando especificado en cadena y luego finaliza",
-                "example": "CMD.EXE /C"
-            },
-            {
-                "parameter": "/K",
-                "description": "Ejecuta el comando especificado en cadena pero sigue activo",
-                "example": "CMD.EXE /K"
+                "description": "Modo silencioso, no pide confirmación.",
+                "example": "DEL /Q C:\\Archivos\\*.log"
             },
             {
                 "parameter": "/S",
-                "description": "Modifica el tratamiento de cadena despu‚s de /C o /K (consultar más abajo)",
-                "example": "CMD.EXE /S"
-            },
-            {
-                "parameter": "/Q",
-                "description": "Desactiva el eco",
-                "example": "CMD.EXE /Q"
-            },
-            {
-                "parameter": "/D",
-                "description": "Deshabilita le ejecuci¢n de los comandos de AutoRun del Registro (consultar más abajo)",
-                "example": "CMD.EXE /D"
-            },
-            {
-                "parameter": "/A",
-                "description": "Usa ANSI para la salida de comandos internos hacia una canalizaci¢n o un archivo",
-                "example": "CMD.EXE /A"
-            },
-            {
-                "parameter": "/U",
-                "description": "Sin descripción",
-                "example": "CMD.EXE /U"
+                "description": "Elimina archivos de todos los subdirectorios.",
+                "example": "DEL /S C:\\Archivos\\*.tmp"
             }
         ]
     },
     {
-        "name": "FC",
-        "description": "Compara dos archivos o conjuntos de archivos y muestra las diferencias",
+        "name": "REN",
+        "description": "Cambia el nombre de un archivo o directorio.",
         "parameters": [
             {
-                "parameter": "/A",
-                "description": "Muestra solo la primera y última línea de cada grupo de diferencias.",
-                "example": "FC /A"
+                "parameter": "sin parámetros adicionales",
+                "description": "REN archivo_viejo archivo_nuevo",
+                "example": "REN C:\\Archivos\\datos.txt info.txt"
+            }
+        ]
+    },
+    {
+        "name": "MOVE",
+        "description": "Mueve uno o más archivos de un directorio a otro.",
+        "parameters": [
+            {
+                "parameter": "/Y",
+                "description": "No pide confirmación para sobrescribir un archivo existente.",
+                "example": "MOVE /Y C:\\Origen\\archivo.txt C:\\Destino"
+            }
+        ]
+    },
+    {
+        "name": "MD",
+        "description": "Crea un nuevo directorio.",
+        "parameters": [
+            {
+                "parameter": "sin parámetros",
+                "description": "MD carpeta_nueva",
+                "example": "MD C:\\NuevaCarpeta"
+            }
+        ]
+    },
+    {
+        "name": "RD",
+        "description": "Elimina un directorio vacío.",
+        "parameters": [
+            {
+                "parameter": "/S",
+                "description": "Elimina el directorio y todos los subdirectorios.",
+                "example": "RD /S C:\\CarpetaParaEliminar"
             },
             {
-                "parameter": "/B",
-                "description": "Ejecuta una comparación binaria.",
-                "example": "FC /B"
-            },
+                "parameter": "/Q",
+                "description": "Modo silencioso, no pide confirmación.",
+                "example": "RD /S /Q C:\\CarpetaParaEliminar"
+            }
+        ]
+    },
+    {
+        "name": "TYPE",
+        "description": "Muestra el contenido de un archivo de texto.",
+        "parameters": [
             {
-                "parameter": "/C",
-                "description": "Omite mayúsculas y minúsculas.",
-                "example": "FC /C"
-            },
+                "parameter": "sin parámetros",
+                "description": "Solo especificar el archivo.",
+                "example": "TYPE C:\\Archivos\\documento.txt"
+            }
+        ]
+    },
+    {
+        "name": "MORE",
+        "description": "Muestra la salida de un comando o archivo pantalla por pantalla.",
+        "parameters": [
             {
-                "parameter": "/L",
-                "description": "Compara archivos como texto ASCII.",
-                "example": "FC /L"
-            },
-            {
-                "parameter": "/LBn",
-                "description": "Establece el máximo número de diferencias consecutivas como el número de líneas especificadas.",
-                "example": "FC /LBn"
-            },
-            {
-                "parameter": "/N",
-                "description": "Muestra los números de línea en una comparación ASCII. /OFF[LINE] No omite archivos con el atributo \"sin conexión\" establecido.",
-                "example": "FC /N"
-            },
-            {
-                "parameter": "/T",
-                "description": "No expande tabulaciones a espacios.",
-                "example": "FC /T"
-            },
-            {
-                "parameter": "/U",
-                "description": "Compara archivos como archivos de texto UNICODE.",
-                "example": "FC /U"
-            },
-            {
-                "parameter": "/W",
-                "description": "Comprime espacios en blanco (tabulaciones y espacios) por comparación.",
-                "example": "FC /W"
-            },
-            {
-                "parameter": "/nnnn",
-                "description": "Especifica el número de líneas consecutivas que deben coincidir después de una diferencia. [unidad1:][ruta1]nombre-archivo1 Especifica el primer archivo o conjunto que se comparará. [unidad2:][ruta2]nombre-archivo2 Especifica el segundo archivo o conjunto que se comparará.",
-                "example": "FC /nnnn"
+                "parameter": "sin parámetros",
+                "description": "Usado con un archivo o canalización.",
+                "example": "TYPE C:\\Archivos\\documento.txt | MORE"
             }
         ]
     },
@@ -770,845 +296,411 @@
         "description": "Busca una cadena de texto en uno o más archivos.",
         "parameters": [
             {
-                "parameter": "/V",
-                "description": "Muestra todas las líneas que no tengan la cadena especificada.",
-                "example": "FIND /V"
-            },
-            {
-                "parameter": "/C",
-                "description": "Muestra solo el número de líneas que contienen la cadena.",
-                "example": "FIND /C"
-            },
-            {
-                "parameter": "/N",
-                "description": "Muestra el número de línea de cada línea.",
-                "example": "FIND /N"
-            },
-            {
                 "parameter": "/I",
-                "description": "Omite mayúsculas/minúsculas al buscar una cadena. /OFF[LINE]  No omite archivos con el atributo \"sin conexión\" establecido. \"cadena\"    Especifica el texto que se desea buscar. [unidad:][ruta]archivo Especifica el o los archivos a buscar. Si no se especifica una ruta, FIND busca el texto que se escriba en el símbolo del sistema o que se canalice desde otro comando.",
-                "example": "FIND /I"
+                "description": "Ignora mayúsculas y minúsculas.",
+                "example": "FIND /I \"texto\" C:\\Archivos\\*.txt"
+            },
+            {
+                "parameter": "/V",
+                "description": "Muestra las líneas que no contienen la cadena.",
+                "example": "FIND /V \"error\" C:\\Archivos\\log.txt"
             }
         ]
     },
     {
         "name": "FINDSTR",
-        "description": "Busca cadenas en archivos.",
+        "description": "Busca cadenas de texto con soporte para expresiones regulares.",
         "parameters": [
             {
-                "parameter": "/B",
-                "description": "Coincide con el patrón si está al principio de una línea.",
-                "example": "FINDSTR /B"
-            },
-            {
-                "parameter": "/E",
-                "description": "Coincide con el patrón si está al final de la línea.",
-                "example": "FINDSTR /E"
-            },
-            {
-                "parameter": "/L",
-                "description": "Utiliza las cadenas de búsqueda literalmente.",
-                "example": "FINDSTR /L"
-            },
-            {
                 "parameter": "/R",
-                "description": "Utiliza las cadenas de búsqueda como expresiones regulares.",
-                "example": "FINDSTR /R"
+                "description": "Interpreta la cadena de búsqueda como expresión regular.",
+                "example": "FINDSTR /R \"^Error\" C:\\Archivos\\log.txt"
             },
             {
                 "parameter": "/S",
-                "description": "Busca archivos coincidentes en el directorio actual y en todos los subdirectorios. subdirectorios.",
-                "example": "FINDSTR /S"
-            },
+                "description": "Busca en subdirectorios.",
+                "example": "FINDSTR /S \"archivo\" C:\\Archivos\\*.txt"
+            }
+        ]
+    },
+    {
+        "name": "ECHO",
+        "description": "Muestra mensajes o activa/desactiva el eco de comandos.",
+        "parameters": [
             {
-                "parameter": "/I",
-                "description": "Especifica que la búsqueda no distingue entre mayúsculas y minúsculas.",
-                "example": "FINDSTR /I"
-            },
+                "parameter": "ON/OFF",
+                "description": "Activa o desactiva la visualización del comando antes de ejecutar.",
+                "example": "ECHO OFF"
+            }
+        ]
+    },
+    {
+        "name": "SET",
+        "description": "Muestra, establece o elimina variables de entorno.",
+        "parameters": [
             {
-                "parameter": "/X",
-                "description": "Imprime las líneas que coinciden exactamente.",
-                "example": "FINDSTR /X"
-            },
-            {
-                "parameter": "/V",
-                "description": "Imprime sólo las líneas que no contienen ninguna coincidencia.",
-                "example": "FINDSTR /V"
-            },
-            {
-                "parameter": "/N",
-                "description": "Imprime el número de línea antes de cada línea coincidente.",
-                "example": "FINDSTR /N"
-            },
+                "parameter": "sin parámetros",
+                "description": "Muestra todas las variables de entorno actuales.",
+                "example": "SET"
+            }
+        ]
+    },
+    {
+        "name": "SETX",
+        "description": "Establece variables de entorno de usuario o sistema.",
+        "parameters": [
             {
                 "parameter": "/M",
-                "description": "Imprime sólo el nombre del fichero si éste contiene una coincidencia.",
-                "example": "FINDSTR /M"
-            },
-            {
-                "parameter": "/O",
-                "description": "Imprime el desplazamiento de caracteres antes de cada línea coincidente.",
-                "example": "FINDSTR /O"
-            },
-            {
-                "parameter": "/P",
-                "description": "Omite los archivos con caracteres no imprimibles. /OFF[LINE] No omite los archivos con atributos fuera de línea. /A:attr Especifica el atributo de color con dos dígitos hexadecimales. Consulte \"color /?\" /F:archivo Lee la lista de archivos del archivo especificado (/ significa consola). /C:string Utiliza la cadena especificada como cadena de búsqueda literal. /G:file Obtiene las cadenas de búsqueda del archivo especificado(/ significa consola). /D:dir Busca en una lista de directorios delimitada por punto y coma. /Q:qflags Banderas de modo silencioso: u Suprime la advertencia sobre formatos Unicode no compatibles strings    Texto a buscar. [unidad:][ruta]nombrearchivo Especifica el archivo o archivos que se van a buscar. Utilice espacios para separar varias cadenas de búsqueda a menos que el argumento lleve el prefijo con /C.  Por ejemplo, \"FINDSTR  \"hello there\" x.y\" busca \"hello\" o \"there\" en el archivo x.y. 'FINDSTR /C: busca \"hello there\" en el archivo x.y. Referencia rápida de expresiones regulares: .        Comodín: cualquier carácter * Repetición: cero o más apariciones del carácter o clase anterior ^ Posición de línea: principio de línea $ Posición de línea: final de línea [class] Clase de carácter: cualquier carácter del conjunto [^clase] Clase inversa: cualquier carácter no incluido en el conjunto [x-y]   Rango: cualquier carácter dentro del rango especificado \\x       Escape: uso literal del metacaracter x \\<xyz    Posición de la palabra: principio de palabra xyz\\>    Posición de la palabra: final de la palabra Si desea más información sobre las expresiones regulares FINDSTR, consulte el manual en línea Command en línea.",
-                "example": "FINDSTR /P"
-            }
-        ]
-    },
-    {
-        "name": "FORMAT",
-        "description": "Formatea un disco para ser usado con Windows.",
-        "parameters": [
-            {
-                "parameter": "/Q",
-                "description": "Realiza un formato rápido. Este modificador invalida /P.",
-                "example": "FORMAT /Q"
-            },
-            {
-                "parameter": "/C",
-                "description": "solo NTFS: los archivos creados en el nuevo volumen se comprimirán predeterminadamente.",
-                "example": "FORMAT /C"
-            },
-            {
-                "parameter": "/X",
-                "description": "Si es necesario,  obliga al volumen a desmontarse primero. Todos los controladores abiertos al volumen serán no válidos. /R:revisión    Solo UDF: fuerza a que se formatee con una versión UDF específica (1.02, 1.50, 2.00, 2.01, 2.50). La revisión predeterminada es 2.01.",
-                "example": "FORMAT /X"
-            },
-            {
-                "parameter": "/D",
-                "description": "Solo UDF 2.50: se duplicarán los metadatos. /L[:state]      Solo NTFS: reemplaza el tamaño predeterminado del registro de archivo. De forma predeterminada, los volúmenes sin capas se formatearán con registros de archivo de tamaño pequeño y los volúmenes en capas se formatearán con registros de archivo de tamaño grande. /L y /L:enable fuerzan al formato a usar registros de archivo de tamaño grande y /L:disable fuerza al formato a usar registros de archivo de tamaño pequeño. /A:size         Invalida el tamaño predeterminado de la unidad de asignación. Se recomienda definir la configuración predeterminada para el uso general. ReFS admite 4096, 64 000. NTFS admite 512, 1024, 2048, 4096, 8192, 16 000, 32 000, 64 000, 128 000, 256 000, 512 000, 1 000 000, 2 000 000. FAT admite 512, 1024, 2048, 4096, 8192, 16 000, 32 000, 64 000 (128 000, 256 000 para tamaño de sector > 512 bytes). FAT32 admite 512, 1024, 2048, 4096, 8192, 16 000, 32 000, 64 000 (128 000, 256 000 para tamaño de sector > 512 bytes). exFAT admite 512, 1024, 2048, 4096, 8192, 16 000, 32 000, 64 000, 128 000, 256 000, 512 000, 1 000 000, 2 000 000, 4 000 000, 8 000 000, 16 000 000, 32 000 000. Ten en cuenta que los sistemas de archivos FAT y FAT32 imponen las siguientes restricciones en el número de clústeres de un volumen: FAT: Número de clústeres < 65526 FAT32: 65526 < Número de clústeres < 4177918 Se detendrá inmediatamente el proceso de formato si decide que los requisitos anteriores no se cumplen con el tamaño de clúster especificado. No se admite la compresión de NTFS para tamaños de unidades de asignación superiores a 4096. /F:size      Especifica el tamaño del disquete al que se va a dar formato (1,44) /T: pistas     Especifica el número de pistas por cara del disco. /N: sectores   Especifica el número de sectores por pista. /P:count        Sobrescribe el número de veces del volumen \"recuento\" con un número aleatorio diferente cada vez seguido de la escritura de ceros en cada sector. Si el valor de \"recuento\" es cero, simplemente habrá ceros en cada sector del volumen. Este modificador se omite cuando se especifica /Q. /S:estado        Especifica si se admiten nombres de archivo pequeños (habilitar, deshabilitar) De forma predeterminada, los nombres cortos están deshabilitados /TXF:state      Especifica si TxF debe estar habilitado o deshabilitado (valores \"enable\", \"disable\"). TxF está habilitado de manera predeterminada /I:estado        Solo ReFS: especifica si se debería habilitar la integridad en el nuevo volumen. Los valores de \"estado\" son \"enable\" o \"disable\" De forma predeterminada, la integridad está habilitada en el almacenamiento que admite redundancia de datos. /DAX[:estado]    Solo NTFS: habilitar el modo de almacenamiento de acceso directo (DAX) para este volumen. En el modo DAX se obtiene acceso al volumen a través del bus de memoria, lo que permite aumentar el rendimiento de E/S. Se puede formatear un volumen con el modo DAX solo si lo admite el hardware. El estado puede especificar \"enable\" o \"disable\". /DAX se considera igual que /DAX:enable. /LogSize[:size] solo NTFS: especifica el tamaño del archivo de registro de NTFS en kilobytes. El tamaño mínimo admitido es de 2 MB, por lo que si se especifica un tamaño menor que 2 MB, el archivo de registro tendrá 2 MB. El valor \"Cero\" indica el valor predeterminado que normalmente depende del tamaño del volumen.",
-                "example": "FORMAT /D"
-            },
-            {
-                "parameter": "/NoRepairLogs",
-                "description": "Solo NTFS: deshabilita los registros de reparación de NTFS. Si se establece la marca en modo spotfix (por ejemplo, chkdsk /spotfix), no funcionará.",
-                "example": "FORMAT /NoRepairLogs"
-            },
-            {
-                "parameter": "/No",
-                "description": "Recortar        Omitir el envío recortado (borrar notificación) durante el formato.",
-                "example": "FORMAT /No"
-            },
-            {
-                "parameter": "/DevDrv",
-                "description": "Solo ReFS: Formatea el volumen como una unidad para desarrolladores.  Una unidad para desarrolladores o un volumen para desarrolladores, es un volumen optimizado para el rendimiento de los escenarios de desarrollador.  Proporciona a los administradores control sobre qué minifiltros se adjuntan a este volumen.",
-                "example": "FORMAT /DevDrv"
-            },
-            {
-                "parameter": "/SHA256Checksums",
-                "description": "Solo ReFS: usar SHA-256 en todas las operaciones que requieran sumas de comprobación.",
-                "example": "FORMAT /SHA256Checksums"
-            },
-            {
-                "parameter": "/Y",
-                "description": "Sin aviso, obligue al volumen a desmontar si es necesario y se asume la etiqueta vacía cuando no se especifica ninguna etiqueta.",
-                "example": "FORMAT /Y"
-            }
-        ]
-    },
-    {
-        "name": "GPRESULT",
-        "description": "",
-        "parameters": [
-            {
-                "parameter": "/S",
-                "description": "sistema             Especifica el sistema remoto al que conectarse.",
-                "example": "GPRESULT /S"
-            },
-            {
-                "parameter": "/U",
-                "description": "[dominio\\]usuario  Especifica el contexto de usuario en el que debe ejecutarse el comando. No se puede usar con /X, /H.",
-                "example": "GPRESULT /U"
-            },
-            {
-                "parameter": "/P",
-                "description": "[contrase¤a]        Especifica la contrase¤a para el contexto de usuario dado. Solicita informaci¢n si se omite. No se puede usar con /X, /H.",
-                "example": "GPRESULT /P"
-            },
-            {
-                "parameter": "/SCOPE",
-                "description": "mbito              Especifica si es necesario mostrar la configuraci¢n de equipo o la de usuario. Valores v lidos: \"USER\", \"COMPUTER\".",
-                "example": "GPRESULT /SCOPE"
-            },
-            {
-                "parameter": "/USER",
-                "description": "[dominio\\]usuario  Especifica el nombre de usuario para el que se mostrar n los datos RSoP.",
-                "example": "GPRESULT /USER"
-            },
-            {
-                "parameter": "/X",
-                "description": "<nombreDeArchivo>   Guarda el informe en formato XML en la ubicaci¢n y con el nombre de archivo en el par metro <nombreDeArchivo>. (v lido en                                                        Windows Vista SP1 y posterior y Windows Server 2008 y posterior)",
-                "example": "GPRESULT /X"
-            },
-            {
-                "parameter": "/H",
-                "description": "<nombreDeArchivo>   Guarda el informe en formato HTML en la ubicaci¢n y con el nombre de archivo especificados en el par metro al menos Vista SP1 y al menos Windows Server 2008)",
-                "example": "GPRESULT /H"
-            },
-            {
-                "parameter": "/F",
-                "description": "Obliga a Gpresult a sobrescribir el nombre de archivo archivo especificado en el comando /X o /H.",
-                "example": "GPRESULT /F"
-            },
-            {
-                "parameter": "/R",
-                "description": "Muestra datos de resumen de RSoP.",
-                "example": "GPRESULT /R"
-            },
-            {
-                "parameter": "/V",
-                "description": "Especifica que debe mostrarse la informaci¢n detallada. La informaci¢n detallada proporciona parámetros adicionales que se han aplicado con prioridad 1.",
-                "example": "GPRESULT /V"
-            },
-            {
-                "parameter": "/Z",
-                "description": "Especifica que debe mostrarse la informaci¢n superdetallada. La informaci¢n superdetallada muestra parámetros adicionales que se han aplicado con prioridad 1 o mayor. Esto le permite ver si una configuraci¢n se estableci¢ en varios lugares. Consulte la ayuda en pantalla sobre directivas de grupo para obtener más informaci¢n. /?                         Muestra este mensaje de ayuda. Ejemplos: GPRESULT /R GPRESULT /H GPReport.html GPRESULT /USER usuario_destino /V GPRESULT /S sistema /USER usuario_destino /SCOPE COMPUTER /Z GPRESULT /S sistema /U usuario /P contrase¤a /SCOPE USER /V",
-                "example": "GPRESULT /Z"
-            }
-        ]
-    },
-    {
-        "name": "ICACLS",
-        "description": "",
-        "parameters": [
-            {
-                "parameter": "/deny",
-                "description": "Sid:perm deniega de forma expl¡cita los derechos de acceso al usuario especificado. Se agrega una ACE de denegaci¢n expl¡cita para los permisos indicados y se quitan los mismos permisos de cualquier concesi¢n expl¡cita. /remove[:[g|d]] Sid quita todas las repeticiones del SID en la ACL. Con :g, quita todas las repeticiones de derechos concedidos a ese SID. Con :d, quita todas las repeticiones de derechos denegados a ese SID.",
-                "example": "ICACLS /deny"
-            },
-            {
-                "parameter": "/setintegritylevel",
-                "description": "[(CI)(OI)]nivel agrega de forma expl¡cita una ACE de integridad a todos los archivos coincidentes. El nivel se debe especificar como: L[ow] - para bajo M[edium] - para medio H[igh] - para alto Las opciones de herencia para la ACE de integridad pueden preceder al nivel y se aplican solo a los directorios. /inheritance:e|d|r e - habilita la herencia d - deshabilita la herencia y copia las ACE r - quita todas las ACE heredadas Nota: Los SID pueden tener un formato num‚rico o de nombre descriptivo. Si se da un formato num‚rico, agregue un asterisco (*) al principio del SID.",
-                "example": "ICACLS /setintegritylevel"
-            },
-            {
-                "parameter": "/T",
-                "description": "indica que esta operaci¢n se realiza en todos los archivos o directorios coincidentes bajo los directorios especificados en el nombre.",
-                "example": "ICACLS /T"
-            },
-            {
-                "parameter": "/C",
-                "description": "indica que esta operaci¢n continuar  en todos los errores de archivo. Se seguir n mostrando los mensajes de error.",
-                "example": "ICACLS /C"
-            },
-            {
-                "parameter": "/L",
-                "description": "indica que esta operaci¢n se realiza en el v¡nculo simb¢lico en s¡ en lugar de en su destino.",
-                "example": "ICACLS /L"
-            },
-            {
-                "parameter": "/Q",
-                "description": "indica que icacls debe suprimir los mensajes de que las operaciones se realizaron correctamente. ICACLS conserva el orden can¢nico de las entradas ACE: Denegaciones expl¡citas Concesiones expl¡citas Denegaciones heredadas Concesiones heredadas perm es una máscara de permiso que puede especificarse de dos formas: una secuencia de derechos simples: N - sin acceso F - acceso total M - acceso de modificaci¢n RX - acceso de lectura y ejecuci¢n R - acceso de solo lectura W - acceso de solo escritura D - acceso de eliminaci¢n una lista separada por comas entre par‚ntesis de derechos espec¡ficos: DE - eliminar RC - control de lectura WDAC - escribir DAC WO - escribir propietario S - sincronizar AS - acceso al sistema de seguridad MA - m ximo permitido GR - lectura gen‚rica GW - escritura gen‚rica GE - ejecuci¢n gen‚rica GA - todo gen‚rico RD - leer datos/lista de directorio WD - escribir datos/agregar archivo AD - anexar datos/agregar subdirectorio REA - leer atributos extendidos WEA - escribir atributos extendidos X - ejecutar/atravesar DC - eliminar secundario RA - leer atributos WA - escribir atributos los derechos de herencia pueden preceder a cualquier forma y se aplican solo a directorios: (OI) - herencia de objeto (CI) - herencia de contenedor (IO) - solo herencia (NP) - no propagar herencia (I) - permiso heredado del contenedor principal Ejemplos: icacls c:\\windows\\* /save archivoACL /T - Guardar  todas las ACL para todos los archivos en c:\\windows y sus subdirectorios en archivoACL. icacls c:\\windows\\ /restore archivoACL - Restaurar  todas las ACL para cada archivo dentro de archivoACL que exista en c:\\windows y sus subdirectorios. icacls file /grant Administrador:(D,WDAC) - Conceder  al usuario permisos de administrador para eliminar y escribir DAC en el archivo. icacls file /grant *S-1-1-0:(D,WDAC) - Conceder  al usuario definido por el SID S-1-1-0 permisos para eliminar y escribir DAC en el archivo.",
-                "example": "ICACLS /Q"
-            }
-        ]
-    },
-    {
-        "name": "LABEL",
-        "description": "Crea, cambia o elimina la etiqueta de volumen de un disco.",
-        "parameters": [
-            {
-                "parameter": "/MP",
-                "description": "Especifica que el volumen debería ser tratado como un punto de montaje o un nombre de volumen. Volumen         Especifica la letra de unidad (seguida por dos puntos) el punto de montaje o el nombre de volumen. Si el nombre del volumen es especificado, la marca /MP no es necesaria.",
-                "example": "LABEL /MP"
-            }
-        ]
-    },
-    {
-        "name": "MKLINK",
-        "description": "Crea un v¡nculo simb¢lico.",
-        "parameters": [
-            {
-                "parameter": "/D",
-                "description": "Crea un v¡nculo simb¢lico a un directorio. El valor predeterminado es un v¡nculo simb¢lico a un archivo.",
-                "example": "MKLINK /D"
-            },
-            {
-                "parameter": "/H",
-                "description": "Crea un v¡nculo f¡sico en lugar de un v¡nculo simb¢lico.",
-                "example": "MKLINK /H"
-            },
-            {
-                "parameter": "/J",
-                "description": "Crea una uni¢n de directorios. V¡nculo Especifica el nombre del nuevo v¡nculo simb¢lico. Destino Especifica la ruta (relativa o absoluta) a la que hace referencia el nuevo v¡nculo.",
-                "example": "MKLINK /J"
-            }
-        ]
-    },
-    {
-        "name": "MORE",
-        "description": "Muestra la informaci¢n pantalla a pantalla.",
-        "parameters": [
-            {
-                "parameter": "/E",
-                "description": "Habilita las opciones avanzadas",
-                "example": "MORE /E"
-            },
-            {
-                "parameter": "/C",
-                "description": "Limpia la pantalla antes de mostrar la p gina",
-                "example": "MORE /C"
-            },
-            {
-                "parameter": "/P",
-                "description": "Expande los caracteres de avance de l¡nea",
-                "example": "MORE /P"
-            },
-            {
-                "parameter": "/S",
-                "description": "Compacta m£ltiples l¡neas en blanco en una sola l¡nea",
-                "example": "MORE /S"
-            },
-            {
-                "parameter": "/Tn",
-                "description": "Expande las tabulaciones a n espacios (de forma predeterminada 8) Se pueden usar modificadores con las variables de entorno de MORE. +n Empieza mostrando el primer archivo en la l¡nea n archivos Lista de archivos que se desean mostrar. Los archivos de la lista est n separados por espacios. Si las opciones avanzadas est n activadas, los siguientes comandos son aceptados en el s¡mbolo de -- Más --: P n Mostrar las siguientes n l¡neas S n Saltarse las siguientes n l¡neas F Mostrar el siguiente archivo Q Salir  Mostrar el n£mero de l¡nea ? Mostrar la l¡nea de ayuda <space> Mostrar la siguiente p gina <ret> Mostrar la siguiente l¡nea",
-                "example": "MORE /Tn"
-            }
-        ]
-    },
-    {
-        "name": "MOVE",
-        "description": "Mueve archivos y cambia el nombre a archivos y directorios.",
-        "parameters": [
-            {
-                "parameter": "/Y",
-                "description": "Suprime la solicitud de confirmar si quiere sobrescribir un archivo de destino ya existente. /-Y                Aparecer  la solicitud para confirmar si desea sobrescribir un archivo de destino ya existente. El modificador /Y puede estar presente en la variable de entorno COPYCMD. Esto puede sobrescribirse con /-Y en la l¡nea de comandos. Lo predeterminado es pedir la sobrescritura a no ser que el comando MOVE sea ejecutado dentro de un script de un archivo de proceso por lotes.",
-                "example": "MOVE /Y"
-            }
-        ]
-    },
-    {
-        "name": "OPENFILES",
-        "description": "",
-        "parameters": [
-            {
-                "parameter": "/Disconnect",
-                "description": "Desconecta uno o más archivos abiertos.",
-                "example": "OPENFILES /Disconnect"
-            },
-            {
-                "parameter": "/Query",
-                "description": "Muestra todos los archivos abiertos localmente o desde carpetas compartidas.",
-                "example": "OPENFILES /Query"
-            },
-            {
-                "parameter": "/Local",
-                "description": "Habilita / deshabilita la muestra de archivos locales abiertos. /?               Muestra este mensaje de ayuda. Ejemplos: OPENFILES /Disconnect /? OPENFILES /Query /? OPENFILES /Local /?",
-                "example": "OPENFILES /Local"
-            }
-        ]
-    },
-    {
-        "name": "RD",
-        "description": "Quita (elimina) un directorio.",
-        "parameters": [
-            {
-                "parameter": "/S",
-                "description": "Quita todos los directorios y archivos del directorio además del mismo directorio. Se usa principalmente cuando se desea quitar un  rbol.",
-                "example": "RD /S"
-            },
-            {
-                "parameter": "/Q",
-                "description": "Modo silencioso, no pide confirmaci¢n para quitar un  rbol de directorio con /S",
-                "example": "RD /Q"
-            }
-        ]
-    },
-    {
-        "name": "REPLACE",
-        "description": "Reemplaza archivos.",
-        "parameters": [
-            {
-                "parameter": "/A",
-                "description": "Agrega nuevos archivos al directorio de destino. No se puede usar con los modificadores /S o /U.",
-                "example": "REPLACE /A"
-            },
-            {
-                "parameter": "/P",
-                "description": "Pide confirmación antes de reemplazar un archivo o de agregar un archivo de origen.",
-                "example": "REPLACE /P"
-            },
-            {
-                "parameter": "/R",
-                "description": "Reemplaza archivos de solo lectura y archivos sin protección.",
-                "example": "REPLACE /R"
-            },
-            {
-                "parameter": "/S",
-                "description": "Reemplaza archivos en todos los subdirectorios del directorio destino. No se puede usar con el modificador /A.",
-                "example": "REPLACE /S"
-            },
-            {
-                "parameter": "/W",
-                "description": "Espera a que Inserte un disquete antes de empezar.",
-                "example": "REPLACE /W"
-            },
-            {
-                "parameter": "/U",
-                "description": "Reemplaza (actualiza) solo archivos más antiguos que los archivos de origen. No se puede usar con /A.",
-                "example": "REPLACE /U"
-            }
-        ]
-    },
-    {
-        "name": "RMDIR",
-        "description": "Quita (elimina) un directorio.",
-        "parameters": [
-            {
-                "parameter": "/S",
-                "description": "Quita todos los directorios y archivos del directorio además del mismo directorio. Se usa principalmente cuando se desea quitar un  rbol.",
-                "example": "RMDIR /S"
-            },
-            {
-                "parameter": "/Q",
-                "description": "Modo silencioso, no pide confirmaci¢n para quitar un  rbol de directorio con /S",
-                "example": "RMDIR /Q"
-            }
-        ]
-    },
-    {
-        "name": "SCHTASKS",
-        "description": "",
-        "parameters": [
-            {
-                "parameter": "/Create",
-                "description": "Crea una nueva tarea programada.",
-                "example": "SCHTASKS /Create"
-            },
-            {
-                "parameter": "/Delete",
-                "description": "Elimina las tareas programadas.",
-                "example": "SCHTASKS /Delete"
-            },
-            {
-                "parameter": "/Query",
-                "description": "Muestra todas las tareas programadas.",
-                "example": "SCHTASKS /Query"
-            },
-            {
-                "parameter": "/Change",
-                "description": "Cambia las propiedades de la tarea programada.",
-                "example": "SCHTASKS /Change"
-            },
-            {
-                "parameter": "/Run",
-                "description": "Ejecuta la tarea programada a petici¢n.",
-                "example": "SCHTASKS /Run"
-            },
-            {
-                "parameter": "/End",
-                "description": "Detiene la tarea programada que se est  ejecutando actualmente.",
-                "example": "SCHTASKS /End"
-            },
-            {
-                "parameter": "/ShowSid",
-                "description": "Muestra el identificador de seguridad correspondiente al nombre de una tarea programada. /?                       Muestra este mensaje de ayuda. Examples: SCHTASKS SCHTASKS /? SCHTASKS /Run /? SCHTASKS /End /? SCHTASKS /Create /? SCHTASKS /Delete /? SCHTASKS /Query  /? SCHTASKS /Change /? SCHTASKS /ShowSid /?",
-                "example": "SCHTASKS /ShowSid"
-            }
-        ]
-    },
-    {
-        "name": "SHUTDOWN",
-        "description": "Uso: SHUTDOWN [/i | /l | /s | /sg | /r | /g | /a | /p | /h | /e | /o] [/hybrid] [/soft] [/fw] [/f]",
-        "parameters": [
-            {
-                "parameter": "/i",
-                "description": "Muestra la interfaz gr fica de usuario (GUI). Debe ser la primera opci¢n.",
-                "example": "SHUTDOWN /i"
-            },
-            {
-                "parameter": "/l",
-                "description": "Cierra la sesi¢n. No se puede utilizar con las opciones /m o /d.",
-                "example": "SHUTDOWN /l"
-            },
-            {
-                "parameter": "/s",
-                "description": "Apaga el equipo.",
-                "example": "SHUTDOWN /s"
-            },
-            {
-                "parameter": "/sg",
-                "description": "Apaga el equipo. En el pr¢ximo arranque, si el Inicio de sesi¢n de reinicio autom tico est  habilitado, inicia sesi¢n y bloquea autom ticamente el £ltimo usuario interactivo. Despu‚s de iniciar sesi¢n, reinicia las aplicaciones registradas.",
-                "example": "SHUTDOWN /sg"
-            },
-            {
-                "parameter": "/r",
-                "description": "Apaga completamente el equipo y rein¡cialo.",
-                "example": "SHUTDOWN /r"
-            },
-            {
-                "parameter": "/g",
-                "description": "Apaga por completo el equipo y lo reinicia. Una vez reiniciado el sistema, si el Inicio de sesi¢n de reinicio autom tico est  habilitado, inicia sesi¢n y bloquea autom ticamente el £ltimo usuario interactivo. Despu‚s de iniciar sesi¢n, reinicia las aplicaciones registradas.",
-                "example": "SHUTDOWN /g"
-            },
-            {
-                "parameter": "/a",
-                "description": "Anula el apagado del sistema. Solo se puede usar durante el per¡odo de tiempo de espera. Combinar con /fw para borrar cualquier arranque pendiente en el firmware.",
-                "example": "SHUTDOWN /a"
-            },
-            {
-                "parameter": "/p",
-                "description": "Apagar el ordenador local sin tiempo de espera ni advertencia. Se puede usar con las opciones /d y /f.",
-                "example": "SHUTDOWN /p"
-            },
-            {
-                "parameter": "/h",
-                "description": "Hiberna el equipo local. Se puede usar con la opci¢n /f.",
-                "example": "SHUTDOWN /h"
-            },
-            {
-                "parameter": "/hybrid",
-                "description": "Realiza un apagado del ordenador y lo prepara para un arranque r pido. Debe usarse con la opci¢n /s.",
-                "example": "SHUTDOWN /hybrid"
-            },
-            {
-                "parameter": "/fw",
-                "description": "Combinar con una opci¢n de apagado para que el siguiente arranque vaya al interfaz de usuario de firmware.",
-                "example": "SHUTDOWN /fw"
-            },
-            {
-                "parameter": "/e",
-                "description": "Documentar el motivo de un apagado inesperado de un ordenador.",
-                "example": "SHUTDOWN /e"
-            },
-            {
-                "parameter": "/o",
-                "description": "Vaya al men£ de opciones avanzadas de arranque y reinicie el ordenador. Debe usarse con la opci¢n /r.",
-                "example": "SHUTDOWN /o"
-            },
-            {
-                "parameter": "/m",
-                "description": "\\\\equipo Especifica el equipo de destino.",
-                "example": "SHUTDOWN /m"
-            },
-            {
-                "parameter": "/t",
-                "description": "xxx Establece el periodo de tiempo de espera antes del apagado en xxx segundos. El rango v lido es 0-315360000 (10 a¤os), con un valor por defecto de 30. Si el periodo de tiempo de espera es mayor que 0, el par metro /f es impl¡cito.",
-                "example": "SHUTDOWN /t"
-            },
-            {
-                "parameter": "/c",
-                "description": "\"comentario\" Comentario sobre el motivo del reinicio o del apagado. Se permiten 512 caracteres como m ximo.",
-                "example": "SHUTDOWN /c"
-            },
-            {
-                "parameter": "/f",
-                "description": "Fuerza el cierre de las aplicaciones en ejecuci¢n sin advertir previamente a los usuarios. El par metro /f est  impl¡cito cuando un valor mayor que 0 es para el par metro /t.",
-                "example": "SHUTDOWN /f"
-            },
-            {
-                "parameter": "/d",
-                "description": "[p|u:]xx:yy  Proporciona la raz¢n del reinicio o apagado. p indica que el reinicio o el apagado est  planeado. u indica que la raz¢n est  definida por el usuario. Si no se especifica ni p ni u, el reinicio o el apagado es planeados. xx es el n£mero de raz¢n mayor (n£mero entero positivo inferior a 256). yy es el n£mero de raz¢n menor (n£mero entero positivo inferior a 65536). Razones en este equipo: (E  Se esperaba U  No se esperaba P  Planeado, C  Definido por el cliente) Tipo\tPrinc.\tSecund.\tT¡tulo U  \t0\t0\tOtros (no planeado) E   \t0\t0\tOtros (no planeado) E P \t0\t0\tOtros (planeado) U  \t0\t5\tOtro error: el equipo no responde E   \t1\t1\tHardware: mantenimiento (no planeado) E P \t1\t1\tHardware: mantenimiento (planeado) E   \t1\t2\tHardware: instalaci¢n (planeada) E P \t1\t2\tHardware: instalaci¢n (planeada) E   \t2\t2\tSistema operativo: recuperaci¢n (no planeada) E P \t2\t2\tSistema operativo: recuperaci¢n (planeada) P \t2\t3\tSistema operativo: actualizaci¢n (planeada) E   \t2\t4\tSistema operativo: reconfiguraci¢n (no planeada) E P \t2\t4\tSistema operativo: reconfiguraci¢n (planeada) P \t2\t16\tSistema operativo: service pack (planeado) 2\t17\tSistema operativo: correcci¢n urgente (no planeada) P \t2\t17\tSistema operativo: correcci¢n urgente (planeada) 2\t18\tSistema operativo: correcci¢n de seguridad (no plan.) P \t2\t18\tSistema operativo: correcci¢n de seguridad (planeada) E   \t4\t1\tAplicaci¢n: mantenimiento (no planeado) E P \t4\t1\tAplicaci¢n: mantenimiento (planeado) E P \t4\t2\tAplicaci¢n: instalaci¢n (planeada) E   \t4\t5\tAplicaci¢n: sin respuesta E   \t4\t6\tAplicaci¢n: inestable U  \t5\t15\tError del sistema: sistema detenido U  \t5\t19\tProblema de seguridad (no planeado) E   \t5\t19\tProblema de seguridad (no planeado) E P \t5\t19\tProblema de seguridad (planeado) E   \t5\t20\tP‚rdida de conectividad de red (no planeada) U  \t6\t11\tError de alimentaci¢n: se desconect¢ el enchufe U  \t6\t12\tError de alimentaci¢n: externo P \t7\t0\tApagado de la API heredada",
-                "example": "SHUTDOWN /d"
-            }
-        ]
-    },
-    {
-        "name": "START",
-        "description": "Inicia una ventana separada para ejecutar un programa o comando especificado.",
-        "parameters": [
-            {
-                "parameter": "/NODE",
-                "description": "se combinan.  Especificar la máscara de afinidad como si la máscara del procesador del nodo NUMA estuviera desplazada a la derecha para comenzar por bit cero. La ejecuci¢n del proceso se restringe a los procesadores en com£n entre la máscara de afinidad y el nodo NUMA. Si no hay ning£n procesador en com£n, la ejecuci¢n del proceso se restringe al nodo NUMA especificado. WAIT        Iniciar aplicaci¢n y esperar a que finalice. MACHINE     Especifica la arquitectura de la m quina del proceso de la aplicaci¢n. comando/programa Si se trata de un comando cmd interno o un archivo por lotes, el procesador de comandos se ejecuta con el modificador /K en cmd.exe. Esto significa que la ventana permanecer  despu‚s de que el comando se ejecute. Si no es un comando cmd interno ni archivo por lotes, entonces se considera un programa y se ejecutar  como una aplicaci¢n de ventana o aplicaci¢n de consola. parámetros  Son los parámetros transmitidos al comando/programa. NOTA: las opciones SEPARATE y SHARED no se admiten en plataformas de 64ÿbits. La especificaci¢n de /NODE permite crear los procesos de forma que se pueda aprovechar la ubicaci¢n de memoria en los sistemas de NUMA.  Por ejemplo, se pueden crear dos procesos con una comunicaci¢n estrecha entre s¡ mediante la memoria compartida para compartir el mismo nodo NUMA preferido y minimizar las latencias de memoria.  Asignan memoria del mismo nodo NUMA si es posible y se pueden ejecutar en procesadores externos al nodo especificado. start /NODE 1 application1.exe start /NODE 1 application2.exe Estos dos procesos se pueden restringir a£n más para ejecutarse en procesadores espec¡ficos en el mismo nodo NUMA.  En el siguiente ejemplo, application1 se ejecuta en los dos procesadores de valor inferior del nodo mientras que application2 se ejecuta en los siguientes dos procesadores del nodo.  En este ejemplo, se da por supuesto que el nodo especificado tiene como m¡nimo cuatro procesadores l¢gicos.  Tenga en cuenta que el n£mero de nodo se puede cambiar a cualquier n£mero de nodo v lido para el equipo sin necesidad de cambiar la máscara de afinidad. start /NODE 1 /AFFINITY 0x3 application1.exe start /NODE 1 /AFFINITY 0xc application2.exe Si las extensiones de comandos est n habilitadas, la invocaci¢n del comando externo a trav‚s de la l¡nea de comandos o del comando START cambia as¡: Se pueden invocar archivos no ejecutables a trav‚s de la asociaci¢n del archivo solo con escribir el nombre del archivo como un comando. (por ej., WORD.DOC abrir¡a la aplicaci¢n asociada con la extensi¢n de archivo .DOC). Consulte los comandos ASSOC y FTYPE para saber c¢mo crear estas asociaciones dentro de un script de comandos. Cuando se ejecuta una aplicaci¢n de 32 bits con interfaz gr fica, CMD.EXE no espera a que la aplicaci¢n termine antes de volver al s¡mbolo del sistema. Este nuevo comportamiento NO ocurre si se ejecuta dentro de un script. Cuando se ejecuta una l¡nea de comandos cuyo primer token es la cadena \"CMD \" sin extensi¢n o ruta, entonces se reemplaza \"CMD\" con el valor de la variable COMSPEC. Esto evita tomar CMD.EXE del directorio actual. Cuando se ejecuta una l¡nea de comandos cuyo primer token NO contiene una extensi¢n, entonces CMD.EXE usa el valor de la variable de entorno PATHEXT para determinar las extensiones que hay que buscar y en que orden. El valor predeterminado para la variable PATHEXT es: .COM;.EXE;.BAT;.CMD Tenga en cuenta que la sintaxis es la misma que la variable PATH, con los puntos y comas separando los elementos diferentes. Cuando se busca un archivo ejecutable, si no hay ninguna coincidencia en ninguna extensi¢n, entonces se comprueba si el nombre coincide con el nombre de un directorio. Si es as¡, el comando START inicia el explorador en esa ruta. Si se hace desde la l¡nea de comandos, es equivalente a hacer CD /D en esa ruta.",
-                "example": "START /NODE"
-            }
-        ]
-    },
-    {
-        "name": "SUBST",
-        "description": "Asocia una ruta de acceso con una letra de unidad.",
-        "parameters": [
-            {
-                "parameter": "/D",
-                "description": "Elimina una unidad sustituida (virtual). Escriba SUBST sin parámetros para ver la lista de los dispositivos virtuales.",
-                "example": "SUBST /D"
+                "description": "Establece la variable en el entorno del sistema.",
+                "example": "SETX PATH \"C:\\MiPrograma\" /M"
             }
         ]
     },
     {
         "name": "SYSTEMINFO",
-        "description": "",
+        "description": "Muestra la configuración del sistema, incluido el sistema operativo y hardware.",
         "parameters": [
             {
-                "parameter": "/S",
-                "description": "sistema             Especifica el sistema remoto al que conectarse.",
-                "example": "SYSTEMINFO /S"
-            },
-            {
-                "parameter": "/U",
-                "description": "[dominio\\]usuario   Especifica el contexto de usuario en el que el comando debe ejecutarse.",
-                "example": "SYSTEMINFO /U"
-            },
-            {
-                "parameter": "/P",
-                "description": "[contrase¤a]        Especifica la contrase¤a para el contexto de usuario dado. Pide entrada si se omite.",
-                "example": "SYSTEMINFO /P"
-            },
-            {
                 "parameter": "/FO",
-                "description": "formato             Especifica en que formato se va a mostrar la salida. Valores v lidos: \"TABLE\", \"LIST\" y \"CSV\".",
-                "example": "SYSTEMINFO /FO"
+                "description": "Especifica el formato de salida (TABLE, LIST, CSV).",
+                "example": "SYSTEMINFO /FO LIST"
+            }
+        ]
+    },
+    {
+        "name": "WMIC",
+        "description": "Interfaz de Instrumental de administración de Windows, muestra información del sistema.",
+        "parameters": [
+            {
+                "parameter": "CPU",
+                "description": "Muestra información sobre el CPU.",
+                "example": "WMIC CPU GET Name,NumberOfCores"
+            }
+        ]
+    },
+    {
+        "name": "SFC",
+        "description": "Verifica y repara archivos del sistema de Windows.",
+        "parameters": [
+            {
+                "parameter": "/SCANNOW",
+                "description": "Escanea y repara de inmediato los archivos protegidos.",
+                "example": "SFC /SCANNOW"
+            }
+        ]
+    },
+    {
+        "name": "SC",
+        "description": "Administra servicios, permite detener, iniciar y configurar servicios.",
+        "parameters": [
+            {
+                "parameter": "query",
+                "description": "Muestra el estado de los servicios.",
+                "example": "SC query"
             },
             {
-                "parameter": "/NH",
-                "description": "Especifica que el \"encabezado de columna\" no debe mostrarse en la salida. V lido solo para formatos \"TABLE\" y \"CSV\". /?                           Muestra este mensaje de ayuda. Ejemplos: SYSTEMINFO SYSTEMINFO /? SYSTEMINFO /S sistema SYSTEMINFO /S sistema /U usuario SYSTEMINFO /S sistema /U dominio\\usuario /P contrase¤a /FO TABLE SYSTEMINFO /S sistema /FO LIST SYSTEMINFO /S sistema /FO CSV /NH",
-                "example": "SYSTEMINFO /NH"
+                "parameter": "stop",
+                "description": "Detiene un servicio especificado.",
+                "example": "SC stop NombreDelServicio"
+            }
+        ]
+    },
+    {
+        "name": "NET START",
+        "description": "Inicia un servicio de Windows.",
+        "parameters": [
+            {
+                "parameter": "sin parámetros adicionales",
+                "description": "NET START NombreDelServicio",
+                "example": "NET START Spooler"
+            }
+        ]
+    },
+    {
+        "name": "NET STOP",
+        "description": "Detiene un servicio de Windows.",
+        "parameters": [
+            {
+                "parameter": "sin parámetros adicionales",
+                "description": "NET STOP NombreDelServicio",
+                "example": "NET STOP Spooler"
+            }
+        ]
+    },
+    {
+        "name": "NET USER",
+        "description": "Agrega, elimina y administra cuentas de usuario.",
+        "parameters": [
+            {
+                "parameter": "nombre_usuario password /ADD",
+                "description": "Crea un nuevo usuario.",
+                "example": "NET USER Juan clave123 /ADD"
+            },
+            {
+                "parameter": "nombre_usuario /DELETE",
+                "description": "Elimina el usuario especificado.",
+                "example": "NET USER Juan /DELETE"
+            }
+        ]
+    },
+    {
+        "name": "NET LOCALGROUP",
+        "description": "Agrega, muestra o modifica grupos locales.",
+        "parameters": [
+            {
+                "parameter": "nombre_grupo /ADD",
+                "description": "Crea un grupo local.",
+                "example": "NET LOCALGROUP Contabilidad /ADD"
+            },
+            {
+                "parameter": "nombre_grupo nombre_usuario /ADD",
+                "description": "Agrega un usuario a un grupo local.",
+                "example": "NET LOCALGROUP Contabilidad Juan /ADD"
+            }
+        ]
+    },
+    {
+        "name": "NET SHARE",
+        "description": "Crea, elimina o muestra recursos compartidos en red.",
+        "parameters": [
+            {
+                "parameter": "nombre_recurso=\\ruta",
+                "description": "Crea un recurso compartido.",
+                "example": "NET SHARE Datos=C:\\CarpetaCompartida"
+            },
+            {
+                "parameter": "nombre_recurso /DELETE",
+                "description": "Elimina un recurso compartido.",
+                "example": "NET SHARE Datos /DELETE"
+            }
+        ]
+    },
+    {
+        "name": "NET VIEW",
+        "description": "Muestra equipos o recursos compartidos en la red.",
+        "parameters": [
+            {
+                "parameter": "\\\\equipo",
+                "description": "Muestra recursos compartidos de un equipo específico.",
+                "example": "NET VIEW \\\\Servidor"
+            }
+        ]
+    },
+    {
+        "name": "IPCONFIG",
+        "description": "Muestra información de configuración de red (dirección IP, máscara, gateway).",
+        "parameters": [
+            {
+                "parameter": "/all",
+                "description": "Muestra información completa de configuración.",
+                "example": "IPCONFIG /all"
+            },
+            {
+                "parameter": "/release",
+                "description": "Libera la dirección IP.",
+                "example": "IPCONFIG /release"
+            },
+            {
+                "parameter": "/renew",
+                "description": "Renueva la dirección IP.",
+                "example": "IPCONFIG /renew"
+            }
+        ]
+    },
+    {
+        "name": "PING",
+        "description": "Comprueba la conectividad de red a un host remoto.",
+        "parameters": [
+            {
+                "parameter": "-t",
+                "description": "Hace ping al host especificado hasta que se detenga.",
+                "example": "PING 8.8.8.8 -t"
+            },
+            {
+                "parameter": "-n",
+                "description": "Especifica el número de solicitudes de eco.",
+                "example": "PING 8.8.8.8 -n 10"
+            }
+        ]
+    },
+    {
+        "name": "TRACERT",
+        "description": "Determina la ruta hasta un destino en la red.",
+        "parameters": [
+            {
+                "parameter": "-d",
+                "description": "No resuelve direcciones a nombres de host.",
+                "example": "TRACERT -d www.google.com"
+            }
+        ]
+    },
+    {
+        "name": "PATHPING",
+        "description": "Combina PING y TRACERT para mostrar información sobre pérdida de paquetes.",
+        "parameters": [
+            {
+                "parameter": "-n",
+                "description": "No resuelve direcciones a nombres de host.",
+                "example": "PATHPING -n 8.8.8.8"
+            }
+        ]
+    },
+    {
+        "name": "NSLOOKUP",
+        "description": "Consulta servidores DNS para obtener información de nombres de dominio.",
+        "parameters": [
+            {
+                "parameter": "sin parámetros",
+                "description": "Entrar en modo interactivo.",
+                "example": "NSLOOKUP"
+            }
+        ]
+    },
+    {
+        "name": "HOSTNAME",
+        "description": "Muestra el nombre del host actual.",
+        "parameters": [
+            {
+                "parameter": "sin parámetros",
+                "description": "Solo ejecutar el comando.",
+                "example": "HOSTNAME"
+            }
+        ]
+    },
+    {
+        "name": "GETMAC",
+        "description": "Muestra la dirección MAC de las interfaces de red.",
+        "parameters": [
+            {
+                "parameter": "/V",
+                "description": "Muestra información detallada.",
+                "example": "GETMAC /V"
+            }
+        ]
+    },
+    {
+        "name": "ARP",
+        "description": "Muestra y modifica la tabla ARP que asocia direcciones IP con direcciones MAC.",
+        "parameters": [
+            {
+                "parameter": "-a",
+                "description": "Muestra la tabla ARP actual.",
+                "example": "ARP -a"
+            }
+        ]
+    },
+    {
+        "name": "REG QUERY",
+        "description": "Muestra valores del Registro de Windows.",
+        "parameters": [
+            {
+                "parameter": "HKEY_LOCAL_MACHINE\\Software",
+                "description": "Ejemplo para consultar una clave del registro.",
+                "example": "REG QUERY HKEY_LOCAL_MACHINE\\Software"
+            }
+        ]
+    },
+    {
+        "name": "REG ADD",
+        "description": "Agrega una nueva clave o valor al Registro.",
+        "parameters": [
+            {
+                "parameter": "/f",
+                "description": "Omite la confirmación al agregar la clave o valor.",
+                "example": "REG ADD HKEY_CURRENT_USER\\Software\\MiClave /v MiValor /t REG_SZ /d \"Datos\" /f"
+            }
+        ]
+    },
+    {
+        "name": "REG DELETE",
+        "description": "Elimina una clave o valor del Registro.",
+        "parameters": [
+            {
+                "parameter": "/f",
+                "description": "Omite la confirmación.",
+                "example": "REG DELETE HKEY_CURRENT_USER\\Software\\MiClave /f"
+            }
+        ]
+    },
+    {
+        "name": "REG EXPORT",
+        "description": "Exporta una sección del Registro a un archivo.",
+        "parameters": [
+            {
+                "parameter": "HKEY_LOCAL_MACHINE\\Software archivo.reg",
+                "description": "Exporta la clave especificada a un archivo .reg.",
+                "example": "REG EXPORT HKEY_LOCAL_MACHINE\\Software C:\\backup.reg"
+            }
+        ]
+    },
+    {
+        "name": "REG IMPORT",
+        "description": "Importa un archivo .reg al Registro.",
+        "parameters": [
+            {
+                "parameter": "archivo.reg",
+                "description": "Especifica el archivo a importar.",
+                "example": "REG IMPORT C:\\backup.reg"
             }
         ]
     },
     {
         "name": "TASKLIST",
-        "description": "",
+        "description": "Muestra todos los procesos en ejecución.",
         "parameters": [
             {
-                "parameter": "/S",
-                "description": "sistema            Especifica el sistema remoto al que conectarse.",
-                "example": "TASKLIST /S"
-            },
-            {
-                "parameter": "/U",
-                "description": "[dominio\\]usuario  Especifica el contexto de usuario en el que el comando debe ejecutarse.",
-                "example": "TASKLIST /U"
-            },
-            {
-                "parameter": "/P",
-                "description": "[contrase¤a]       Especifica la contrase¤a para el contexto de usuario dado. Pide entrada si se omite.",
-                "example": "TASKLIST /P"
-            },
-            {
-                "parameter": "/M",
-                "description": "[module]           Enumera todas las tareas que actualmente usan el nombre exe/dll dado. Si el nombre del m¢dulo no se especifica, se muestran todos los m¢dulos cargados.",
-                "example": "TASKLIST /M"
-            },
-            {
                 "parameter": "/SVC",
-                "description": "Muestra los servicios hospedados en cada proceso.",
+                "description": "Muestra los servicios alojados en cada proceso.",
                 "example": "TASKLIST /SVC"
-            },
-            {
-                "parameter": "/APPS",
-                "description": "Muestra las aplicaciones de Store y sus procesos asociados.",
-                "example": "TASKLIST /APPS"
-            },
-            {
-                "parameter": "/V",
-                "description": "Muestra informaci¢n detallada de tareas.",
-                "example": "TASKLIST /V"
-            },
-            {
-                "parameter": "/FI",
-                "description": "filtro             Muestra un conjunto de tareas que coinciden con el criterio especificado por el filtro.",
-                "example": "TASKLIST /FI"
-            },
-            {
-                "parameter": "/FO",
-                "description": "formato            Especifica el formato de salida. Valores v lidos: \"TABLE\", \"LIST\", \"CSV\".",
-                "example": "TASKLIST /FO"
-            },
-            {
-                "parameter": "/NH",
-                "description": "Especifica que el \"encabezado de columna\" no debe mostrarse en la salida. V lido solo para formatos \"TABLE\" y \"CSV\". /?                      Muestra este mensaje de ayuda. Filtros: Nombre filtro   Operadores v lidos         Valores v lidos -------------   ------------------         -------------------------- STATUS          eq, ne                    RUNNING | SUSPENDED NOT RESPONDING | UNKNOWN IMAGENAME       eq, ne                    Nombre de imagen PID             eq, ne, gt, lt, ge, le    Valor del PID SESSION         eq, ne, gt, lt, ge, le    N£mero de sesi¢n SESSIONNAME     eq, ne                    Nombre de sesi¢n CPUTIME         eq, ne, gt, lt, ge, le    Tiempo de la CPU en el formato hh:mm:ss. hh - horas, mm - minutos, ss - segundos MEMUSAGE        eq, ne, gt, lt, ge, le    Uso de memoria en KB USERNAME        eq, ne                    Nombre de usuario en formato [dominio\\]usuario SERVICES        eq, ne                    Nombre de servicio WINDOWTITLE     eq, ne                    T¡tulo de ventana MODULES         eq, ne                    DLL name NOTA: los filtros \"WINDOWTITLE\" y \"STATUS\" no se tienen en cuenta cuando se consultan equipos remotos. Examples: TASKLIST TASKLIST /M TASKLIST /V /FO CSV TASKLIST /SVC /FO LIST TASKLIST /APPS /FI \"STATUS eq RUNNING\" TASKLIST /M wbem* TASKLIST /S sistema /FO LIST TASKLIST /S sistema /U dominio\\nombreusuario /FO CSV /NH TASKLIST /S sistema /U nombreusuario /P contrase¤a /FO TABLE /NH TASKLIST /FI \"USERNAME ne NT AUTHORITY\\SYSTEM\" /FI \"STATUS eq running\"",
-                "example": "TASKLIST /NH"
             }
         ]
     },
     {
         "name": "TASKKILL",
-        "description": "",
+        "description": "Finaliza uno o más procesos.",
         "parameters": [
             {
-                "parameter": "/S",
-                "description": "sistema            Especifica el sistema remoto al que conectarse.",
-                "example": "TASKKILL /S"
-            },
-            {
-                "parameter": "/U",
-                "description": "[dominio\\]usuario  Especifica el contexto de usuario en el que el comando debe ejecutarse.",
-                "example": "TASKKILL /U"
-            },
-            {
-                "parameter": "/P",
-                "description": "[contrase¤a]       Especifica la contrase¤a para el contexto de usuario dado. Pide entrada si se omite.",
-                "example": "TASKKILL /P"
-            },
-            {
-                "parameter": "/FI",
-                "description": "filter             Aplica un filtro para seleccionar un conjunto de tareas. Permite el uso de \"*\". ej. imagename eq acme*",
-                "example": "TASKKILL /FI"
+                "parameter": "/IM",
+                "description": "Especifica el nombre de la imagen del proceso.",
+                "example": "TASKKILL /IM notepad.exe"
             },
             {
                 "parameter": "/PID",
-                "description": "processid          Especifica el PID del proceso que debe terminarse. Use TaskList para obtener el PID.",
-                "example": "TASKKILL /PID"
-            },
-            {
-                "parameter": "/IM",
-                "description": "nombre de imagen   Especifica el nombre de imagen del proceso que se va a terminar. Puede usarse el comod¡n '*' para especificar todas las tareas o nombres de imagen.",
-                "example": "TASKKILL /IM"
-            },
-            {
-                "parameter": "/T",
-                "description": "Termina el proceso especificado y todos los procesos secundarios iniciados por ‚l.",
-                "example": "TASKKILL /T"
-            },
-            {
-                "parameter": "/F",
-                "description": "Especifica terminar forzosamente el proceso. /?                       Muestra este mensaje de ayuda. Filtro(s): Nombre filtro   Operadores v lidos         Valores v lidos ------------    ------------------         ------------------------- STATUS          eq, ne                     RUNNING | NOT RESPONDING | UNKNOWN IMAGENAME       eq, ne                     Nombre de imagen. PID             eq, ne, gt, lt, ge, le     Valor de PID. SESSION         eq, ne, gt, lt, ge, le     N£mero de sesi¢n CPUTIME         eq, ne, gt, lt, ge, le     Tiempo v lido en el formato hh:mm:ss. hh - horas, mm - minutos, ss - segundos MEMUSAGE        eq, ne, gt, lt, ge, le     Uso de memoria en KB. USERNAME        eq, ne                     Nombre de usuario en formato [dominio\\]usuario. MODULES         eq, ne                     Nombre de DLL SERVICES        eq, ne                     Nombre de servicio. WINDOWTITLE     eq, ne                     T¡tulo de ventana. NOTA ---- 1) El comod¡n '*' para el modificador /IM se acepta solo cuando se aplica un filtro. 2) Los procesos remotos se terminar n siempre forzosamente (/F). 3) Los filtros \"WINDOWTITLE\" y \"STATUS\" no se considerar n cuando se especifique un equipo remoto. Ejemplos: TASKKILL /IM notepad.exe TASKKILL /PID 1230 /PID 1241 /PID 1253 TASKKILL /F /IM cmd.exe /T TASKKILL /F /FI \"PID ge 1000\" /FI \"WINDOWTITLE ne untitle*\" TASKKILL /F /FI \"USERNAME eq NT AUTHORITY\\SYSTEM\" /IM notepad.exe TASKKILL /S sistema /U dominio\\usuario /FI \"USERNAME ne NT*\" /IM * TASKKILL /S sistema /U nombreusuario /P contrase¤a /FI \"IMAGENAME eq note*\"",
-                "example": "TASKKILL /F"
+                "description": "Finaliza el proceso según su ID.",
+                "example": "TASKKILL /PID 1234"
             }
         ]
     },
     {
-        "name": "TREE",
-        "description": "Muestra de forma gráfica la estructura de carpetas de una unidad o ruta.",
+        "name": "POWERSHELL",
+        "description": "Inicia una sesión de PowerShell desde el símbolo del sistema.",
         "parameters": [
             {
-                "parameter": "/F",
-                "description": "Muestra los archivos de cada carpeta.",
-                "example": "TREE /F"
-            },
-            {
-                "parameter": "/A",
-                "description": "Usa ASCII en lugar de caracteres extendidos.",
-                "example": "TREE /A"
+                "parameter": "-NoProfile",
+                "description": "Inicia PowerShell sin cargar el perfil.",
+                "example": "POWERSHELL -NoProfile"
             }
         ]
     },
     {
-        "name": "XCOPY",
-        "description": "Copia archivos y árboles de directorios.",
+        "name": "GPUPDATE",
+        "description": "Actualiza la configuración de directivas de grupo (Group Policy).",
         "parameters": [
             {
-                "parameter": "/A",
-                "description": "Copia solo archivos con el conjunto de atributos de archivo, no cambia el atributo.",
-                "example": "XCOPY /A"
-            },
-            {
-                "parameter": "/M",
-                "description": "Copia solo archivos con el conjunto de atributos de archivo, desactiva el atributo de archivo. /D:m-d-y     Copia archivos modificados en la fecha especificada o después de esta. Si no se proporciona una fecha, copia solo aquellos archivos cuya hora de origen es más reciente que la hora de destino. /EXCLUDE:file1[+file2][+file3]... Especifica una lista de archivos que contienen cadenas.  Cada cadena debe estar en una línea separada en los archivos.  Cuando cualquiera de las cadenas coincide con cualquier parte de la ruta absoluta del archivo que se va a copiar, ese archivo será excluido de ser copiado.  Por ejemplo, especificar una cadena como \\obj\\ o .obj excluirá todos los archivos debajo del directorio obj o todos los archivos con la extensión .obj respectivamente.",
-                "example": "XCOPY /M"
-            },
-            {
-                "parameter": "/P",
-                "description": "Pregunta antes de crear cada archivo de destino.",
-                "example": "XCOPY /P"
-            },
-            {
-                "parameter": "/S",
-                "description": "Copia directorios y subdirectorios excepto los vacíos.",
-                "example": "XCOPY /S"
-            },
-            {
-                "parameter": "/E",
-                "description": "Copia directorios y subdirectorios, incluidos los vacíos. Igual que /S /E. Puede usarse para modificar /T.",
-                "example": "XCOPY /E"
-            },
-            {
-                "parameter": "/V",
-                "description": "Comprueba el tamaño de cada nuevo archivo.",
-                "example": "XCOPY /V"
-            },
-            {
-                "parameter": "/W",
-                "description": "Solicita presionar una tecla antes de copiar.",
-                "example": "XCOPY /W"
-            },
-            {
-                "parameter": "/C",
-                "description": "Continúa copiando incluso si se producen errores.",
-                "example": "XCOPY /C"
-            },
-            {
-                "parameter": "/I",
-                "description": "Si el destino no existe y se copia más de un archivo, supone que el destino debe ser un directorio. /-I          Si el destino no existe y se copia un solo archivo especificado, supone que el destino debe ser un archivo.",
-                "example": "XCOPY /I"
-            },
-            {
-                "parameter": "/Q",
-                "description": "No muestra los nombres de los archivos durante la copia.",
-                "example": "XCOPY /Q"
-            },
-            {
-                "parameter": "/F",
-                "description": "Muestra los nombres completos de los archivos de origen y destino durante la copia.",
-                "example": "XCOPY /F"
-            },
-            {
-                "parameter": "/L",
-                "description": "Muestra los archivos que se van a copiar.",
-                "example": "XCOPY /L"
-            },
-            {
-                "parameter": "/G",
-                "description": "Permite la copia de archivos cifrados a un destino que no admite cifrado.",
-                "example": "XCOPY /G"
-            },
-            {
-                "parameter": "/H",
-                "description": "Copia archivos ocultos y también archivos del sistema.",
-                "example": "XCOPY /H"
-            },
+                "parameter": "/force",
+                "description": "Vuelve a aplicar todas las configuraciones, incluso si no han cambiado.",
+                "example": "GPUPDATE /force"
+            }
+        ]
+    },
+    {
+        "name": "GPRESULT",
+        "description": "Muestra el resultado de las directivas de grupo para un usuario o equipo.",
+        "parameters": [
             {
                 "parameter": "/R",
-                "description": "Sobrescribe archivos de solo lectura.",
-                "example": "XCOPY /R"
-            },
-            {
-                "parameter": "/T",
-                "description": "Crea una estructura de directorios, pero no copia archivos. No incluye directorios o subdirectorios vacíos. /T /E incluye directorios y subdirectorios vacíos.",
-                "example": "XCOPY /T"
-            },
-            {
-                "parameter": "/U",
-                "description": "Copia solo los archivos que ya existen en el destino.",
-                "example": "XCOPY /U"
-            },
-            {
-                "parameter": "/K",
-                "description": "Copia atributos. Normal Xcopy restablecerá los atributos de solo lectura.",
-                "example": "XCOPY /K"
-            },
-            {
-                "parameter": "/N",
-                "description": "Copia usando los nombres cortos generados.",
-                "example": "XCOPY /N"
-            },
-            {
-                "parameter": "/O",
-                "description": "Copia la propiedad del archivo y la información de ACL.",
-                "example": "XCOPY /O"
-            },
-            {
-                "parameter": "/X",
-                "description": "Copia la configuración de auditoría de archivos (implica /O).",
-                "example": "XCOPY /X"
-            },
-            {
-                "parameter": "/Y",
-                "description": "Suprime la solicitud para confirmar que desea sobrescribir un archivo de destino existente. /-Y          Hace que se le pida que confirme que desea sobrescribir un archivo de destino existente.",
-                "example": "XCOPY /Y"
-            },
-            {
-                "parameter": "/Z",
-                "description": "Copia archivos en red en modo reiniciable.",
-                "example": "XCOPY /Z"
-            },
-            {
-                "parameter": "/B",
-                "description": "Copia el vínculo simbólico en sí mismo frente al destino del vínculo.",
-                "example": "XCOPY /B"
-            },
-            {
-                "parameter": "/J",
-                "description": "Copia usando I/O sin búfer. Recomendado para archivos muy grandes.",
-                "example": "XCOPY /J"
-            },
-            {
-                "parameter": "/COMPRESS",
-                "description": "Solicita comprimir la red durante la transferencia de archivos cuando corresponda. /[-]SPARSE  Habilita o deshabilita la retención del estado disperso de los archivos durante la copia. /-SP",
-                "example": "XCOPY /COMPRESS"
+                "description": "Muestra un resumen de las directivas aplicadas.",
+                "example": "GPRESULT /R"
             }
         ]
     }

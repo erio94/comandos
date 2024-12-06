@@ -19,9 +19,9 @@
         "powershell": "Out-File",
         "p_description": "Redirige la salida de un comando a un archivo.",
         "p_example": "Get-Process | Out-File -FilePath procesos.txt",
-        "cmd": "",
-        "c_description": "",
-        "c_example": ""
+        "cmd": ">",
+        "c_description": "Redirige la salida de un comando a un archivo.",
+        "c_example": "dir > procesos.txt"
     },
     {
         "powershell": "Select-String",
@@ -152,60 +152,28 @@
         "c_example": "ren example.txt new_example.txt"
     },
     {
-        "powershell": "",
-        "p_description": "",
-        "p_example": "",
+        "powershell": "Set-Item (o mediante .Attributes)",
+        "p_description": "Cambia atributos de un archivo.",
+        "p_example": "Set-Item -Path archivo.txt -Attributes ReadOnly",
         "cmd": "attrib",
-        "c_description": "Muestra o cambia los atributos de un archivo o directorio.",
+        "c_description": "Cambia atributos de un archivo.",
         "c_example": "attrib +r archivo.txt"
     },
     {
-        "powershell": "",
-        "p_description": "",
-        "p_example": "",
+        "powershell": "Get-ChildItem -Recurse",
+        "p_description": "Muestra estructura de directorios (similar a tree).",
+        "p_example": "Get-ChildItem C:\\ -Recurse",
         "cmd": "tree",
-        "c_description": "Muestra la estructura de directorios en forma de árbol.",
+        "c_description": "Muestra la estructura de directorios.",
         "c_example": "tree /f"
     },
     {
-        "powershell": "",
-        "p_description": "",
-        "p_example": "",
+        "powershell": "Copy-Item / Remove-Item (en combinación)",
+        "p_description": "ROBOCOPY no tiene equivalente directo, se combinan Copy-Item y Remove-Item.",
+        "p_example": "Remove-Item C:\\Destino\\* -Recurse; Copy-Item C:\\Origen C:\\Destino -Recurse",
         "cmd": "robocopy",
-        "c_description": "Realiza copias robustas de archivos y carpetas.",
+        "c_description": "Copia robusta de archivos y directorios.",
         "c_example": "robocopy origen destino /e"
-    },
-    {
-        "powershell": "",
-        "p_description": "",
-        "p_example": "",
-        "cmd": "cls",
-        "c_description": "Limpia la pantalla de la consola.",
-        "c_example": "cls"
-    },
-    {
-        "powershell": "",
-        "p_description": "",
-        "p_example": "",
-        "cmd": "exit",
-        "c_description": "Cierra la ventana de CMD.",
-        "c_example": "exit"
-    },
-    {
-        "powershell": "Get-Location",
-        "p_description": "Muestra la ubicación actual.",
-        "p_example": "Get-Location",
-        "cmd": "cd",
-        "c_description": "Muestra o cambia el directorio actual.",
-        "c_example": "cd"
-    },
-    {
-        "powershell": "Push-Location",
-        "p_description": "Guarda la ubicación actual para volver más tarde.",
-        "p_example": "Push-Location",
-        "cmd": "",
-        "c_description": "",
-        "c_example": ""
     },
     {
         "powershell": "Clear-Host",
@@ -216,12 +184,20 @@
         "c_example": "cls"
     },
     {
-        "powershell": "Select-String",
-        "p_description": "Busca patrones dentro de archivos.",
-        "p_example": "Select-String -Path archivo.txt -Pattern \"texto\"",
-        "cmd": "findstr",
-        "c_description": "Busca patrones dentro de archivos.",
-        "c_example": "findstr \"texto\" archivo.txt"
+        "powershell": "Exit",
+        "p_description": "Cierra la sesión de PowerShell.",
+        "p_example": "Exit",
+        "cmd": "exit",
+        "c_description": "Cierra la ventana de CMD.",
+        "c_example": "exit"
+    },
+    {
+        "powershell": "Push-Location",
+        "p_description": "Guarda la ubicación actual para volver más tarde.",
+        "p_example": "Push-Location",
+        "cmd": "pushd",
+        "c_description": "Guarda la ubicación actual.",
+        "c_example": "pushd"
     },
     {
         "powershell": "Start-Process",
@@ -232,44 +208,332 @@
         "c_example": "start notepad"
     },
     {
-        "powershell": "Copy-Item",
-        "p_description": "Copia un archivo o directorio a una nueva ubicación.",
-        "p_example": "Copy-Item -Path example.txt -Destination C:\\Backup",
-        "cmd": "copy",
-        "c_description": "Copia un archivo a una nueva ubicación.",
-        "c_example": "copy example.txt C:\\Backup"
+        "powershell": "Set-ItemProperty",
+        "p_description": "Cambia propiedades de un elemento, como atributos en archivos.",
+        "p_example": "Set-ItemProperty -Path 'C:\\archivo.txt' -Name 'Attributes' -Value 'ReadOnly'",
+        "cmd": "attrib",
+        "c_description": "Cambia atributos de un archivo.",
+        "c_example": "attrib +r archivo.txt"
     },
     {
-        "powershell": "Measure-Object",
-        "p_description": "Cuenta elementos o mide propiedades (como tamaño de archivos).",
-        "p_example": "Get-ChildItem | Measure-Object",
-        "cmd": "",
-        "c_description": "",
-        "c_example": ""
+        "powershell": "bcdedit.exe (desde PowerShell)",
+        "p_description": "Edita el almacén de datos de arranque (BCD).",
+        "p_example": "bcdedit /set {current} description \"Mi Windows\"",
+        "cmd": "bcdedit",
+        "c_description": "Muestra y edita la configuración del almacén BCD.",
+        "c_example": "bcdedit /set {current} description \"Mi Windows\""
     },
     {
-        "powershell": "shutdown",
-        "p_description": "Apaga o reinicia el sistema.",
-        "p_example": "Stop-Computer",
-        "cmd": "shutdown",
-        "c_description": "Apaga o reinicia el sistema.",
-        "c_example": "shutdown /s /t 0"
+        "powershell": "Repair-Volume",
+        "p_description": "Verifica y repara el sistema de archivos (similar a CHKDSK).",
+        "p_example": "Repair-Volume -DriveLetter C -Scan",
+        "cmd": "chkdsk",
+        "c_description": "Verifica y repara el sistema de archivos y la integridad del volumen.",
+        "c_example": "chkdsk C: /f /r"
+    },
+    {
+        "powershell": "Get-Disk / Get-Partition / New-Partition / Format-Volume",
+        "p_description": "Gestiona discos y particiones (equivalente a DISKPART).",
+        "p_example": "Get-Disk; Get-Partition -DiskNumber 0; New-Partition -DiskNumber 0 -UseMaximumSize -AssignDriveLetter; Format-Volume -DriveLetter D -FileSystem NTFS",
+        "cmd": "diskpart",
+        "c_description": "Gestiona particiones de discos duros.",
+        "c_example": "diskpart /s script.txt"
+    },
+    {
+        "powershell": "Format-Volume",
+        "p_description": "Formatea un volumen con un sistema de archivos.",
+        "p_example": "Format-Volume -DriveLetter D -FileSystem NTFS",
+        "cmd": "format",
+        "c_description": "Formatea un disco para su uso con Windows.",
+        "c_example": "format D: /FS:NTFS"
     },
     {
         "powershell": "Get-ComputerInfo",
-        "p_description": "Muestra información detallada del sistema, incluyendo hardware, software, y configuraciones.",
+        "p_description": "Muestra la configuración del sistema, incluido el sistema operativo y hardware.",
         "p_example": "Get-ComputerInfo",
         "cmd": "systeminfo",
         "c_description": "Muestra información detallada del sistema operativo y hardware.",
         "c_example": "systeminfo"
     },
     {
+        "powershell": "Get-CimInstance",
+        "p_description": "Obtiene información del sistema usando CIM/WMI (similar a WMIC).",
+        "p_example": "Get-CimInstance Win32_Processor | Select-Object Name,NumberOfCores",
+        "cmd": "wmic",
+        "c_description": "Muestra información del sistema utilizando WMIC.",
+        "c_example": "wmic CPU get Name,NumberOfCores"
+    },
+    {
+        "powershell": "Repair-WindowsImage",
+        "p_description": "Verifica y repara archivos del sistema (similar a SFC).",
+        "p_example": "Repair-WindowsImage -Online -ScanHealth",
+        "cmd": "sfc",
+        "c_description": "Verifica y repara archivos del sistema de Windows.",
+        "c_example": "sfc /scannow"
+    },
+    {
+        "powershell": "Get-Service / Start-Service / Stop-Service / Set-Service",
+        "p_description": "Gestiona servicios (equivalente a SC).",
+        "p_example": "Get-Service; Start-Service -Name NombreDelServicio; Stop-Service -Name NombreDelServicio",
+        "cmd": "sc",
+        "c_description": "Administra servicios, permite detener, iniciar y configurar servicios.",
+        "c_example": "sc query; sc start NombreDelServicio; sc stop NombreDelServicio"
+    },
+    {
+        "powershell": "Start-Service",
+        "p_description": "Inicia un servicio de Windows.",
+        "p_example": "Start-Service -Name Spooler",
+        "cmd": "net start",
+        "c_description": "Inicia un servicio de Windows.",
+        "c_example": "net start Spooler"
+    },
+    {
+        "powershell": "Stop-Service",
+        "p_description": "Detiene un servicio de Windows.",
+        "p_example": "Stop-Service -Name Spooler",
+        "cmd": "net stop",
+        "c_description": "Detiene un servicio de Windows.",
+        "c_example": "net stop Spooler"
+    },
+    {
+        "powershell": "New-LocalUser / Remove-LocalUser",
+        "p_description": "Gestiona cuentas de usuario locales (equivalente a NET USER).",
+        "p_example": "New-LocalUser -Name 'Juan' -Password (ConvertTo-SecureString 'clave123' -AsPlainText -Force); Remove-LocalUser -Name 'Juan'",
+        "cmd": "net user",
+        "c_description": "Agrega, elimina y administra cuentas de usuario.",
+        "c_example": "net user Juan clave123 /add; net user Juan /delete"
+    },
+    {
+        "powershell": "New-LocalGroup / Add-LocalGroupMember",
+        "p_description": "Gestiona grupos locales (equivalente a NET LOCALGROUP).",
+        "p_example": "New-LocalGroup -Name 'Contabilidad'; Add-LocalGroupMember -Group 'Contabilidad' -Member 'Juan'",
+        "cmd": "net localgroup",
+        "c_description": "Agrega, muestra o modifica grupos locales.",
+        "c_example": "net localgroup Contabilidad /add; net localgroup Contabilidad Juan /add"
+    },
+    {
+        "powershell": "New-SmbShare / Remove-SmbShare",
+        "p_description": "Gestiona recursos compartidos en red (equivalente a NET SHARE).",
+        "p_example": "New-SmbShare -Name Datos -Path C:\\CarpetaCompartida -FullAccess Everyone; Remove-SmbShare -Name Datos -Force",
+        "cmd": "net share",
+        "c_description": "Crea, elimina o muestra recursos compartidos en red.",
+        "c_example": "net share Datos=C:\\CarpetaCompartida; net share Datos /delete"
+    },
+    {
+        "powershell": "Get-SmbShare",
+        "p_description": "Muestra recursos compartidos locales en red (similar a NET VIEW para recursos).",
+        "p_example": "Get-SmbShare",
+        "cmd": "net view",
+        "c_description": "Muestra equipos o recursos compartidos en la red.",
+        "c_example": "net view \\Servidor"
+    },
+    {
+        "powershell": "Get-NetIPConfiguration",
+        "p_description": "Muestra información de configuración de red (equivalente a IPCONFIG).",
+        "p_example": "Get-NetIPConfiguration",
+        "cmd": "ipconfig",
+        "c_description": "Muestra información de configuración de red y direcciones IP.",
+        "c_example": "ipconfig /all"
+    },
+    {
+        "powershell": "Test-Connection",
+        "p_description": "Comprueba la conectividad de red a un host remoto (similar a PING).",
+        "p_example": "Test-Connection 8.8.8.8 -Count 10",
+        "cmd": "ping",
+        "c_description": "Envía paquetes ICMP para probar la conectividad a una dirección IP o dominio.",
+        "c_example": "ping 8.8.8.8 -n 10"
+    },
+    {
+        "powershell": "Test-NetConnection -TraceRoute",
+        "p_description": "Determina la ruta hasta un destino en la red (similar a TRACERT).",
+        "p_example": "Test-NetConnection www.google.com -TraceRoute",
+        "cmd": "tracert",
+        "c_description": "Determina la ruta hasta un destino en la red.",
+        "c_example": "tracert www.google.com"
+    },
+    {
+        "powershell": "Test-NetConnection",
+        "p_description": "Combina PING y TRACERT para mostrar información sobre pérdida de paquetes (similar a PATHPING).",
+        "p_example": "Test-NetConnection 8.8.8.8 -TraceRoute",
+        "cmd": "pathping",
+        "c_description": "Combina PING y TRACERT para mostrar información sobre pérdida de paquetes.",
+        "c_example": "pathping 8.8.8.8"
+    },
+    {
+        "powershell": "Resolve-DnsName",
+        "p_description": "Consulta servidores DNS para obtener información de nombres de dominio (similar a NSLOOKUP).",
+        "p_example": "Resolve-DnsName www.google.com",
+        "cmd": "nslookup",
+        "c_description": "Consulta servidores DNS para obtener información de nombres de dominio.",
+        "c_example": "nslookup www.google.com"
+    },
+    {
+        "powershell": "$env:COMPUTERNAME",
+        "p_description": "Muestra el nombre del host actual (similar a HOSTNAME).",
+        "p_example": "$env:COMPUTERNAME",
+        "cmd": "hostname",
+        "c_description": "Muestra el nombre del host actual.",
+        "c_example": "hostname"
+    },
+    {
+        "powershell": "Get-NetAdapter",
+        "p_description": "Muestra la dirección MAC de las interfaces de red (similar a GETMAC).",
+        "p_example": "Get-NetAdapter | Select-Object Name,MacAddress",
+        "cmd": "getmac",
+        "c_description": "Muestra la dirección MAC de las interfaces de red.",
+        "c_example": "getmac /v"
+    },
+    {
+        "powershell": "Get-NetNeighbor",
+        "p_description": "Muestra y modifica la tabla ARP que asocia direcciones IP con direcciones MAC (similar a ARP).",
+        "p_example": "Get-NetNeighbor",
+        "cmd": "arp",
+        "c_description": "Muestra y modifica la tabla ARP.",
+        "c_example": "arp -a"
+    },
+    {
+        "powershell": "Get-ItemProperty",
+        "p_description": "Muestra valores del Registro de Windows (similar a REG QUERY).",
+        "p_example": "Get-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\\Software",
+        "cmd": "reg query",
+        "c_description": "Muestra valores del Registro de Windows.",
+        "c_example": "reg query HKEY_LOCAL_MACHINE\\Software"
+    },
+    {
+        "powershell": "New-ItemProperty",
+        "p_description": "Agrega una nueva clave o valor al Registro (similar a REG ADD).",
+        "p_example": "New-ItemProperty -Path Registry::HKEY_CURRENT_USER\\Software\\MiClave -Name MiValor -PropertyType String -Value \"Datos\"",
+        "cmd": "reg add",
+        "c_description": "Agrega una nueva clave o valor al Registro.",
+        "c_example": "reg add HKEY_CURRENT_USER\\Software\\MiClave /v MiValor /t REG_SZ /d \"Datos\" /f"
+    },
+    {
+        "powershell": "Remove-ItemProperty",
+        "p_description": "Elimina una clave o valor del Registro (similar a REG DELETE).",
+        "p_example": "Remove-ItemProperty -Path Registry::HKEY_CURRENT_USER\\Software\\MiClave -Name MiValor",
+        "cmd": "reg delete",
+        "c_description": "Elimina una clave o valor del Registro.",
+        "c_example": "reg delete HKEY_CURRENT_USER\\Software\\MiClave /v MiValor /f"
+    },
+    {
+        "powershell": "reg.exe export",
+        "p_description": "Exporta una sección del Registro a un archivo (similar a REG EXPORT).",
+        "p_example": "reg.exe export HKEY_LOCAL_MACHINE\\Software C:\\backup.reg",
+        "cmd": "reg export",
+        "c_description": "Exporta una sección del Registro a un archivo.",
+        "c_example": "reg export HKEY_LOCAL_MACHINE\\Software C:\\backup.reg"
+    },
+    {
+        "powershell": "reg.exe import",
+        "p_description": "Importa un archivo .reg al Registro (similar a REG IMPORT).",
+        "p_example": "reg.exe import C:\\backup.reg",
+        "cmd": "reg import",
+        "c_description": "Importa un archivo .reg al Registro.",
+        "c_example": "reg import C:\\backup.reg"
+    },
+    {
         "powershell": "Get-Process",
-        "p_description": "Lista los procesos en ejecución en el sistema.",
+        "p_description": "Lista los procesos en ejecución en el sistema (similar a TASKLIST).",
         "p_example": "Get-Process",
         "cmd": "tasklist",
         "c_description": "Lista los procesos en ejecución en el sistema.",
         "c_example": "tasklist"
+    },
+    {
+        "powershell": "Stop-Process",
+        "p_description": "Finaliza uno o más procesos (similar a TASKKILL).",
+        "p_example": "Stop-Process -Name notepad -Id 1234",
+        "cmd": "taskkill",
+        "c_description": "Finaliza uno o más procesos.",
+        "c_example": "taskkill /IM notepad.exe /PID 1234"
+    },
+    {
+        "powershell": "PowerShell",
+        "p_description": "Inicia una sesión de PowerShell desde CMD (similar a POWERSHELL).",
+        "p_example": "PowerShell -NoProfile",
+        "cmd": "powershell",
+        "c_description": "Inicia una sesión de PowerShell desde CMD.",
+        "c_example": "powershell -NoProfile"
+    },
+    {
+        "powershell": "Invoke-GPUpdate",
+        "p_description": "Actualiza la configuración de directivas de grupo (similar a GPUPDATE).",
+        "p_example": "Invoke-GPUpdate -Force",
+        "cmd": "gpupdate",
+        "c_description": "Actualiza la configuración de directivas de grupo.",
+        "c_example": "gpupdate /force"
+    },
+    {
+        "powershell": "gpresult.exe",
+        "p_description": "Muestra el resultado de las directivas de grupo para un usuario o equipo (similar a GPRESULT).",
+        "p_example": "gpresult.exe /r",
+        "cmd": "gpresult",
+        "c_description": "Muestra el resultado de las directivas de grupo para un usuario o equipo.",
+        "c_example": "gpresult /r"
+    },
+    {
+        "powershell": "Get-ComputerInfo",
+        "p_description": "Muestra información detallada del sistema, incluido hardware y software.",
+        "p_example": "Get-ComputerInfo",
+        "cmd": "systeminfo",
+        "c_description": "Muestra información detallada del sistema operativo y hardware.",
+        "c_example": "systeminfo"
+    },
+    {
+        "powershell": "Get-Disk",
+        "p_description": "Muestra información sobre discos físicos en el sistema.",
+        "p_example": "Get-Disk",
+        "cmd": "diskpart /list disk",
+        "c_description": "Muestra todos los discos disponibles.",
+        "c_example": "diskpart /list disk"
+    },
+    {
+        "powershell": "Get-Partition",
+        "p_description": "Muestra información sobre particiones en un disco específico.",
+        "p_example": "Get-Partition -DiskNumber 0",
+        "cmd": "diskpart /list volume",
+        "c_description": "Muestra todos los volúmenes.",
+        "c_example": "diskpart /list volume"
+    },
+    {
+        "powershell": "New-Partition",
+        "p_description": "Crea una nueva partición en un disco.",
+        "p_example": "New-Partition -DiskNumber 0 -UseMaximumSize -AssignDriveLetter",
+        "cmd": "diskpart /create partition primary",
+        "c_description": "Crea una nueva partición primaria en un disco.",
+        "c_example": "diskpart /create partition primary"
+    },
+    {
+        "powershell": "Format-Volume",
+        "p_description": "Formatea un volumen con un sistema de archivos específico.",
+        "p_example": "Format-Volume -DriveLetter D -FileSystem NTFS",
+        "cmd": "format D: /FS:NTFS",
+        "c_description": "Formatea un disco para su uso con Windows.",
+        "c_example": "format D: /FS:NTFS"
+    },
+    {
+        "powershell": "Get-ComputerInfo",
+        "p_description": "Muestra información del sistema operativo y hardware.",
+        "p_example": "Get-ComputerInfo",
+        "cmd": "systeminfo",
+        "c_description": "Muestra información detallada del sistema operativo y hardware.",
+        "c_example": "systeminfo"
+    },
+    {
+        "powershell": "Get-CimInstance",
+        "p_description": "Obtiene información del sistema usando CIM/WMI.",
+        "p_example": "Get-CimInstance Win32_Processor | Select-Object Name,NumberOfCores",
+        "cmd": "wmic CPU get Name,NumberOfCores",
+        "c_description": "Muestra información sobre el CPU.",
+        "c_example": "wmic CPU get Name,NumberOfCores"
+    },
+    {
+        "powershell": "Repair-WindowsImage",
+        "p_description": "Verifica y repara la imagen de Windows.",
+        "p_example": "Repair-WindowsImage -Online -ScanHealth",
+        "cmd": "sfc /scannow",
+        "c_description": "Verifica y repara archivos del sistema de Windows.",
+        "c_example": "sfc /scannow"
     },
     {
         "powershell": "Get-Service",
@@ -281,191 +545,215 @@
     },
     {
         "powershell": "Start-Service",
-        "p_description": "Inicia un servicio especificado.",
-        "p_example": "Start-Service -Name wuauserv",
+        "p_description": "Inicia un servicio de Windows.",
+        "p_example": "Start-Service -Name Spooler",
         "cmd": "net start",
-        "c_description": "Inicia un servicio especificado.",
-        "c_example": "net start wuauserv"
+        "c_description": "Inicia un servicio de Windows.",
+        "c_example": "net start Spooler"
     },
     {
         "powershell": "Stop-Service",
-        "p_description": "Detiene un servicio especificado.",
-        "p_example": "Stop-Service -Name wuauserv",
+        "p_description": "Detiene un servicio de Windows.",
+        "p_example": "Stop-Service -Name Spooler",
         "cmd": "net stop",
-        "c_description": "Detiene un servicio especificado.",
-        "c_example": "net stop wuauserv"
+        "c_description": "Detiene un servicio de Windows.",
+        "c_example": "net stop Spooler"
     },
     {
-        "powershell": "Get-WmiObject -Class Win32_OperatingSystem",
-        "p_description": "Obtiene información detallada del sistema operativo usando WMI.",
-        "p_example": "Get-WmiObject -Class Win32_OperatingSystem",
-        "cmd": "wmic os get Caption,CSDVersion",
-        "c_description": "Muestra información detallada del sistema operativo.",
-        "c_example": "wmic os get Caption,CSDVersion"
+        "powershell": "New-LocalUser",
+        "p_description": "Crea un nuevo usuario local en el sistema.",
+        "p_example": "New-LocalUser -Name \"Juan\" -Password (ConvertTo-SecureString \"clave123\" -AsPlainText -Force)",
+        "cmd": "net user Juan clave123 /add",
+        "c_description": "Crea un nuevo usuario.",
+        "c_example": "net user Juan clave123 /add"
     },
     {
-        "powershell": "Get-WmiObject -Class Win32_BIOS",
-        "p_description": "Obtiene información detallada del BIOS del sistema.",
-        "p_example": "Get-WmiObject -Class Win32_BIOS",
-        "cmd": "wmic bios get Manufacturer,Version",
-        "c_description": "Muestra información del BIOS.",
-        "c_example": "wmic bios get Manufacturer,Version"
+        "powershell": "Remove-LocalUser",
+        "p_description": "Elimina un usuario local del sistema.",
+        "p_example": "Remove-LocalUser -Name \"Juan\"",
+        "cmd": "net user Juan /delete",
+        "c_description": "Elimina un usuario.",
+        "c_example": "net user Juan /delete"
     },
     {
-        "powershell": "Get-WmiObject -Class Win32_NetworkAdapterConfiguration",
-        "p_description": "Muestra información de las configuraciones de red.",
-        "p_example": "Get-WmiObject -Class Win32_NetworkAdapterConfiguration",
+        "powershell": "Add-LocalGroupMember",
+        "p_description": "Agrega un usuario a un grupo local.",
+        "p_example": "Add-LocalGroupMember -Group \"Contabilidad\" -Member \"Juan\"",
+        "cmd": "net localgroup Contabilidad Juan /add",
+        "c_description": "Agrega un usuario a un grupo local.",
+        "c_example": "net localgroup Contabilidad Juan /add"
+    },
+    {
+        "powershell": "New-SmbShare",
+        "p_description": "Crea un nuevo recurso compartido en red.",
+        "p_example": "New-SmbShare -Name Datos -Path C:\\CarpetaCompartida -FullAccess Everyone",
+        "cmd": "net share Datos=C:\\CarpetaCompartida",
+        "c_description": "Crea un recurso compartido.",
+        "c_example": "net share Datos=C:\\CarpetaCompartida"
+    },
+    {
+        "powershell": "Remove-SmbShare",
+        "p_description": "Elimina un recurso compartido en red.",
+        "p_example": "Remove-SmbShare -Name Datos -Force",
+        "cmd": "net share Datos /delete",
+        "c_description": "Elimina un recurso compartido.",
+        "c_example": "net share Datos /delete"
+    },
+    {
+        "powershell": "Get-SmbShare",
+        "p_description": "Muestra los recursos compartidos locales en red.",
+        "p_example": "Get-SmbShare",
+        "cmd": "net view",
+        "c_description": "Muestra recursos compartidos de un equipo específico.",
+        "c_example": "net view \\Servidor"
+    },
+    {
+        "powershell": "Get-NetIPConfiguration",
+        "p_description": "Muestra la configuración de red, incluyendo direcciones IP, máscara y gateway.",
+        "p_example": "Get-NetIPConfiguration",
         "cmd": "ipconfig /all",
-        "c_description": "Muestra detalles completos de las configuraciones de red.",
+        "c_description": "Muestra información completa de configuración de red.",
         "c_example": "ipconfig /all"
-    },
-    {
-        "powershell": "Get-EventLog -LogName System",
-        "p_description": "Muestra los eventos registrados en el visor de eventos del sistema.",
-        "p_example": "Get-EventLog -LogName System",
-        "cmd": "wevtutil qe System",
-        "c_description": "Muestra los eventos registrados en el visor de eventos del sistema.",
-        "c_example": "wevtutil qe System"
-    },
-    {
-        "powershell": "Get-TimeZone",
-        "p_description": "Obtiene la zona horaria actual del sistema.",
-        "p_example": "Get-TimeZone",
-        "cmd": "tzutil /g",
-        "c_description": "Muestra la zona horaria actual del sistema.",
-        "c_example": "tzutil /g"
-    },
-    {
-        "powershell": "Set-TimeZone",
-        "p_description": "Configura la zona horaria del sistema.",
-        "p_example": "Set-TimeZone -Name 'Pacific Standard Time'",
-        "cmd": "tzutil /s",
-        "c_description": "Configura la zona horaria del sistema.",
-        "c_example": "tzutil /s 'Pacific Standard Time'"
-    },
-    {
-        "powershell": "Restart-Computer",
-        "p_description": "Reinicia el equipo.",
-        "p_example": "Restart-Computer",
-        "cmd": "shutdown /r /t 0",
-        "c_description": "Reinicia el equipo.",
-        "c_example": "shutdown /r /t 0"
-    },
-    {
-        "powershell": "Stop-Computer",
-        "p_description": "Apaga el equipo.",
-        "p_example": "Stop-Computer",
-        "cmd": "shutdown /s /t 0",
-        "c_description": "Apaga el equipo.",
-        "c_example": "shutdown /s /t 0"
-    },
-    {
-        "powershell": "Set-ExecutionPolicy",
-        "p_description": "Cambia la política de ejecución de scripts de PowerShell.",
-        "p_example": "Set-ExecutionPolicy RemoteSigned",
-        "cmd": "",
-        "c_description": "",
-        "c_example": ""
-    },
-    {
-        "powershell": "Get-ExecutionPolicy",
-        "p_description": "Muestra la política de ejecución de scripts de PowerShell.",
-        "p_example": "Get-ExecutionPolicy",
-        "cmd": "",
-        "c_description": "",
-        "c_example": ""
-    },
-    {
-        "powershell": "Get-NetIPAddress",
-        "p_description": "Muestra la configuración de direcciones IP en el equipo.",
-        "p_example": "Get-NetIPAddress",
-        "cmd": "ipconfig",
-        "c_description": "Muestra la configuración de red y direcciones IP en el equipo.",
-        "c_example": "ipconfig"
     },
     {
         "powershell": "Test-Connection",
-        "p_description": "Prueba la conectividad a una dirección IP o dominio (similar a ping).",
-        "p_example": "Test-Connection google.com",
+        "p_description": "Prueba la conectividad a un host remoto (similar a PING).",
+        "p_example": "Test-Connection 8.8.8.8 -Count 10",
         "cmd": "ping",
         "c_description": "Envía paquetes ICMP para probar la conectividad a una dirección IP o dominio.",
-        "c_example": "ping google.com"
+        "c_example": "ping 8.8.8.8 -n 10"
+    },
+    {
+        "powershell": "Test-NetConnection -TraceRoute",
+        "p_description": "Determina la ruta hasta un destino en la red (similar a TRACERT).",
+        "p_example": "Test-NetConnection www.google.com -TraceRoute",
+        "cmd": "tracert",
+        "c_description": "Determina la ruta hasta un destino en la red.",
+        "c_example": "tracert www.google.com"
+    },
+    {
+        "powershell": "Test-NetConnection",
+        "p_description": "Combina PING y TRACERT para mostrar información sobre pérdida de paquetes (similar a PATHPING).",
+        "p_example": "Test-NetConnection 8.8.8.8 -TraceRoute",
+        "cmd": "pathping",
+        "c_description": "Combina PING y TRACERT para mostrar información sobre pérdida de paquetes.",
+        "c_example": "pathping 8.8.8.8"
+    },
+    {
+        "powershell": "Resolve-DnsName",
+        "p_description": "Consulta servidores DNS para obtener información de nombres de dominio (similar a NSLOOKUP).",
+        "p_example": "Resolve-DnsName www.google.com",
+        "cmd": "nslookup",
+        "c_description": "Consulta servidores DNS para obtener información de nombres de dominio.",
+        "c_example": "nslookup www.google.com"
+    },
+    {
+        "powershell": "$env:COMPUTERNAME",
+        "p_description": "Muestra el nombre del host actual (similar a HOSTNAME).",
+        "p_example": "$env:COMPUTERNAME",
+        "cmd": "hostname",
+        "c_description": "Muestra el nombre del host actual.",
+        "c_example": "hostname"
     },
     {
         "powershell": "Get-NetAdapter",
-        "p_description": "Muestra información sobre los adaptadores de red en el sistema.",
-        "p_example": "Get-NetAdapter",
-        "cmd": "ipconfig /all",
-        "c_description": "Muestra información detallada de todos los adaptadores de red.",
-        "c_example": "ipconfig /all"
+        "p_description": "Muestra la dirección MAC de las interfaces de red (similar a GETMAC).",
+        "p_example": "Get-NetAdapter | Select-Object Name,MacAddress",
+        "cmd": "getmac",
+        "c_description": "Muestra la dirección MAC de las interfaces de red.",
+        "c_example": "getmac /v"
     },
     {
-        "powershell": "New-NetIPAddress",
-        "p_description": "Asigna una dirección IP estática a un adaptador de red.",
-        "p_example": "New-NetIPAddress -IPAddress 192.168.1.100 -PrefixLength 24 -DefaultGateway 192.168.1.1 -InterfaceAlias Ethernet",
-        "cmd": "netsh interface ip set address",
-        "c_description": "Configura una dirección IP estática para un adaptador de red.",
-        "c_example": "netsh interface ip set address name=\"Ethernet\" static 192.168.1.100 255.255.255.0 192.168.1.1"
+        "powershell": "Get-NetNeighbor",
+        "p_description": "Muestra y modifica la tabla ARP que asocia direcciones IP con direcciones MAC (similar a ARP).",
+        "p_example": "Get-NetNeighbor",
+        "cmd": "arp",
+        "c_description": "Muestra y modifica la tabla ARP.",
+        "c_example": "arp -a"
     },
     {
-        "powershell": "Get-DnsClient",
-        "p_description": "Muestra la configuración de DNS en el sistema.",
-        "p_example": "Get-DnsClient",
-        "cmd": "ipconfig /displaydns",
-        "c_description": "Muestra la caché de DNS del sistema.",
-        "c_example": "ipconfig /displaydns"
+        "powershell": "Get-ItemProperty",
+        "p_description": "Muestra valores del Registro de Windows (similar a REG QUERY).",
+        "p_example": "Get-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\\Software",
+        "cmd": "reg query",
+        "c_description": "Muestra valores del Registro de Windows.",
+        "c_example": "reg query HKEY_LOCAL_MACHINE\\Software"
     },
     {
-        "powershell": "Set-DnsClientServerAddress",
-        "p_description": "Configura la dirección del servidor DNS para un adaptador de red.",
-        "p_example": "Set-DnsClientServerAddress -InterfaceAlias Ethernet -ServerAddresses 8.8.8.8,8.8.4.4",
-        "cmd": "netsh interface ip set dns",
-        "c_description": "Configura el servidor DNS para un adaptador de red.",
-        "c_example": "netsh interface ip set dns name=\"Ethernet\" static 8.8.8.8"
+        "powershell": "New-ItemProperty",
+        "p_description": "Agrega una nueva clave o valor al Registro (similar a REG ADD).",
+        "p_example": "New-ItemProperty -Path Registry::HKEY_CURRENT_USER\\Software\\MiClave -Name MiValor -PropertyType String -Value \"Datos\"",
+        "cmd": "reg add",
+        "c_description": "Agrega una nueva clave o valor al Registro.",
+        "c_example": "reg add HKEY_CURRENT_USER\\Software\\MiClave /v MiValor /t REG_SZ /d \"Datos\" /f"
     },
     {
-        "powershell": "Get-NetRoute",
-        "p_description": "Muestra la tabla de rutas IP del sistema.",
-        "p_example": "Get-NetRoute",
-        "cmd": "route print",
-        "c_description": "Muestra la tabla de rutas IP del sistema.",
-        "c_example": "route print"
+        "powershell": "Remove-ItemProperty",
+        "p_description": "Elimina una clave o valor del Registro (similar a REG DELETE).",
+        "p_example": "Remove-ItemProperty -Path Registry::HKEY_CURRENT_USER\\Software\\MiClave -Name MiValor",
+        "cmd": "reg delete",
+        "c_description": "Elimina una clave o valor del Registro.",
+        "c_example": "reg delete HKEY_CURRENT_USER\\Software\\MiClave /v MiValor /f"
     },
     {
-        "powershell": "New-NetFirewallRule",
-        "p_description": "Crea una nueva regla de firewall.",
-        "p_example": "New-NetFirewallRule -DisplayName \"Permitir HTTP\" -Direction Inbound -Protocol TCP -LocalPort 80 -Action Allow",
-        "cmd": "netsh advfirewall firewall add rule",
-        "c_description": "Crea una nueva regla de firewall.",
-        "c_example": "netsh advfirewall firewall add rule name=\"Permitir HTTP\" dir=in action=allow protocol=TCP localport=80"
+        "powershell": "reg.exe export",
+        "p_description": "Exporta una sección del Registro a un archivo (similar a REG EXPORT).",
+        "p_example": "reg.exe export HKEY_LOCAL_MACHINE\\Software C:\\backup.reg",
+        "cmd": "reg export",
+        "c_description": "Exporta una sección del Registro a un archivo.",
+        "c_example": "reg export HKEY_LOCAL_MACHINE\\Software C:\\backup.reg"
     },
     {
-        "powershell": "Get-NetFirewallProfile",
-        "p_description": "Muestra el estado de los perfiles de firewall (público, privado, dominio).",
-        "p_example": "Get-NetFirewallProfile",
-        "cmd": "netsh advfirewall show allprofiles",
-        "c_description": "Muestra el estado de los perfiles de firewall.",
-        "c_example": "netsh advfirewall show allprofiles"
+        "powershell": "reg.exe import",
+        "p_description": "Importa un archivo .reg al Registro (similar a REG IMPORT).",
+        "p_example": "reg.exe import C:\\backup.reg",
+        "cmd": "reg import",
+        "c_description": "Importa un archivo .reg al Registro.",
+        "c_example": "reg import C:\\backup.reg"
     },
     {
-        "powershell": "Disable-NetAdapter",
-        "p_description": "Deshabilita un adaptador de red especificado.",
-        "p_example": "Disable-NetAdapter -Name Ethernet",
-        "cmd": "netsh interface set interface",
-        "c_description": "Deshabilita un adaptador de red.",
-        "c_example": "netsh interface set interface name=\"Ethernet\" admin=disabled"
+        "powershell": "Get-Process",
+        "p_description": "Lista los procesos en ejecución en el sistema (similar a TASKLIST).",
+        "p_example": "Get-Process",
+        "cmd": "tasklist",
+        "c_description": "Lista los procesos en ejecución en el sistema.",
+        "c_example": "tasklist"
     },
     {
-        "powershell": "Enable-NetAdapter",
-        "p_description": "Habilita un adaptador de red especificado.",
-        "p_example": "Enable-NetAdapter -Name Ethernet",
-        "cmd": "netsh interface set interface",
-        "c_description": "Habilita un adaptador de red.",
-        "c_example": "netsh interface set interface name=\"Ethernet\" admin=enabled"
+        "powershell": "Stop-Process",
+        "p_description": "Finaliza uno o más procesos (similar a TASKKILL).",
+        "p_example": "Stop-Process -Name notepad -Id 1234",
+        "cmd": "taskkill",
+        "c_description": "Finaliza uno o más procesos.",
+        "c_example": "taskkill /IM notepad.exe /PID 1234"
+    },
+    {
+        "powershell": "PowerShell",
+        "p_description": "Inicia una sesión de PowerShell desde CMD (similar a POWERSHELL).",
+        "p_example": "PowerShell -NoProfile",
+        "cmd": "powershell",
+        "c_description": "Inicia una sesión de PowerShell desde CMD.",
+        "c_example": "powershell -NoProfile"
+    },
+    {
+        "powershell": "Invoke-GPUpdate",
+        "p_description": "Actualiza la configuración de directivas de grupo (similar a GPUPDATE).",
+        "p_example": "Invoke-GPUpdate -Force",
+        "cmd": "gpupdate",
+        "c_description": "Actualiza la configuración de directivas de grupo.",
+        "c_example": "gpupdate /force"
+    },
+    {
+        "powershell": "gpresult.exe",
+        "p_description": "Muestra el resultado de las directivas de grupo para un usuario o equipo (similar a GPRESULT).",
+        "p_example": "gpresult.exe /r",
+        "cmd": "gpresult",
+        "c_description": "Muestra el resultado de las directivas de grupo para un usuario o equipo.",
+        "c_example": "gpresult /r"
     },
     {
         "powershell": "Find-Package",
-        "p_description": "Busca paquetes disponibles para instalar desde un proveedor.",
+        "p_description": "Busca paquetes disponibles para instalar desde un proveedor (similar a winget search).",
         "p_example": "Find-Package -Name 'Google Chrome'",
         "cmd": "winget search",
         "c_description": "Busca paquetes disponibles para instalar desde los repositorios de winget.",
@@ -473,7 +761,7 @@
     },
     {
         "powershell": "Install-Package",
-        "p_description": "Instala un paquete desde un proveedor especificado.",
+        "p_description": "Instala un paquete desde un proveedor especificado (similar a winget install).",
         "p_example": "Install-Package -Name 'Google Chrome'",
         "cmd": "winget install",
         "c_description": "Instala un paquete desde los repositorios de winget.",
@@ -481,7 +769,7 @@
     },
     {
         "powershell": "Uninstall-Package",
-        "p_description": "Desinstala un paquete de software.",
+        "p_description": "Desinstala un paquete de software (similar a winget uninstall).",
         "p_example": "Uninstall-Package -Name 'Google Chrome'",
         "cmd": "winget uninstall",
         "c_description": "Desinstala un paquete instalado en el sistema.",
@@ -489,7 +777,7 @@
     },
     {
         "powershell": "Get-Package",
-        "p_description": "Lista los paquetes de software instalados en el sistema.",
+        "p_description": "Lista los paquetes de software instalados en el sistema (similar a winget list).",
         "p_example": "Get-Package",
         "cmd": "winget list",
         "c_description": "Lista los paquetes instalados en el sistema.",
@@ -497,7 +785,7 @@
     },
     {
         "powershell": "Update-Package",
-        "p_description": "Actualiza un paquete a la última versión disponible.",
+        "p_description": "Actualiza un paquete a la última versión disponible (similar a winget upgrade).",
         "p_example": "Update-Package -Name 'Google Chrome'",
         "cmd": "winget upgrade",
         "c_description": "Actualiza un paquete a la última versión disponible.",
@@ -505,7 +793,7 @@
     },
     {
         "powershell": "Get-WindowsFeature",
-        "p_description": "Muestra las características y roles de Windows disponibles o instalados.",
+        "p_description": "Muestra las características y roles de Windows disponibles o instalados (similar a dism /online /get-features).",
         "p_example": "Get-WindowsFeature",
         "cmd": "dism /online /get-features",
         "c_description": "Lista las características y roles de Windows disponibles o instalados.",
@@ -513,7 +801,7 @@
     },
     {
         "powershell": "Install-WindowsFeature",
-        "p_description": "Instala características o roles de Windows.",
+        "p_description": "Instala características o roles de Windows (similar a dism /online /enable-feature).",
         "p_example": "Install-WindowsFeature -Name Web-Server",
         "cmd": "dism /online /enable-feature",
         "c_description": "Habilita una característica o rol de Windows.",
@@ -521,7 +809,7 @@
     },
     {
         "powershell": "Uninstall-WindowsFeature",
-        "p_description": "Desinstala características o roles de Windows.",
+        "p_description": "Desinstala características o roles de Windows (similar a dism /online /disable-feature).",
         "p_example": "Uninstall-WindowsFeature -Name Web-Server",
         "cmd": "dism /online /disable-feature",
         "c_description": "Deshabilita una característica o rol de Windows.",
@@ -529,7 +817,7 @@
     },
     {
         "powershell": "Get-AppxPackage",
-        "p_description": "Lista las aplicaciones instaladas desde la Tienda de Windows.",
+        "p_description": "Lista las aplicaciones instaladas desde la Tienda de Windows (similar a winget list --source msstore).",
         "p_example": "Get-AppxPackage",
         "cmd": "winget list --source msstore",
         "c_description": "Lista las aplicaciones instaladas desde la Tienda de Windows.",
@@ -537,7 +825,7 @@
     },
     {
         "powershell": "Add-AppxPackage",
-        "p_description": "Instala un paquete de aplicación (.appx) desde un archivo.",
+        "p_description": "Instala un paquete de aplicación (.appx) desde un archivo (similar a add-appxpackage).",
         "p_example": "Add-AppxPackage -Path 'C:\\Path\\App.appx'",
         "cmd": "add-appxpackage",
         "c_description": "Instala aplicaciones en formato APPX.",
@@ -545,7 +833,7 @@
     },
     {
         "powershell": "Remove-AppxPackage",
-        "p_description": "Desinstala una aplicación instalada desde la Tienda de Windows.",
+        "p_description": "Desinstala una aplicación instalada desde la Tienda de Windows (similar a winget uninstall).",
         "p_example": "Remove-AppxPackage -Name AppName",
         "cmd": "winget uninstall",
         "c_description": "Desinstala aplicaciones de la Tienda de Windows.",
@@ -553,7 +841,7 @@
     },
     {
         "powershell": "Get-LocalUser",
-        "p_description": "Muestra una lista de los usuarios locales del sistema.",
+        "p_description": "Muestra una lista de los usuarios locales del sistema (similar a net user).",
         "p_example": "Get-LocalUser",
         "cmd": "net user",
         "c_description": "Muestra una lista de los usuarios locales del sistema.",
@@ -561,31 +849,31 @@
     },
     {
         "powershell": "New-LocalUser",
-        "p_description": "Crea un nuevo usuario local en el sistema.",
+        "p_description": "Crea un nuevo usuario local en el sistema (similar a net user /add).",
         "p_example": "New-LocalUser -Name 'NewUser' -Password (ConvertTo-SecureString 'Password123' -AsPlainText -Force) -FullName 'New User' -Description 'Nuevo usuario creado'",
-        "cmd": "net user",
+        "cmd": "net user NewUser Password123 /add",
         "c_description": "Crea un nuevo usuario local en el sistema.",
         "c_example": "net user NewUser Password123 /add"
     },
     {
         "powershell": "Remove-LocalUser",
-        "p_description": "Elimina un usuario local del sistema.",
+        "p_description": "Elimina un usuario local del sistema (similar a net user /delete).",
         "p_example": "Remove-LocalUser -Name 'OldUser'",
-        "cmd": "net user",
+        "cmd": "net user OldUser /delete",
         "c_description": "Elimina un usuario local del sistema.",
         "c_example": "net user OldUser /delete"
     },
     {
         "powershell": "Set-LocalUser",
-        "p_description": "Modifica las propiedades de un usuario local (como cambiar la contraseña).",
+        "p_description": "Modifica las propiedades de un usuario local (como cambiar la contraseña) (similar a net user).",
         "p_example": "Set-LocalUser -Name 'ExistingUser' -Password (ConvertTo-SecureString 'NewPassword123' -AsPlainText -Force)",
-        "cmd": "net user",
+        "cmd": "net user ExistingUser NewPassword123",
         "c_description": "Modifica las propiedades de un usuario local (como cambiar la contraseña).",
         "c_example": "net user ExistingUser NewPassword123"
     },
     {
         "powershell": "Get-LocalGroup",
-        "p_description": "Muestra una lista de los grupos locales del sistema.",
+        "p_description": "Muestra una lista de los grupos locales del sistema (similar a net localgroup).",
         "p_example": "Get-LocalGroup",
         "cmd": "net localgroup",
         "c_description": "Muestra una lista de los grupos locales del sistema.",
@@ -593,33 +881,33 @@
     },
     {
         "powershell": "Add-LocalGroupMember",
-        "p_description": "Agrega un usuario a un grupo local.",
+        "p_description": "Agrega un usuario o grupo a un grupo local (similar a net localgroup /add).",
         "p_example": "Add-LocalGroupMember -Group 'Administrators' -Member 'NewUser'",
-        "cmd": "net localgroup",
+        "cmd": "net localgroup Administrators NewUser /add",
         "c_description": "Agrega un usuario a un grupo local.",
         "c_example": "net localgroup Administrators NewUser /add"
     },
     {
         "powershell": "Remove-LocalGroupMember",
-        "p_description": "Elimina un usuario de un grupo local.",
+        "p_description": "Elimina un usuario o grupo de un grupo local (similar a net localgroup /delete).",
         "p_example": "Remove-LocalGroupMember -Group 'Administrators' -Member 'OldUser'",
-        "cmd": "net localgroup",
+        "cmd": "net localgroup Administrators OldUser /delete",
         "c_description": "Elimina un usuario de un grupo local.",
         "c_example": "net localgroup Administrators OldUser /delete"
     },
     {
         "powershell": "Enable-LocalUser",
-        "p_description": "Habilita un usuario local deshabilitado.",
+        "p_description": "Habilita un usuario local deshabilitado (similar a net user /active:yes).",
         "p_example": "Enable-LocalUser -Name 'DisabledUser'",
-        "cmd": "net user",
+        "cmd": "net user DisabledUser /active:yes",
         "c_description": "Habilita un usuario local deshabilitado.",
         "c_example": "net user DisabledUser /active:yes"
     },
     {
         "powershell": "Disable-LocalUser",
-        "p_description": "Deshabilita un usuario local.",
+        "p_description": "Deshabilita un usuario local (similar a net user /active:no).",
         "p_example": "Disable-LocalUser -Name 'UserToDisable'",
-        "cmd": "net user",
+        "cmd": "net user UserToDisable /active:no",
         "c_description": "Deshabilita un usuario local.",
         "c_example": "net user UserToDisable /active:no"
     },
@@ -632,52 +920,12 @@
         "c_example": ""
     },
     {
-        "powershell": "Get-LocalGroup",
-        "p_description": "Muestra una lista de los grupos locales existentes en el sistema.",
-        "p_example": "Get-LocalGroup",
-        "cmd": "net localgroup",
-        "c_description": "Muestra una lista de los grupos locales existentes en el sistema.",
-        "c_example": "net localgroup"
-    },
-    {
-        "powershell": "New-LocalGroup",
-        "p_description": "Crea un nuevo grupo local.",
-        "p_example": "New-LocalGroup -Name 'Developers' -Description 'Grupo de desarrolladores'",
-        "cmd": "net localgroup",
-        "c_description": "Crea un nuevo grupo local.",
-        "c_example": "net localgroup Developers /add"
-    },
-    {
-        "powershell": "Remove-LocalGroup",
-        "p_description": "Elimina un grupo local.",
-        "p_example": "Remove-LocalGroup -Name 'Developers'",
-        "cmd": "net localgroup",
-        "c_description": "Elimina un grupo local.",
-        "c_example": "net localgroup Developers /delete"
-    },
-    {
         "powershell": "Get-LocalGroupMember",
         "p_description": "Lista los miembros de un grupo local especificado.",
         "p_example": "Get-LocalGroupMember -Group 'Administrators'",
-        "cmd": "net localgroup",
+        "cmd": "net localgroup Administrators",
         "c_description": "Lista los miembros de un grupo local especificado.",
         "c_example": "net localgroup Administrators"
-    },
-    {
-        "powershell": "Add-LocalGroupMember",
-        "p_description": "Agrega un usuario o grupo a un grupo local.",
-        "p_example": "Add-LocalGroupMember -Group 'Administrators' -Member 'NewUser'",
-        "cmd": "net localgroup",
-        "c_description": "Agrega un usuario o grupo a un grupo local.",
-        "c_example": "net localgroup Administrators NewUser /add"
-    },
-    {
-        "powershell": "Remove-LocalGroupMember",
-        "p_description": "Elimina un usuario o grupo de un grupo local.",
-        "p_example": "Remove-LocalGroupMember -Group 'Administrators' -Member 'OldUser'",
-        "cmd": "net localgroup",
-        "c_description": "Elimina un usuario o grupo de un grupo local.",
-        "c_example": "net localgroup Administrators OldUser /delete"
     },
     {
         "powershell": "Rename-LocalGroup",

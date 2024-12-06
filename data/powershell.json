@@ -1,400 +1,636 @@
 [
     {
-        "name": "Get-Process",
-        "description": "Obtiene los procesos que se están ejecutando en el equipo local o en un equipo remoto.",
+        "name": "Set-Item",
+        "description": "Modifica atributos de archivos y directorios. PowerShell no tiene un equivalente directo a ATTRIB, pero se pueden cambiar atributos con Set-Item o estableciendo la propiedad .Attributes del objeto.",
         "parameters": [
             {
-                "parameter": "-Name",
-                "description": "Especifica el nombre del proceso a obtener.",
-                "example": "Get-Process -Name notepad"
-            },
-            {
-                "parameter": "-Id",
-                "description": "Especifica el ID del proceso a obtener.",
-                "example": "Get-Process -Id 1234"
-            },
-            {
-                "parameter": "-IncludeUserName",
-                "description": "Muestra el nombre de usuario que inició el proceso.",
-                "example": "Get-Process -IncludeUserName"
-            },
-            {
-                "parameter": "-Module",
-                "description": "Muestra los módulos cargados por el proceso.",
-                "example": "Get-Process -Module"
-            },
-            {
-                "parameter": "-FileVersionInfo",
-                "description": "Muestra la información de versión del archivo ejecutable.",
-                "example": "Get-Process -FileVersionInfo"
+                "parameter": "Usar Get-ChildItem y Set-Item",
+                "description": "Se obtienen los archivos y se establecen atributos a través de la propiedad Attributes.",
+                "example": "Get-ChildItem C:\\Documentos -Recurse | ForEach-Object { $_.Attributes = 'ReadOnly,Hidden' }"
             }
         ]
     },
     {
-        "name": "Start-Process",
-        "description": "Inicia uno o más procesos en el equipo local.",
+        "name": "bcdedit.exe (desde PowerShell)",
+        "description": "No existe un cmdlet nativo para editar el BCD. Se utiliza el mismo comando bcdedit.exe.",
         "parameters": [
             {
-                "parameter": "-FilePath",
-                "description": "Especifica la ruta y el nombre del archivo ejecutable o documento que se va a iniciar.",
-                "example": "Start-Process -FilePath 'C:\\Program Files\\Internet Explorer\\iexplore.exe'"
+                "parameter": "/store",
+                "description": "Especifica un almacén BCD distinto.",
+                "example": "bcdedit /store C:\\BCD\\bootstore"
             },
             {
-                "parameter": "-ArgumentList",
-                "description": "Especifica los argumentos que se pasarán al programa o script que se va a iniciar.",
-                "example": "Start-Process -FilePath 'notepad.exe' -ArgumentList 'C:\\temp\\file.txt'"
-            }
-        ]
-    },
-    {
-        "name": "Stop-Process",
-        "description": "Detiene uno o más procesos que se están ejecutando en el equipo local.",
-        "parameters": [
-            {
-                "parameter": "-Name",
-                "description": "Especifica el nombre del proceso a detener.",
-                "example": "Stop-Process -Name notepad"
+                "parameter": "/createstore",
+                "description": "Crea un nuevo almacén BCD.",
+                "example": "bcdedit /createstore C:\\BCD\\nuevo.bcd"
             },
             {
-                "parameter": "-Id",
-                "description": "Especifica el ID del proceso a detener.",
-                "example": "Stop-Process -Id 1234"
+                "parameter": "/set",
+                "description": "Establece valores en el almacén BCD.",
+                "example": "bcdedit /set {current} description \"Mi Windows\""
             }
         ]
     },
     {
-        "name": "Get-Service",
-        "description": "Obtiene el estado de los servicios en el equipo local o en un equipo remoto.",
+        "name": "Repair-Volume",
+        "description": "Verifica y repara el sistema de archivos. Funciona como el equivalente a CHKDSK.",
         "parameters": [
             {
-                "parameter": "-Name",
-                "description": "Especifica el nombre del servicio a obtener.",
-                "example": "Get-Service -Name wuauserv"
+                "parameter": "-Scan",
+                "description": "Escanea el volumen en línea.",
+                "example": "Repair-Volume -DriveLetter C -Scan"
             },
             {
-                "parameter": "-DisplayName",
-                "description": "Especifica el nombre para mostrar del servicio a obtener.",
-                "example": "Get-Service -DisplayName 'Windows Update'"
+                "parameter": "-OfflineScanAndFix",
+                "description": "Ejecuta un escaneo sin conexión y repara el volumen.",
+                "example": "Repair-Volume -DriveLetter C -OfflineScanAndFix"
             }
         ]
     },
     {
-        "name": "Start-Service",
-        "description": "Inicia uno o más servicios detenidos.",
+        "name": "Get-Disk / Get-Partition / New-Partition / Format-Volume",
+        "description": "Para las tareas de DISKPART se usan varios cmdlets de almacenamiento.",
         "parameters": [
             {
-                "parameter": "-Name",
-                "description": "Especifica el nombre del servicio a iniciar.",
-                "example": "Start-Service -Name wuauserv"
-            }
-        ]
-    },
-    {
-        "name": "Stop-Service",
-        "description": "Detiene uno o más servicios en ejecución.",
-        "parameters": [
-            {
-                "parameter": "-Name",
-                "description": "Especifica el nombre del servicio a detener.",
-                "example": "Stop-Service -Name wuauserv"
+                "parameter": "Get-Disk",
+                "description": "Lista los discos disponibles.",
+                "example": "Get-Disk"
             },
             {
-                "parameter": "-Force",
-                "description": "Fuerza la detención del servicio.",
-                "example": "Stop-Service -Name wuauserv -Force"
-            }
-        ]
-    },
-    {
-        "name": "Restart-Service",
-        "description": "Detiene y luego inicia uno o más servicios.",
-        "parameters": [
-            {
-                "parameter": "-Name",
-                "description": "Especifica el nombre del servicio a reiniciar.",
-                "example": "Restart-Service -Name wuauserv"
+                "parameter": "Get-Partition",
+                "description": "Muestra las particiones de un disco.",
+                "example": "Get-Partition -DiskNumber 0"
             },
             {
-                "parameter": "-Force",
-                "description": "Fuerza el reinicio del servicio.",
-                "example": "Restart-Service -Name wuauserv -Force"
+                "parameter": "New-Partition / Set-Partition",
+                "description": "Crea o ajusta particiones.",
+                "example": "New-Partition -DiskNumber 0 -UseMaximumSize -AssignDriveLetter"
             }
         ]
     },
     {
-        "name": "Get-EventLog",
-        "description": "Obtiene los registros de eventos desde el Visor de eventos en el equipo local o en un equipo remoto.",
+        "name": "Format-Volume",
+        "description": "Formatea un volumen con un sistema de archivos.",
         "parameters": [
             {
-                "parameter": "-LogName",
-                "description": "Especifica el nombre del registro de eventos a obtener.",
-                "example": "Get-EventLog -LogName Application"
+                "parameter": "-FileSystem",
+                "description": "Especifica el sistema de archivos (FAT, FAT32, exFAT, NTFS).",
+                "example": "Format-Volume -DriveLetter D -FileSystem NTFS"
             },
             {
-                "parameter": "-Newest",
-                "description": "Obtiene los eventos más recientes.",
-                "example": "Get-EventLog -LogName System -Newest 50"
+                "parameter": "-NewFileSystemLabel",
+                "description": "Asigna una etiqueta de volumen.",
+                "example": "Format-Volume -DriveLetter E -FileSystem FAT32 -NewFileSystemLabel \"Backup\""
             }
         ]
     },
     {
-        "name": "Clear-EventLog",
-        "description": "Borra todos los eventos de uno o más registros de eventos en el equipo local o en un equipo remoto.",
+        "name": "Copy-Item (para copiar) + Remove-Item (para reflejar)",
+        "description": "PowerShell no tiene un equivalente directo a ROBOCOPY con todas sus opciones. Se usan Copy-Item y Remove-Item, o Robocopy.exe desde PowerShell.",
         "parameters": [
             {
-                "parameter": "-LogName",
-                "description": "Especifica el nombre del registro de eventos a borrar.",
-                "example": "Clear-EventLog -LogName Application"
-            }
-        ]
-    },
-    {
-        "name": "Get-Alias",
-        "description": "Obtiene los alias de los cmdlets de PowerShell.",
-        "parameters": [
+                "parameter": "-Recurse",
+                "description": "Copia subdirectorios recursivamente.",
+                "example": "Copy-Item C:\\Origen C:\\Destino -Recurse"
+            },
             {
-                "parameter": "-Name",
-                "description": "Especifica el nombre del alias a obtener.",
-                "example": "Get-Alias -Name ls"
+                "parameter": "Uso combinado con Remove-Item",
+                "description": "Para reflejar estructuras (MIR), primero limpiar destino.",
+                "example": "Remove-Item C:\\Destino\\* -Recurse; Copy-Item C:\\Origen C:\\Destino -Recurse"
             }
         ]
     },
     {
         "name": "Copy-Item",
-        "description": "Copia un archivo o directorio a una nueva ubicación.",
+        "description": "Equivalente a XCOPY. Copia archivos y directorios recursivamente.",
         "parameters": [
             {
-                "parameter": "-Path",
-                "description": "Ruta del archivo o directorio a copiar.",
-                "example": "Copy-Item -Path C:\\archivo.txt -Destination D:\\Backup\\"
-            },
-            {
-                "parameter": "-Destination",
-                "description": "Especifica la ruta de destino.",
-                "example": "Copy-Item -Path C:\\archivo.txt -Destination D:\\Backup\\"
-            },
-            {
                 "parameter": "-Recurse",
-                "description": "Copia todos los subdirectorios y archivos contenidos.",
-                "example": "Copy-Item -Path C:\\Carpeta -Destination D:\\Backup\\ -Recurse"
+                "description": "Copia subdirectorios, incluidos vacíos.",
+                "example": "Copy-Item C:\\Origen C:\\Destino -Recurse"
+            },
+            {
+                "parameter": "-Force",
+                "description": "Sobrescribe archivos sin preguntar.",
+                "example": "Copy-Item C:\\Origen\\archivo.txt C:\\Destino\\archivo.txt -Force"
             }
         ]
     },
     {
-        "name": "Move-Item",
-        "description": "Mueve un archivo o directorio a una nueva ubicación.",
+        "name": "Get-ChildItem",
+        "description": "Equivalente a DIR, muestra archivos y directorios.",
         "parameters": [
             {
-                "parameter": "-Path",
-                "description": "Ruta del archivo o directorio a mover.",
-                "example": "Move-Item -Path C:\\archivo.txt -Destination D:\\Archivos\\"
+                "parameter": "-Recurse",
+                "description": "Muestra archivos en el directorio y subdirectorios.",
+                "example": "Get-ChildItem C:\\ -Recurse"
             },
             {
-                "parameter": "-Destination",
-                "description": "Especifica la ruta de destino.",
-                "example": "Move-Item -Path C:\\archivo.txt -Destination D:\\Archivos\\"
+                "parameter": "-Directory / -File",
+                "description": "Filtra por directorios o archivos.",
+                "example": "Get-ChildItem C:\\Carpeta -File"
+            }
+        ]
+    },
+    {
+        "name": "Get-ChildItem -Recurse",
+        "description": "No existe TREE nativo, se usa Get-ChildItem -Recurse para mostrar estructura.",
+        "parameters": [
+            {
+                "parameter": "sin parámetros adicionales",
+                "description": "Muestra la estructura completa.",
+                "example": "Get-ChildItem C:\\ -Recurse"
+            }
+        ]
+    },
+    {
+        "name": "Copy-Item",
+        "description": "Equivalente a COPY, copia archivos.",
+        "parameters": [
+            {
+                "parameter": "-Force",
+                "description": "Sobrescribe archivos sin confirmación.",
+                "example": "Copy-Item C:\\Origen\\archivo.txt C:\\Destino\\archivo.txt -Force"
             }
         ]
     },
     {
         "name": "Remove-Item",
-        "description": "Elimina archivos o directorios.",
+        "description": "Equivalente a DEL, elimina archivos.",
         "parameters": [
             {
-                "parameter": "-Path",
-                "description": "Ruta del archivo o directorio a eliminar.",
-                "example": "Remove-Item -Path C:\\archivo.txt"
+                "parameter": "-Force",
+                "description": "Fuerza la eliminación incluso de archivos protegidos.",
+                "example": "Remove-Item C:\\Archivos\\protegido.txt -Force"
             },
             {
                 "parameter": "-Recurse",
-                "description": "Elimina todos los subdirectorios y archivos contenidos.",
-                "example": "Remove-Item -Path C:\\Carpeta -Recurse"
-            },
-            {
-                "parameter": "-Force",
-                "description": "Forza la eliminación de elementos que están en uso o protegidos.",
-                "example": "Remove-Item -Path C:\\archivo.txt -Force"
+                "description": "Elimina recursivamente subdirectorios y su contenido.",
+                "example": "Remove-Item C:\\Archivos\\*.tmp -Recurse -Force"
             }
         ]
     },
     {
-        "name": "New-Item",
-        "description": "Crea un nuevo archivo o directorio.",
+        "name": "Rename-Item",
+        "description": "Equivalente a REN, cambia el nombre de un archivo o directorio.",
         "parameters": [
             {
-                "parameter": "-Path",
-                "description": "Ruta donde se creará el nuevo elemento.",
-                "example": "New-Item -Path C:\\NuevoArchivo.txt -ItemType File"
-            },
+                "parameter": "sin parámetros",
+                "description": "Rename-Item ruta nombre_nuevo",
+                "example": "Rename-Item C:\\Archivos\\datos.txt info.txt"
+            }
+        ]
+    },
+    {
+        "name": "Move-Item",
+        "description": "Equivalente a MOVE, mueve archivos o directorios.",
+        "parameters": [
             {
-                "parameter": "-ItemType",
-                "description": "Especifica el tipo de elemento a crear (File o Directory).",
-                "example": "New-Item -Path C:\\NuevaCarpeta -ItemType Directory"
+                "parameter": "-Force",
+                "description": "Mueve archivos sin solicitar confirmación.",
+                "example": "Move-Item C:\\Origen\\archivo.txt C:\\Destino -Force"
+            }
+        ]
+    },
+    {
+        "name": "New-Item -ItemType Directory",
+        "description": "Equivalente a MD, crea un nuevo directorio.",
+        "parameters": [
+            {
+                "parameter": "sin parámetros",
+                "description": "Crear un directorio.",
+                "example": "New-Item -ItemType Directory -Path C:\\NuevaCarpeta"
+            }
+        ]
+    },
+    {
+        "name": "Remove-Item",
+        "description": "Equivalente a RD, elimina directorios.",
+        "parameters": [
+            {
+                "parameter": "-Recurse",
+                "description": "Elimina el directorio y su contenido.",
+                "example": "Remove-Item C:\\CarpetaParaEliminar -Recurse -Force"
             }
         ]
     },
     {
         "name": "Get-Content",
-        "description": "Obtiene el contenido de un archivo.",
+        "description": "Equivalente a TYPE, muestra el contenido de un archivo.",
         "parameters": [
             {
-                "parameter": "-Path",
-                "description": "Ruta del archivo.",
-                "example": "Get-Content -Path C:\\archivo.txt"
-            },
-            {
-                "parameter": "-Encoding",
-                "description": "Especifica la codificación del archivo.",
-                "example": "Get-Content -Path C:\\archivo.txt -Encoding UTF8"
+                "parameter": "sin parámetros",
+                "description": "Especificar el archivo.",
+                "example": "Get-Content C:\\Archivos\\documento.txt"
             }
         ]
     },
     {
-        "name": "Set-Content",
-        "description": "Escribe o reemplaza el contenido en un archivo.",
+        "name": "Out-Host -Paging",
+        "description": "Equivalente a MORE, para paginar la salida.",
         "parameters": [
             {
-                "parameter": "-Path",
-                "description": "Ruta del archivo.",
-                "example": "Set-Content -Path C:\\archivo.txt -Value 'Nuevo contenido'"
-            },
-            {
-                "parameter": "-Encoding",
-                "description": "Especifica la codificación del archivo.",
-                "example": "Set-Content -Path C:\\archivo.txt -Value 'Nuevo contenido' -Encoding UTF8"
+                "parameter": "Canalización",
+                "description": "Pasa la salida a Out-Host -Paging.",
+                "example": "Get-Content C:\\Archivos\\documento.txt | Out-Host -Paging"
             }
         ]
     },
     {
-        "name": "Add-Content",
-        "description": "Agrega contenido a un archivo existente.",
+        "name": "Select-String",
+        "description": "Equivalente a FIND, busca texto en archivos.",
         "parameters": [
             {
-                "parameter": "-Path",
-                "description": "Ruta del archivo.",
-                "example": "Add-Content -Path C:\\archivo.txt -Value 'Contenido adicional'"
+                "parameter": "-Pattern",
+                "description": "Cadena a buscar.",
+                "example": "Select-String -Pattern \"texto\" -Path C:\\Archivos\\*.txt"
             },
             {
-                "parameter": "-Encoding",
-                "description": "Especifica la codificación del archivo.",
-                "example": "Add-Content -Path C:\\archivo.txt -Value 'Contenido adicional' -Encoding UTF8"
+                "parameter": "-CaseSensitive / -SimpleMatch",
+                "description": "Controla sensibilidad o tipo de coincidencia.",
+                "example": "Select-String -Pattern \"error\" -Path C:\\Archivos\\log.txt -CaseSensitive"
             }
         ]
     },
     {
-        "name": "Get-Command",
-        "description": "Muestra todos los cmdlets, funciones y alias disponibles en PowerShell.",
+        "name": "Select-String",
+        "description": "Equivalente a FINDSTR, usa regex y patrones avanzados.",
         "parameters": [
             {
-                "parameter": "-Verb",
-                "description": "Muestra todos los cmdlets con el verbo especificado.",
-                "example": "Get-Command -Verb Get"
+                "parameter": "-Pattern",
+                "description": "Interpreta el patrón como regex por defecto.",
+                "example": "Select-String -Pattern \"^Error\" C:\\Archivos\\log.txt"
             },
             {
-                "parameter": "-Noun",
-                "description": "Muestra todos los cmdlets con el sustantivo especificado.",
-                "example": "Get-Command -Noun Service"
-            },
-            {
-                "parameter": "-Syntax",
-                "description": "Muestra la sintaxis de los cmdlets disponibles.",
-                "example": "Get-Command -Syntax"
+                "parameter": "-Recursive",
+                "description": "Busca en subdirectorios.",
+                "example": "Select-String -Pattern \"archivo\" -Path C:\\Archivos\\*.txt -Recursive"
             }
         ]
     },
     {
-        "name": "Get-Help",
-        "description": "Muestra ayuda sobre cmdlets, funciones y scripts de PowerShell.",
+        "name": "Write-Host",
+        "description": "Equivalente a ECHO, muestra mensajes en la consola.",
         "parameters": [
             {
-                "parameter": "<cmdlet>",
-                "description": "Muestra la ayuda básica de un cmdlet.",
-                "example": "Get-Help Get-Process"
-            },
-            {
-                "parameter": "-Detailed",
-                "description": "Muestra la ayuda detallada de un cmdlet.",
-                "example": "Get-Help Get-Process -Detailed"
-            },
-            {
-                "parameter": "-Examples",
-                "description": "Muestra ejemplos de uso de un cmdlet.",
-                "example": "Get-Help Get-Process -Examples"
-            },
-            {
-                "parameter": "-Online",
-                "description": "Abre la documentación del cmdlet en línea.",
-                "example": "Get-Help Get-Process -Online"
+                "parameter": "sin parámetros",
+                "description": "Muestra el texto especificado.",
+                "example": "Write-Host \"Mensaje\""
             }
         ]
     },
     {
-        "name": "Get-Location",
-        "description": "Muestra la ubicación actual en el sistema de archivos.",
-        "parameters": []
-    },
-    {
-        "name": "Set-Location",
-        "description": "Cambia a una ubicación especificada.",
+        "name": "Get-ChildItem Env: / Set-Item Env:",
+        "description": "Equivalente a SET, para variables de entorno.",
         "parameters": [
             {
-                "parameter": "-Path",
-                "description": "Especifica la ruta a la que cambiar.",
-                "example": "Set-Location C:\\Users"
+                "parameter": "sin parámetros",
+                "description": "Get-ChildItem Env: muestra variables.",
+                "example": "Get-ChildItem Env:"
             }
         ]
     },
     {
-        "name": "New-LocalUser",
-        "description": "Crea un nuevo usuario local en el sistema.",
+        "name": "Setx.exe (desde PowerShell) o Set-ItemProperty en Registry",
+        "description": "Para establecer variables de entorno persistentes, usar setx.exe o modificar el Registro.",
+        "parameters": [
+            {
+                "parameter": "setx",
+                "description": "Crea variables de entorno de usuario o sistema.",
+                "example": "setx PATH \"C:\\MiPrograma\" /M"
+            }
+        ]
+    },
+    {
+        "name": "Get-ComputerInfo",
+        "description": "Equivalente a SYSTEMINFO, muestra info del sistema.",
+        "parameters": [
+            {
+                "parameter": "-Property",
+                "description": "Filtra propiedades específicas.",
+                "example": "Get-ComputerInfo -Property OS*"
+            }
+        ]
+    },
+    {
+        "name": "Get-CimInstance",
+        "description": "Equivalente a WMIC, utiliza CIM/WMI con cmdlets nativos.",
+        "parameters": [
+            {
+                "parameter": "Win32_Processor",
+                "description": "Muestra información de la CPU.",
+                "example": "Get-CimInstance Win32_Processor | Select-Object Name,NumberOfCores"
+            }
+        ]
+    },
+    {
+        "name": "Repair-WindowsImage",
+        "description": "Equivalente a SFC, verifica y repara archivos del sistema. Necesita DISM disponible.",
+        "parameters": [
+            {
+                "parameter": "-ScanHealth",
+                "description": "Escanea la imagen.",
+                "example": "Repair-WindowsImage -Online -ScanHealth"
+            }
+        ]
+    },
+    {
+        "name": "Get-Service / Start-Service / Stop-Service / Set-Service",
+        "description": "Equivalente a SC, gestiona servicios.",
+        "parameters": [
+            {
+                "parameter": "Get-Service",
+                "description": "Muestra el estado de los servicios.",
+                "example": "Get-Service"
+            },
+            {
+                "parameter": "Stop-Service",
+                "description": "Detiene un servicio.",
+                "example": "Stop-Service -Name NombreDelServicio"
+            }
+        ]
+    },
+    {
+        "name": "Start-Service",
+        "description": "Equivalente a NET START, inicia un servicio.",
         "parameters": [
             {
                 "parameter": "-Name",
-                "description": "Especifica el nombre del usuario.",
-                "example": "New-LocalUser -Name 'Antonio'"
-            },
-            {
-                "parameter": "-FullName",
-                "description": "Especifica el nombre completo del usuario.",
-                "example": "New-LocalUser -Name 'Antonio' -FullName 'Antonio Recio'"
-            },
-            {
-                "parameter": "-Password",
-                "description": "Especifica la contraseña del usuario.",
-                "example": "New-LocalUser -Name 'Antonio' -Password (ConvertTo-SecureString '1234' -AsPlainText -Force)"
+                "description": "Nombre del servicio.",
+                "example": "Start-Service -Name Spooler"
             }
         ]
     },
     {
-        "name": "Add-LocalGroupMember",
-        "description": "Agrega un usuario a un grupo local.",
-        "parameters": [
-            {
-                "parameter": "-Group",
-                "description": "Especifica el grupo al que se agregará el usuario.",
-                "example": "Add-LocalGroupMember -Group 'Administradores' -Member 'Antonio'"
-            }
-        ]
-    },
-    {
-        "name": "Get-LocalUser",
-        "description": "Obtiene información sobre un usuario local.",
+        "name": "Stop-Service",
+        "description": "Equivalente a NET STOP, detiene un servicio.",
         "parameters": [
             {
                 "parameter": "-Name",
-                "description": "Especifica el nombre del usuario a obtener.",
-                "example": "Get-LocalUser -Name 'Antonio'"
+                "description": "Nombre del servicio.",
+                "example": "Stop-Service -Name Spooler"
             }
         ]
     },
     {
-        "name": "Set-ExecutionPolicy",
-        "description": "Cambia la política de ejecución de scripts en PowerShell.",
+        "name": "New-LocalUser / Remove-LocalUser",
+        "description": "Equivalente a NET USER, gestiona usuarios locales.",
         "parameters": [
             {
-                "parameter": "-ExecutionPolicy",
-                "description": "Especifica la política de ejecución.",
-                "example": "Set-ExecutionPolicy RemoteSigned"
+                "parameter": "New-LocalUser",
+                "description": "Crea un nuevo usuario.",
+                "example": "New-LocalUser -Name \"Juan\" -Password (ConvertTo-SecureString \"clave123\" -AsPlainText -Force)"
+            },
+            {
+                "parameter": "Remove-LocalUser",
+                "description": "Elimina un usuario.",
+                "example": "Remove-LocalUser -Name \"Juan\""
+            }
+        ]
+    },
+    {
+        "name": "New-LocalGroup / Add-LocalGroupMember",
+        "description": "Equivalente a NET LOCALGROUP, gestiona grupos locales.",
+        "parameters": [
+            {
+                "parameter": "New-LocalGroup",
+                "description": "Crea un nuevo grupo local.",
+                "example": "New-LocalGroup -Name \"Contabilidad\""
+            },
+            {
+                "parameter": "Add-LocalGroupMember",
+                "description": "Agrega un usuario a un grupo local.",
+                "example": "Add-LocalGroupMember -Group \"Contabilidad\" -Member \"Juan\""
+            }
+        ]
+    },
+    {
+        "name": "New-SmbShare / Remove-SmbShare",
+        "description": "Equivalente a NET SHARE, gestiona recursos compartidos.",
+        "parameters": [
+            {
+                "parameter": "New-SmbShare",
+                "description": "Crea un recurso compartido.",
+                "example": "New-SmbShare -Name Datos -Path C:\\CarpetaCompartida -FullAccess Everyone"
+            },
+            {
+                "parameter": "Remove-SmbShare",
+                "description": "Elimina un recurso compartido.",
+                "example": "Remove-SmbShare -Name Datos -Force"
+            }
+        ]
+    },
+    {
+        "name": "Get-SmbShare",
+        "description": "Equivalente a NET VIEW (para ver recursos compartidos locales).",
+        "parameters": [
+            {
+                "parameter": "sin parámetros",
+                "description": "Muestra los recursos compartidos locales.",
+                "example": "Get-SmbShare"
+            }
+        ]
+    },
+    {
+        "name": "Get-NetIPConfiguration",
+        "description": "Equivalente a IPCONFIG, muestra configuración de red.",
+        "parameters": [
+            {
+                "parameter": "sin parámetros",
+                "description": "Muestra detalles de la configuración de red.",
+                "example": "Get-NetIPConfiguration"
+            }
+        ]
+    },
+    {
+        "name": "Test-Connection",
+        "description": "Equivalente a PING, comprueba conectividad.",
+        "parameters": [
+            {
+                "parameter": "-Count",
+                "description": "Número de pings.",
+                "example": "Test-Connection 8.8.8.8 -Count 10"
+            }
+        ]
+    },
+    {
+        "name": "Test-NetConnection -TraceRoute",
+        "description": "Equivalente a TRACERT, traza ruta a un host.",
+        "parameters": [
+            {
+                "parameter": "-TraceRoute",
+                "description": "Incluye la traza de salto.",
+                "example": "Test-NetConnection www.google.com -TraceRoute"
+            }
+        ]
+    },
+    {
+        "name": "Test-NetConnection (sin equivalente exacto a Pathping)",
+        "description": "No hay un cmdlet exacto para PATHPING. Test-NetConnection con TraceRoute ofrece parte de la funcionalidad.",
+        "parameters": [
+            {
+                "parameter": "-TraceRoute",
+                "description": "Muestra la ruta a un host.",
+                "example": "Test-NetConnection 8.8.8.8 -TraceRoute"
+            }
+        ]
+    },
+    {
+        "name": "Resolve-DnsName",
+        "description": "Equivalente a NSLOOKUP, consulta DNS.",
+        "parameters": [
+            {
+                "parameter": "sin parámetros",
+                "description": "Resuelve un nombre de dominio.",
+                "example": "Resolve-DnsName www.google.com"
+            }
+        ]
+    },
+    {
+        "name": "$env:COMPUTERNAME",
+        "description": "Equivalente a HOSTNAME, muestra el nombre del equipo.",
+        "parameters": [
+            {
+                "parameter": "sin parámetros",
+                "description": "Se puede mostrar la variable de entorno.",
+                "example": "$env:COMPUTERNAME"
+            }
+        ]
+    },
+    {
+        "name": "Get-NetAdapter",
+        "description": "Equivalente a GETMAC, muestra dirección MAC de interfaces.",
+        "parameters": [
+            {
+                "parameter": "sin parámetros",
+                "description": "Muestra adaptadores y sus MAC.",
+                "example": "Get-NetAdapter | Select-Object Name,MacAddress"
+            }
+        ]
+    },
+    {
+        "name": "Get-NetNeighbor",
+        "description": "Equivalente a ARP, muestra caché ARP.",
+        "parameters": [
+            {
+                "parameter": "sin parámetros",
+                "description": "Muestra las entradas ARP.",
+                "example": "Get-NetNeighbor"
+            }
+        ]
+    },
+    {
+        "name": "Get-ItemProperty",
+        "description": "Equivalente a REG QUERY, muestra valores del Registro.",
+        "parameters": [
+            {
+                "parameter": "Ruta del Registro",
+                "description": "Especifica la clave a consultar.",
+                "example": "Get-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\\Software"
+            }
+        ]
+    },
+    {
+        "name": "New-ItemProperty",
+        "description": "Equivalente a REG ADD, agrega o modifica valores en el Registro.",
+        "parameters": [
+            {
+                "parameter": "-Name / -Value / -PropertyType",
+                "description": "Define nombre, valor y tipo.",
+                "example": "New-ItemProperty -Path Registry::HKEY_CURRENT_USER\\Software\\MiClave -Name MiValor -PropertyType String -Value \"Datos\""
+            }
+        ]
+    },
+    {
+        "name": "Remove-ItemProperty",
+        "description": "Equivalente a REG DELETE, elimina valores del Registro.",
+        "parameters": [
+            {
+                "parameter": "-Name",
+                "description": "Valor a eliminar.",
+                "example": "Remove-ItemProperty -Path Registry::HKEY_CURRENT_USER\\Software\\MiClave -Name MiValor"
+            }
+        ]
+    },
+    {
+        "name": "reg.exe export (desde PowerShell)",
+        "description": "Equivalente a REG EXPORT. PowerShell no tiene cmdlet nativo para exportar.",
+        "parameters": [
+            {
+                "parameter": "reg.exe",
+                "description": "Usar la herramienta externa.",
+                "example": "reg.exe export HKEY_LOCAL_MACHINE\\Software C:\\backup.reg"
+            }
+        ]
+    },
+    {
+        "name": "reg.exe import (desde PowerShell)",
+        "description": "Equivalente a REG IMPORT. Sin cmdlet nativo, usar reg.exe.",
+        "parameters": [
+            {
+                "parameter": "archivo.reg",
+                "description": "Archivo .reg a importar.",
+                "example": "reg.exe import C:\\backup.reg"
+            }
+        ]
+    },
+    {
+        "name": "Get-Process",
+        "description": "Equivalente a TASKLIST, muestra procesos.",
+        "parameters": [
+            {
+                "parameter": "sin parámetros",
+                "description": "Muestra todos los procesos.",
+                "example": "Get-Process"
+            }
+        ]
+    },
+    {
+        "name": "Stop-Process",
+        "description": "Equivalente a TASKKILL, termina procesos.",
+        "parameters": [
+            {
+                "parameter": "-Name",
+                "description": "Termina por nombre de proceso.",
+                "example": "Stop-Process -Name notepad"
+            },
+            {
+                "parameter": "-Id",
+                "description": "Termina por ID de proceso.",
+                "example": "Stop-Process -Id 1234"
+            }
+        ]
+    },
+    {
+        "name": "PowerShell (ya en sesión)",
+        "description": "Equivalente a POWERSHELL. Si ya estás en PowerShell, no necesitas otro comando. Para iniciar una nueva sesión: powershell.exe o pwsh.exe",
+        "parameters": [
+            {
+                "parameter": "-NoProfile",
+                "description": "Inicia sin perfil.",
+                "example": "powershell.exe -NoProfile"
+            }
+        ]
+    },
+    {
+        "name": "Invoke-GPUpdate",
+        "description": "Equivalente a GPUPDATE, actualiza las directivas de grupo.",
+        "parameters": [
+            {
+                "parameter": "-Force",
+                "description": "Fuerza la actualización.",
+                "example": "Invoke-GPUpdate -Force"
+            }
+        ]
+    },
+    {
+        "name": "gpresult.exe (desde PowerShell) o Get-GPResultantSetOfPolicy (si GPMC instalado)",
+        "description": "Equivalente a GPRESULT. No hay cmdlet nativo sin GPMC.",
+        "parameters": [
+            {
+                "parameter": "gpresult /r",
+                "description": "Muestra las directivas aplicadas.",
+                "example": "gpresult /r"
             }
         ]
     }
