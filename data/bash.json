@@ -758,7 +758,7 @@
             {
                 "parameter": "-aG GRUPO",
                 "description": "Agregar usuario a un grupo secundario.",
-                "example": "usermod -aG sudo usuario"
+                "example": "usermod -aG sudo grupo usuario"
             },
             {
                 "parameter": "-d DIR",
