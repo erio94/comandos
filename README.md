@@ -11,7 +11,7 @@
 
 El objetivo es facilitar el aprendizaje y consulta de comandos útiles para la administración de sistemas en diferentes plataformas.
 
-🌍 **Visualiza la web aquí**: [Tabla de Comandos](https://erio94.github.io/tabla_comandos_windows/)
+🌍 **Visualiza la web aquí**: [Tabla de Comandos](https://erio94.github.io/comandos/)
 
 La página utiliza un diseño moderno (tema oscuro), es responsiva y permite buscar y copiar comandos fácilmente.
 
