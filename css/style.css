@@ -23,6 +23,18 @@ header {
     padding: 15px;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+header nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
 }
 
 header input[type="text"] {
@@ -37,14 +49,6 @@ header input[type="text"] {
 
 header input[type="text"]::placeholder {
     color: #e0e0e0;
-}
-
-header nav {
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
 }
 
 header nav button,
@@ -109,7 +113,7 @@ table tbody tr:hover {
     transition: background-color 0.3s;
 }
 
-/* Colores específicos de las celdas */
+/* Colores específicos */
 td {
     color: #00d8ad;
 }
@@ -118,19 +122,15 @@ td:first-child {
     color: #ddd;
 }
 
-#mainTable td:nth-child(2) {
-    color: #ddd;
-    font-weight: bold;
-}
-
-#comparisonTable td:nth-child(2), 
+#mainTable td:nth-child(2),
+#comparisonTable td:nth-child(2),
 #comparisonTable td:nth-child(5) {
     color: #ddd;
     font-weight: bold;
 }
 
-/* Botón de copiar (si aplicase) */
-table tbody .copy-button {
+/* Botones dentro de tablas */
+.copy-button {
     background-color: #444;
     color: #ffffff;
     border: none;
@@ -141,7 +141,7 @@ table tbody .copy-button {
     transition: background-color 0.3s;
 }
 
-table tbody .copy-button:hover {
+.copy-button:hover {
     background-color: #009879;
     color: #ffffff;
 }
@@ -217,22 +217,58 @@ footer p {
 /* Responsividad */
 @media (max-width: 768px) {
     header input[type="text"] {
-        width: 200px;
+        width: 100%;
+        font-size: 0.9em;
+    }
+
+    header nav button,
+    header button {
+        font-size: 0.9em;
+        padding: 8px 10px;
+    }
+
+    table {
+        font-size: 0.85em;
+    }
+
+    #mainTable, 
+    #comparisonTable {
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 1.6em;
+    }
+
+    header input[type="text"] {
+        width: 100%;
+        font-size: 0.8em;
+        margin-bottom: 10px;
+    }
+
+    header nav {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    header nav button,
+    header button {
+        padding: 8px;
         font-size: 0.8em;
     }
 
-    header button {
-        font-size: 0.8em;
-        padding: 6px 8px;
+    table th,
+    table td {
+        padding: 8px;
     }
 
     table {
         font-size: 0.8em;
-    }
-
-    /* Permite desplazamiento horizontal en tablas si es necesario */
-    #mainTable, 
-    #comparisonTable {
-        overflow-x: auto;
     }
 }
