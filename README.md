@@ -40,10 +40,11 @@ Sigue estos pasos para ejecutar el proyecto en tu máquina local:
 1. **Clona este repositorio**:
 ```
    git clone https://github.com/erio94/comandos.git
-   cd tabla_comandos_windows
-   Abre el archivo principal:
-   Navega a index.html y ábrelo en tu navegador.
+   cd comandos
 ```
+
+Abre el archivo principal:
+Navega a index.html y ábrelo en tu navegador.
 
 ## 👨‍💻 Autor
 Creado por Edu T. del Río.
