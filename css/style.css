@@ -76,7 +76,6 @@ header nav button.active {
 
 /* Tablas */
 table {
-    width: 95%;
     border-collapse: collapse;
     margin: 20px auto;
     font-size: 0.9em;
@@ -246,11 +245,6 @@ table {
 
     table {
         font-size: 0.85em;
-    }
-
-    #mainTable,
-    #comparisonTable {
-        overflow-x: auto;
     }
 }
 
