@@ -18,18 +18,21 @@ export function renderTable(commands) {
         `;
     } else {
         tableBody.innerHTML = commands
-            .map(
-                (command, i) => `
-            <tr>
-                <td>${i + 1}</td>
-                <td>${command.name || 'Sin nombre'}</td>
-                <td>${command.description || 'Sin descripción'}</td>
-                <td>
-                    <button class="details-button" data-command="${command.name || ''}">Detalles</button>
-                </td>
-            </tr>
-        `
-            )
+            .map((command, i) => {
+                // Limpia los espacios en los datos antes de renderizar
+                const name = cleanSpaces(command.name || 'Sin nombre');
+                const description = cleanSpaces(command.description || 'Sin descripción');
+                return `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td>${name}</td>
+                    <td>${description}</td>
+                    <td>
+                        <button class="details-button" data-command="${name}">Detalles</button>
+                    </td>
+                </tr>
+            `;
+            })
             .join('');
 
         // Asocia eventos a los botones después de renderizar la tabla
@@ -85,7 +88,7 @@ export function showDetails(commandName, commands) {
     const detailsContent = document.getElementById('detailsContent');
 
     // Encuentra el comando seleccionado
-    const command = commands.find(cmd => cmd.name === commandName);
+    const command = commands.find(cmd => cleanSpaces(cmd.name) === cleanSpaces(commandName));
 
     if (command) {
         detailsSection.dataset.currentCommand = commandName; // Guarda el comando actual
@@ -162,4 +165,11 @@ export async function loadCommandsForPlatform(platform) {
         console.error(`Error al cargar los comandos para ${platform}:`, error);
         return [];
     }
+}
+
+// Limpia espacios innecesarios y controla longitudes
+function cleanSpaces(input, maxLength = 5000) {
+    if (typeof input !== 'string') return input; // Devuelve sin cambios si no es una cadena
+    const cleanedInput = input.trim().replace(/\s+/g, ' ');
+    return cleanedInput.length > maxLength ? 'Sin descripción' : cleanedInput;
 }
