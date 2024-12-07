@@ -440,6 +440,31 @@
                 "parameter": "nombre_usuario /DELETE",
                 "description": "Elimina el usuario especificado.",
                 "example": "NET USER Juan /DELETE"
+            },
+            {
+                "parameter": "nombre_usuario /ACTIVE:NO",
+                "description": "Desactiva la cuenta de usuario.",
+                "example": "NET USER Juan /ACTIVE:NO"
+            },
+            {
+                "parameter": "nombre_usuario /PASSWORDCHG",
+                "description": "Fuerza al usuario a cambiar la contraseña en el próximo inicio de sesión.",
+                "example": "NET USER Juan /PASSWORDCHG:YES"
+            },
+            {
+                "parameter": "nombre_usuario /TIMES:horas",
+                "description": "Establece las horas de inicio y cierre de sesión.",
+                "example": "NET USER Juan /TIMES:M-F,08:00-17:00"
+            },
+            {
+                "parameter": "nombre_usuario /EXPIRES:fecha",
+                "description": "Establece la fecha de vencimiento de la cuenta.",
+                "example": "NET USER Juan /EXPIRES:01/01/2022"
+            },
+            {
+                "parameter": "nombre_usuario /PASSWORDREQ:YES",
+                "description": "Requiere una contraseña para el usuario.",
+                "example": "NET USER Juan /PASSWORDREQ:YES"
             }
         ]
     },
@@ -456,6 +481,21 @@
                 "parameter": "nombre_grupo nombre_usuario /ADD",
                 "description": "Agrega un usuario a un grupo local.",
                 "example": "NET LOCALGROUP Contabilidad Juan /ADD"
+            },
+            {
+                "parameter": "nombre_grupo nombre_usuario /DELETE",
+                "description": "Elimina un usuario de un grupo local.",
+                "example": "NET LOCALGROUP Contabilidad Juan /DELETE"
+            },
+            {
+                "parameter": "nombre_grupo /DELETE",
+                "description": "Elimina un grupo local.",
+                "example": "NET LOCALGROUP Contabilidad /DELETE"
+            },
+            {
+                "parameter": "nombre_grupo /COMMENT:\"Descripción\"",
+                "description": "Agrega una descripción al grupo.",
+                "example": "NET LOCALGROUP Contabilidad /COMMENT:\"Grupo de contadores\""
             }
         ]
     },

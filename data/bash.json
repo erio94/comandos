@@ -764,9 +764,14 @@
                 "example": "useradd -m nuevoUsuario"
             },
             {
+                "parameter": "-c",
+                "description": "Comentario.",
+                "example": "useradd -c 'Nombre Completo' nuevoUsuario"
+            },
+            {
                 "parameter": "-G GRUPO",
                 "description": "Agregar al usuario a un grupo.",
-                "example": "useradd -G wheel nuevoUsuario"
+                "example": "useradd -G GRUPO nuevoUsuario"
             },
             {
                 "parameter": "-s SHELL",
@@ -943,6 +948,105 @@
                 "parameter": "USUARIO",
                 "description": "Nombre de usuario.",
                 "example": "passwd usuario"
+            }
+        ]
+    },
+    {
+        "name": "chpasswd",
+        "description": "Cambia contraseñas en lote.",
+        "parameters": [
+            {
+                "parameter": "-e",
+                "description": "Usar encriptación SHA-256.",
+                "example": "chpasswd -e < usuarios.txt"
+            }
+        ]
+    },
+    {
+        "name": "chage",
+        "description": "Cambia la información de expiración de la cuenta.",
+        "parameters": [
+            {
+                "parameter": "-l",
+                "description": "Mostrar información de expiración.",
+                "example": "chage -l usuario"
+            },
+            {
+                "parameter": "-E FECHA",
+                "description": "Establecer fecha de expiración.",
+                "example": "chage -E 2023-01-01 usuario"
+            },
+            {
+                "parameter": "-d DIAS",
+                "description": "Establecer días de advertencia.",
+                "example": "chage -d 7 usuario"
+            },
+            {
+                "parameter": "-m DIAS",
+                "description": "Establecer días mínimos de cambio de contraseña.",
+                "example": "chage -m 7 usuario"
+            },
+            {
+                "parameter": "-M DIAS",
+                "description": "Establecer días máximos de cambio de contraseña.",
+                "example": "chage -M 90 usuario"
+            },
+            {
+                "parameter": "-W DIAS",
+                "description": "Establecer días de advertencia antes de la expiración.",
+                "example": "chage -W 14 usuario"
+            },
+            {
+                "parameter": "-I DIAS",
+                "description": "Establecer días de inactividad antes de bloquear la cuenta.",
+                "example": "chage -I 30 usuario"
+            }
+        ]
+    },
+    {
+        "name": "crontab",
+        "description": "Administra archivos crontab.",
+        "parameters": [
+            {
+                "parameter": "-l",
+                "description": "Listar crontab.",
+                "example": "crontab -l"
+            },
+            {
+                "parameter": "-e",
+                "description": "Editar crontab.",
+                "example": "crontab -e"
+            },
+            {
+                "parameter": "-r",
+                "description": "Eliminar crontab.",
+                "example": "crontab -r"
+            }
+        ]
+    },
+    {
+        "name": "at",
+        "description": "Programa tareas para ejecutarlas en un momento específico.",
+        "parameters": [
+            {
+                "parameter": "TIME",
+                "description": "Hora de ejecución.",
+                "example": "at 10:00"
+            },
+            {
+                "parameter": "-f",
+                "description": "Leer comandos de un archivo.",
+                "example": "at -f script.sh"
+            },
+            {
+                "parameter": "-l",
+                "description": "Listar tareas programadas.",
+                "example": "at -l"
+            },
+            {
+                "parameter": "-r",
+                "description": "Eliminar tareas programadas.",
+                "example": "at -r 1"
             }
         ]
     },

@@ -249,13 +249,22 @@
                 "parameter": "-CaseSensitive / -SimpleMatch",
                 "description": "Controla sensibilidad o tipo de coincidencia.",
                 "example": "Select-String -Pattern \"error\" -Path C:\\Archivos\\log.txt -CaseSensitive"
-            }
-        ]
-    },
-    {
-        "name": "Select-String",
-        "description": "Equivalente a FINDSTR, usa regex y patrones avanzados.",
-        "parameters": [
+            },
+            {
+                "parameter": "-Context",
+                "description": "Muestra líneas adicionales alrededor de la coincidencia.",
+                "example": "Select-String -Pattern \"error\" -Path C:\\Archivos\\log.txt -Context 1,1"
+            },
+            {
+                "parameter": "-List",
+                "description": "Muestra solo nombres de archivo con coincidencias.",
+                "example": "Select-String -Pattern \"error\" -Path C:\\Archivos\\*.log -List"
+            },
+            {
+                "parameter": "-Quiet",
+                "description": "Devuelve verdadero o falso si se encontraron coincidencias.",
+                "example": "Select-String -Pattern \"error\" -Path C:\\Archivos\\log.txt -Quiet"
+            },
             {
                 "parameter": "-Pattern",
                 "description": "Interpreta el patrón como regex por defecto.",
@@ -265,6 +274,17 @@
                 "parameter": "-Recursive",
                 "description": "Busca en subdirectorios.",
                 "example": "Select-String -Pattern \"archivo\" -Path C:\\Archivos\\*.txt -Recursive"
+            }
+        ]
+    },
+    {
+        "name": "Selct-Object",
+        "description": "Equivalente a FINDSTR, filtra y selecciona propiedades de objetos.",
+        "parameters": [
+            {
+                "parameter": "sin parámetros",
+                "description": "Selecciona todas las propiedades.",
+                "example": "Get-Process | Select-Object -Property Name,Id"
             }
         ]
     },
@@ -421,6 +441,28 @@
         ]
     },
     {
+        "name": "Get-LocalGroup",
+        "description": "Equivalente a NET LOCALGROUP, muestra grupos locales.",
+        "parameters": [
+            {
+                "parameter": "sin parámetros",
+                "description": "Muestra los grupos locales.",
+                "example": "Get-LocalGroup"
+            }
+        ]
+    },
+    {
+        "name": "Get-LocalUser",
+        "description": "Equivalente a NET USER, muestra usuarios locales.",
+        "parameters": [
+            {
+                "parameter": "sin parámetros",
+                "description": "Muestra los usuarios locales.",
+                "example": "Get-LocalUser"
+            }
+        ]
+    },
+    {
         "name": "Get-SmbShare",
         "description": "Equivalente a NET VIEW (para ver recursos compartidos locales).",
         "parameters": [
@@ -538,6 +580,28 @@
                 "parameter": "-Name / -Value / -PropertyType",
                 "description": "Define nombre, valor y tipo.",
                 "example": "New-ItemProperty -Path Registry::HKEY_CURRENT_USER\\Software\\MiClave -Name MiValor -PropertyType String -Value \"Datos\""
+            }
+        ]
+    },
+    {
+        "name": "New-NetIPAddress",
+        "description": "Equivalente a NETSH, configura direcciones IP.",
+        "parameters": [
+            {
+                "parameter": "-IPAddress / -PrefixLength",
+                "description": "Especifica la dirección IP y la longitud del prefijo.",
+                "example": "New-NetIPAddress -IPAddress 192.168.1.100 -PrefixLength 24 -DefaultGateway 192.168.1.1 -InterfaceAlias \"Ethernet\" -InterfaceMetric 10"
+            }
+        ]
+    },
+    {
+        "name": "Set-DnsClientServerAddress",
+        "description": "Equivalente a NETSH, configura servidores DNS.",
+        "parameters": [
+            {
+                "parameter": "-ServerAddresses",
+                "description": "Especifica las direcciones de los servidores DNS.",
+                "example": "Set-DnsClientServerAddress -InterfaceAlias \"Ethernet\" -ServerAddresses 8.8.8.8,8.8.4.4"
             }
         ]
     },
