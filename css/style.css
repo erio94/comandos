@@ -31,7 +31,6 @@ header {
 
 header nav {
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
@@ -216,7 +215,7 @@ footer p {
 
 
 #mainTable,
-#comparisonTable {
+#comparisonTable, #detailsContent {
     width: 100%;
     max-width: 100%;
     overflow-x: auto;
@@ -235,6 +234,11 @@ table {
     header input[type="text"] {
         width: 100%;
         font-size: 0.9em;
+    }
+
+    header nav {
+        flex-direction: column;
+        gap: 10px;
     }
 
     header nav button,
