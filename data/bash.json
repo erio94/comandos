@@ -617,7 +617,7 @@
                 "parameter": "mroute",
                 "description": "Mostrar o configurar rutas multicast.",
                 "example": "ip mroute show"
-            },
+            }
         ]
     },
     {

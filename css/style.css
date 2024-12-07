@@ -216,10 +216,11 @@ footer p {
 
 #mainTable,
 #comparisonTable, #detailsContent {
-    width: 100%;
+    width: 95%;
     max-width: 100%;
     overflow-x: auto;
     overflow-y: auto;
+    margin: 0 auto;
 }
 
 /* Opcional: Forzar un ancho mínimo a la tabla para ver el scroll horizontal */
