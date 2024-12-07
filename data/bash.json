@@ -759,6 +759,11 @@
         "description": "Crea un nuevo usuario.",
         "parameters": [
             {
+                "parameter": "Crear Usuario",
+                "description": "Nombre de usuario.",
+                "example": "sudo useradd -m -c \"Nombre Completo\" -G Grupo,sudo -s /bin/bash USUARIO"
+            },
+            {
                 "parameter": "-m",
                 "description": "Crear el directorio home.",
                 "example": "useradd -m nuevoUsuario"
@@ -959,6 +964,11 @@
                 "parameter": "-e",
                 "description": "Usar encriptación SHA-256.",
                 "example": "chpasswd -e < usuarios.txt"
+            },
+            {
+                "parameter": "echo \"USUARIO:passwd\" | sudo chpasswd",
+                "description": "Cambiar contraseña de un usuario.",
+                "example": "echo \"usuario:nuevaclave\" | sudo chpasswd"
             }
         ]
     },
