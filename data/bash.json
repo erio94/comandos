@@ -587,7 +587,37 @@
                 "parameter": "route",
                 "description": "Mostrar o configurar tabla de enrutamiento.",
                 "example": "ip route show"
-            }
+            },
+            {
+                "parameter": "link",
+                "description": "Mostrar o configurar dispositivos de red.",
+                "example": "ip link show"
+            },
+            {
+                "parameter": "neigh",
+                "description": "Mostrar o configurar la tabla ARP.",
+                "example": "ip neigh show"
+            },
+            {
+                "parameter": "netns",
+                "description": "Mostrar o configurar espacios de nombres de red.",
+                "example": "ip netns list"
+            },
+            {
+                "parameter": "tunnel",
+                "description": "Mostrar o configurar túneles.",
+                "example": "ip tunnel show"
+            },
+            {
+                "parameter": "maddress",
+                "description": "Mostrar o configurar direcciones multicast.",
+                "example": "ip maddress show"
+            },
+            {
+                "parameter": "mroute",
+                "description": "Mostrar o configurar rutas multicast.",
+                "example": "ip mroute show"
+            },
         ]
     },
     {
@@ -737,6 +767,21 @@
                 "parameter": "-G GRUPO",
                 "description": "Agregar al usuario a un grupo.",
                 "example": "useradd -G wheel nuevoUsuario"
+            },
+            {
+                "parameter": "-s SHELL",
+                "description": "Establecer la shell de inicio.",
+                "example": "useradd -s /bin/bash nuevoUsuario"
+            },
+            {
+                "parameter": "-p",
+                "description": "Establecer contraseña encriptada.",
+                "example": "useradd -p '$6$rounds=5000$SALT$PASSWORD' nuevoUsuario"
+            },
+            {
+                "parameter": "-h",
+                "description": "Mostrar ayuda.",
+                "example": "useradd -h"
             }
         ]
     },
@@ -748,6 +793,16 @@
                 "parameter": "-r",
                 "description": "Eliminar también el home y el buzón.",
                 "example": "userdel -r usuarioAntiguo"
+            },
+            {
+                "parameter": "-f",
+                "description": "Forzar la eliminación.",
+                "example": "userdel -f usuarioAntiguo"
+            },
+            {
+                "parameter": "-h",
+                "description": "Mostrar ayuda.",
+                "example": "userdel -h"
             }
         ]
     },
@@ -764,6 +819,41 @@
                 "parameter": "-d DIR",
                 "description": "Cambiar el directorio home.",
                 "example": "usermod -d /nuevo/home usuario"
+            },
+            {
+                "parameter": "-l NUEVO",
+                "description": "Cambiar el nombre de usuario.",
+                "example": "usermod -l nuevoNombre viejoNombre"
+            },
+            {
+                "parameter": "-L",
+                "description": "Bloquear la cuenta de usuario.",
+                "example": "usermod -L usuario"
+            },
+            {
+                "parameter": "-U",
+                "description": "Desbloquear la cuenta de usuario.",
+                "example": "usermod -U usuario"
+            },
+            {
+                "parameter": "-s SHELL",
+                "description": "Cambiar la shell de inicio.",
+                "example": "usermod -s /bin/bash usuario"
+            },
+            {
+                "parameter": "-e FECHA",
+                "description": "Establecer fecha de expiración.",
+                "example": "usermod -e 2023-01-01 usuario"
+            },
+            {
+                "parameter": "-p",
+                "description": "Establecer contraseña encriptada.",
+                "example": "usermod -p '$6$rounds=5000$SALT$PASSWORD' usuario"
+            },
+            {
+                "parameter": "-h",
+                "description": "Mostrar ayuda.",
+                "example": "usermod -h"
             }
         ]
     },
@@ -775,6 +865,21 @@
                 "parameter": "GRUPO",
                 "description": "Nombre del nuevo grupo.",
                 "example": "groupadd developers"
+            },
+            {
+                "parameter": "-g GID",
+                "description": "Establecer el ID del grupo.",
+                "example": "groupadd -g 1000 developers"
+            },
+            {
+                "parameter": "-r",
+                "description": "Crear un grupo de sistema.",
+                "example": "groupadd -r developers"
+            },
+            {
+                "parameter": "-h",
+                "description": "Mostrar ayuda.",
+                "example": "groupadd -h"
             }
         ]
     },
@@ -786,6 +891,189 @@
                 "parameter": "GRUPO",
                 "description": "Nombre del grupo a eliminar.",
                 "example": "groupdel developers"
+            },
+            {
+                "parameter": "-f",
+                "description": "Eliminar el grupo aunque tenga miembros.",
+                "example": "groupdel -f developers"
+            },
+            {
+                "parameter": "-h",
+                "description": "Mostrar ayuda.",
+                "example": "groupdel -h"
+            }
+        ]
+    },
+    {
+        "name": "groupmod",
+        "description": "Modifica un grupo.",
+        "parameters": [
+            {
+                "parameter": "-n NUEVO",
+                "description": "Cambiar el nombre del grupo.",
+                "example": "groupmod -n nuevoNombre viejoNombre"
+            },
+            {
+                "parameter": "-g GID",
+                "description": "Cambiar el ID del grupo.",
+                "example": "groupmod -g 1000 grupo"
+            },
+            {
+                "parameter": "-a USUARIO",
+                "description": "Agregar usuario al grupo.",
+                "example": "groupmod -a usuario grupo"
+            },
+            {
+                "parameter": "-d USUARIO",
+                "description": "Eliminar usuario del grupo.",
+                "example": "groupmod -d usuario grupo"
+            },
+            {
+                "parameter": "-R",
+                "description": "Establecer el grupo como principal.",
+                "example": "groupmod -R grupo usuario"
+            }
+        ]
+    },
+    {
+        "name": "passwd",
+        "description": "Cambia la contraseña de un usuario.",
+        "parameters": [
+            {
+                "parameter": "USUARIO",
+                "description": "Nombre de usuario.",
+                "example": "passwd usuario"
+            }
+        ]
+    },
+    {
+        "name": "echo",
+        "description": "Muestra una línea de texto.",
+        "parameters": [
+            {
+                "parameter": "-e",
+                "description": "Interpreta secuencias de escape.",
+                "example": "echo -e 'Hola\\nMundo'"
+            }
+        ]
+    },
+    {
+        "name": "date",
+        "description": "Muestra la fecha y hora actual.",
+        "parameters": [
+            {
+                "parameter": "+FORMATO",
+                "description": "Mostrar fecha en un formato específico.",
+                "example": "date +'%Y-%m-%d %H:%M:%S'"
+            }
+        ]
+    },
+    {
+        "name": "hostname",
+        "description": "Muestra o establece el nombre del host.",
+        "parameters": [
+            {
+                "parameter": "NUEVO",
+                "description": "Establecer nuevo nombre de host.",
+                "example": "hostname nuevoNombre"
+            },
+            {
+                "parameter": "-i",
+                "description": "Mostrar dirección IP del host.",
+                "example": "hostname -i"
+            },
+            {
+                "parameter": "-f",
+                "description": "Mostrar nombre de host completo.",
+                "example": "hostname -f"
+            },
+            {
+                "parameter": "-d",
+                "description": "Mostrar nombre de dominio DNS.",
+                "example": "hostname -d"
+            }
+        ]
+    },
+    {
+        "name": "uname",
+        "description": "Muestra información del sistema.",
+        "parameters": [
+            {
+                "parameter": "-a",
+                "description": "Mostrar toda la información.",
+                "example": "uname -a"
+            },
+            {
+                "parameter": "-r",
+                "description": "Mostrar la versión del kernel.",
+                "example": "uname -r"
+            },
+            {
+                "parameter": "-m",
+                "description": "Mostrar la arquitectura del sistema.",
+                "example": "uname -m"
+            },
+            {
+                "parameter": "-o",
+                "description": "Mostrar el nombre del sistema operativo.",
+                "example": "uname -o"
+            },
+            {
+                "parameter": "-s",
+                "description": "Mostrar el nombre del kernel.",
+                "example": "uname -s"
+            },
+            {
+                "parameter": "-v",
+                "description": "Mostrar la versión del kernel.",
+                "example": "uname -v"
+            }
+        ]
+    },
+    {
+        "name": "uptime",
+        "description": "Muestra tiempo de actividad del sistema.",
+        "parameters": [
+            {
+                "parameter": "-p",
+                "description": "Mostrar tiempo de actividad en un formato más legible.",
+                "example": "uptime -p"
+            },
+            {
+                "parameter": "-s",
+                "description": "Mostrar la fecha y hora de inicio del sistema.",
+                "example": "uptime -s"
+            },
+            {
+                "parameter": "-V",
+                "description": "Mostrar la versión de uptime.",
+                "example": "uptime -V"
+            },
+            {
+                "parameter": "-h",
+                "description": "Mostrar ayuda.",
+                "example": "uptime -h"
+            }
+        ]
+    },
+    {
+        "name": "netplan",
+        "description": "Configura la red en sistemas Ubuntu/Debian.",
+        "parameters": [
+            {
+                "parameter": "apply",
+                "description": "Aplica la configuración.",
+                "example": "netplan apply"
+            },
+            {
+                "parameter": "generate",
+                "description": "Genera archivos de configuración.",
+                "example": "netplan generate"
+            },
+            {
+                "parameter": "try",
+                "description": "Prueba la configuración sin aplicarla.",
+                "example": "netplan try"
             }
         ]
     }
