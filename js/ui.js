@@ -179,6 +179,9 @@ function cleanSpaces(input, maxLength = 5000) {
 document.addEventListener("DOMContentLoaded", () => {
     const titleTable = document.getElementById("titleTable");
 
+    // Establece "PowerShell" como valor por defecto
+    titleTable.textContent = "PowerShell";
+
     // Selecciona todos los botones de la navegación
     const navButtons = document.querySelectorAll("header nav button");
 
