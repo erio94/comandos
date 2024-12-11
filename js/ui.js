@@ -173,3 +173,21 @@ function cleanSpaces(input, maxLength = 5000) {
     const cleanedInput = input.trim().replace(/\s+/g, ' ');
     return cleanedInput.length > maxLength ? 'Sin descripción' : cleanedInput;
 }
+
+
+// Añade evento a los botones del menú
+document.addEventListener("DOMContentLoaded", () => {
+    const titleTable = document.getElementById("titleTable");
+
+    // Selecciona todos los botones de la navegación
+    const navButtons = document.querySelectorAll("header nav button");
+
+    // Asocia un evento de clic a cada botón
+    navButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            // Cambia el contenido del h3 con el título del botón
+            const buttonTitle = button.innerText || button.textContent;
+            titleTable.textContent = buttonTitle; // Actualiza el texto del h3
+        });
+    });
+});
